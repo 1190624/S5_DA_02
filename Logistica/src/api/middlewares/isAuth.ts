@@ -1,4 +1,5 @@
-import jwt from 'express-jwt';
+import {expressjwt as jwt} from 'express-jwt';
+//import * as jwks from 'jwks-rsa';
 import config from '../../../config';
 
 /**
@@ -28,6 +29,7 @@ const isAuth = jwt({
   secret: config.jwtSecret, // The _secret_ to sign the JWTs
   userProperty: 'token', // Use req.token to store the JWT
   getToken: getTokenFromHeader, // How to extract the JWT from the request
+  algorithms:["HS256"],
 });
 
 export default isAuth;

@@ -21,6 +21,7 @@ export default {
    */
   databaseURL: process.env.MONGODB_URI || "mongodb://localhost:27017/test",
   
+  //databaseURL: process.env.MONGODB_URI || "mongodbserver28",
   /**
    * Your secret sauce
    */
@@ -44,7 +45,12 @@ export default {
     role: {
       name: "RoleController",
       path: "../controllers/roleController"
-    }
+    },
+    camiao:{
+      name: "CamiaoController",
+      path: "../controllers/CamiaoController"
+    } 
+
   },
 
   repos: {
@@ -55,13 +61,21 @@ export default {
     user: {
       name: "UserRepo",
       path: "../repos/userRepo"
-    }
+    },
+    camiao:{
+      name: "camiaoRepo",
+      path: "../repos/camiaoRepo"
+    } 
   },
 
   services: {
     role: {
       name: "RoleService",
       path: "../services/roleService"
-    }
+    },
+    camiao:{
+      name: "CamiaoService",
+      path: "../services/CamiaoServices"
+    } 
   },
 };
