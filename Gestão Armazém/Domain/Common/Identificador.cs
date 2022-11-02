@@ -1,8 +1,11 @@
 using System;
+using System.Runtime.Serialization;
 using DDDSample1.Domain.Shared;
 
 namespace DDDSample1.Domain.Common {
+    [DataContract]
     public class Identificador : EntityId {
+        [DataMember(Name = "Value")]
         private String value;
 
         public Identificador(String value) : base(value) {
