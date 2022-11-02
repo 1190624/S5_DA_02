@@ -18,7 +18,7 @@ export default class CamiaoController implements ICamiaoController /* TODO: exte
     
     
     
-    public async updateCamiao(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction) {
+    async updateCamiao(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction) {
         try {
             const camiaoOrError = await this.camiaoServiceInstance.updateCamiao(req.body as CamiaoDTO) as Result<CamiaoDTO>;
       
@@ -32,6 +32,24 @@ export default class CamiaoController implements ICamiaoController /* TODO: exte
           catch (e) {
             return next(e);
           }
-        };
+        }
+
+
+    
+    async getListaCamiao(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction){
+        try {
+            const listaCamiaoOrError = await this.camiaoServiceInstance.getListaCamiao() as Result<CamiaoDTO[]>
+
+            if (listaCamiaoOrError.isFailure) {
+                return res.status(400).send();
+            }
+
+            const camiaoPosts = listaCamiaoOrError.getValue();
+            res.status(200);
+            return  res.json(camiaoPosts);
+        } catch(e) {
+            return next(e);
+        }
+    }
 
 }
