@@ -1,11 +1,6 @@
 import { Service, Inject } from 'typedi';
 import config from "../../config";
-import IRoleDTO from '../dto/IRoleDTO';
-import { Role } from "../domain/role";
-import IRoleRepo from '../services/IRepos/IRoleRepo';
-import IRoleService from './IServices/IRoleService';
 import { Result } from "../core/logic/Result";
-import { RoleMap } from "../mappers/RoleMap";
 import ICamiaoRepo from './IRepos/ICamiaoRepo';
 import ICamiaoService from './IServices/ICamiaoService';
 import CamiaoDTO from '../dto/CamiaoDTO';
@@ -34,6 +29,23 @@ export default class CamiaoService implements ICamiaoService {
           } catch (e) {
             throw e;
           }
+    }
+
+
+    public async getListaCamiao(): Promise<Result<CamiaoDTO[]>> {
+      try {
+        const listaCamiao = await this.camiaoRepo.findAll();
+
+        if (listaCamiao === null) {
+            return Result.fail<CamiaoDTO[]>("Não existem camiões registados.");
+        }
+
+        const resultado = listaCamiao.map((listaCamiao) => CamiaoMap.toDTO(listaCamiao) as CamiaoDTO);
+        return Result.ok<CamiaoDTO[]>(resultado);
+    } catch(e) {
+        throw e;
+    }
+      
     }
 
 
