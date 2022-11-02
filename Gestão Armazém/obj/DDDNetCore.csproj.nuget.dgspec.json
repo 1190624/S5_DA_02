@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gonca\\OneDrive\\Documentos\\ISEP\\LAPR5\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj": {}
+    "C:\\ARQSI\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gonca\\OneDrive\\Documentos\\ISEP\\LAPR5\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj": {
+    "C:\\ARQSI\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gonca\\OneDrive\\Documentos\\ISEP\\LAPR5\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
+        "projectUniqueName": "C:\\ARQSI\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
         "projectName": "DDDNetCore",
-        "projectPath": "C:\\Users\\gonca\\OneDrive\\Documentos\\ISEP\\LAPR5\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
-        "packagesPath": "C:\\Users\\gonca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gonca\\OneDrive\\Documentos\\ISEP\\LAPR5\\S5_DA_02\\Gestão Armazém\\obj\\",
+        "projectPath": "C:\\ARQSI\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
+        "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
+        "outputPath": "C:\\ARQSI\\S5_DA_02\\Gestão Armazém\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gonca\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp6.0"
@@ -83,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
