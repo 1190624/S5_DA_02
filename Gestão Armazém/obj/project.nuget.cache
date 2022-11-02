@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QrzsE4zyE89yx8ssPeg1IVGCdzAZ1jS2TpiYJcDB5reeQYhBDQfUPv48OHVwoBorQCZI0ysrQpTMn0st/T++dQ==",
+  "dgSpecHash": "ySULWG7AS4dS9EVPmA4dHlmZuDtBxZuN6YoJnB467DHJIfnNvToEnZsxsjVrckuZmxFgg6axBJLw0fIUS3mzaw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gonca\\Documents\\ISEP\\ARQSI\\Base Project\\DDDNetCore.csproj",
+  "projectFilePath": "C:\\Users\\gonca\\OneDrive\\Documentos\\ISEP\\LAPR5\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gonca\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.0\\microsoft.aspnetcore.jsonpatch.6.0.0.nupkg.sha512",
     "C:\\Users\\gonca\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.0\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.0.nupkg.sha512",
