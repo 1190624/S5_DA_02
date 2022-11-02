@@ -1,6 +1,5 @@
 import { Router } from 'express';
-import { celebrate, Joi } from 'celebrate';
-
+import {celebrate, Joi} from 'celebrate';
 import { Container } from 'typedi'; 
 
 import config from "../../../config";
@@ -33,21 +32,21 @@ export default (app: Router) => {
       body: Joi.object({
         matricula: Joi.string().required(),
         caracteristica: Joi.string().required(),
-        autonomia: Joi.string().required(),
-        capacidadeTransporte: Joi.string().required(),
-        capacidadeBateria: Joi.string().required(),
-        tara: Joi.string().required(),
-        tempoCarregamento: Joi.string().required()
+        autonomia: Joi.number().required(),
+        capacidadeTransporte: Joi.number().required(),
+        capacidadeBateria: Joi.number().required(),
+        tara: Joi.number().required(),
+        tempoCarregamento: Joi.number().required()
       }),
     }),
     (req, res, next) => ctrl.updateCamiao(req, res, next));
 
-/*
-    route.get('/feed/:userId',
+
+    route.get('',
     celebrate({
         params: Joi.object({
-            userId: Joi.string().required(),
+            //userId: Joi.string().required(),
         })
     }),
-    (req, res, next) => ctrl.feedPosts(req, res, next));*/
+    (req, res, next) => ctrl.getListaCamiao(req, res, next));
 };
