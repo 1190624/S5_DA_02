@@ -1,9 +1,16 @@
 using System;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.Serialization;
 using DDDSample1.Domain.Shared;
 
 namespace DDDSample1.Domain.Armazéns {
-    public class Munícipio : IValueObject {
-        private String nome {get;}
+    [Owned]
+    [DataContract]
+    public class Munícipio : IValueObject { 
+        [DataMember(Name = "Nome")]
+        private String nome;
+
+        public Munícipio() {}
 
         public Munícipio(String nome) {
             this.nome = nome;

@@ -1,17 +1,29 @@
 using System;
+using System.Runtime.Serialization;
 
 namespace DDDSample1.Domain.Armazéns.DTO {
+    [DataContract]
     public class ArmazémDTO {
-        private String identificador;
-        private String designação;
-        private String códigoPostal;
-        private Int16 númeroPorta;
-        private String nomeRua;
-        private String localidade;
-        private String país;
-        private String munícipio;
-        private Double latitude;
-        private Double longitude;
+        [DataMember(Name = "Identificador")]
+        public String identificador;
+        [DataMember(Name = "Designação")]
+        public String designação;
+        [DataMember(Name = "CódigoPostal")]
+        public String códigoPostal;
+        [DataMember(Name = "NúmeroPorta")]
+        public Int16 númeroPorta;
+        [DataMember(Name = "NomeRua")]
+        public String nomeRua;
+        [DataMember(Name = "Localidade")]
+        public String localidade;
+        [DataMember(Name = "País")]
+        public String país;
+        [DataMember(Name = "Munícipio")]
+        public String munícipio;
+        [DataMember(Name = "Latitude")]
+        public Double latitude;
+        [DataMember(Name = "Longitude")]
+        public Double longitude;
 
         public ArmazémDTO(String identificador,
             String designação, 
