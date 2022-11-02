@@ -1,14 +1,25 @@
 using System;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.Serialization;
 using DDDSample1.Domain.Shared;
 
 namespace DDDSample1.Domain.Armazéns {
+    [Owned]
+    [DataContract]
     public class Endereço : IValueObject {
+        [DataMember(Name = "CódigoPostal")]
         private String códigoPostal;
+        [DataMember(Name = "NúmeroPorta")]
         private Int16 númeroPorta;
+        [DataMember(Name = "NomeRua")]
         private String nomeRua;
+        [DataMember(Name = "Localidade")]
         private String localidade;
+        [DataMember(Name = "País")]
         private String país;
+
+        public Endereço() {}
 
         public Endereço(String códigoPostal, Int16 númeroPorta, String nomeRua, String localidade, String país) {
             this.códigoPostal = códigoPostal;
