@@ -10,12 +10,14 @@ using DDDSample1.Infrastructure.Categories;
 using DDDSample1.Infrastructure.Products;
 using DDDSample1.Infrastructure.Families;
 using DDDSample1.Infrastructure.Armazéns;
+using DDDSample1.Infrastructure.Entregas;
 using DDDSample1.Infrastructure.Shared;
 using DDDSample1.Domain.Shared;
 using DDDSample1.Domain.Categories;
 using DDDSample1.Domain.Products;
 using DDDSample1.Domain.Families;
 using DDDSample1.Domain.Armazéns;
+using DDDSample1.Domain.Entregas;
 
 namespace DDDSample1
 {
@@ -81,6 +83,9 @@ namespace DDDSample1
 
             services.AddTransient<IArmazémRepository, ArmazémRepository>();
             services.AddTransient<RegistarArmazémService>();
+
+            services.AddTransient<IEntregasRepository, EntregasRepository>();
+            
         }
     }
 }
