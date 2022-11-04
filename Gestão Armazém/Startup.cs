@@ -83,6 +83,8 @@ namespace DDDSample1
 
             services.AddTransient<IArmazémRepository, ArmazémRepository>();
             services.AddTransient<RegistarArmazémService>();
+            services.AddTransient<ListarArmazénsService>();
+            services.AddTransient<EditarArmazémService>();
 
             services.AddTransient<IEntregasRepository, EntregasRepository>();
             
