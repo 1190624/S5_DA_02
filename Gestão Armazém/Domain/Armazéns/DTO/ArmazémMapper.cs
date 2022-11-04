@@ -5,7 +5,7 @@ namespace DDDSample1.Domain.Armazéns.DTO {
     public class ArmazémMapper {
 
         public static ArmazémDTO toDTO(Armazém armazém) {
-            return new ArmazémDTO(armazém.Identificador.GetValue, 
+            return new ArmazémDTO(armazém.Id.GetValue, 
                 armazém.Designação.GetTexto, 
                 armazém.Endereço.GetCódigoPostal, 
                 armazém.Endereço.GetNúmeroPorta,
