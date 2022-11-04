@@ -6,7 +6,7 @@ using DDDSample1.Domain.Armazéns;
 namespace DDDSample1.Infrastructure.Armazéns {
     public class ArmazémEntityTypeConfiguration : IEntityTypeConfiguration<Armazém> {
         public void Configure(EntityTypeBuilder<Armazém> entityTypeBuilder) {
-            entityTypeBuilder.HasKey(armazém => armazém.Identificador);
+            entityTypeBuilder.HasKey(armazém => armazém.Id);
             entityTypeBuilder.OwnsOne(armazém => armazém.Designação,
                 designação => {designação.Property("texto").IsRequired(true);});
             entityTypeBuilder.OwnsOne(armazém => armazém.Endereço, endereço => { 
