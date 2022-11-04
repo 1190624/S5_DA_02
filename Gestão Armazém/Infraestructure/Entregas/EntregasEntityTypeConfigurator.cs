@@ -1,0 +1,21 @@
+using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using DDDSample1.Domain.Entregas;
+
+namespace DDDSample1.Infrastructure.Entregas{
+
+    public class EntregasEntityTypeConfigurator : IEntityTypeConfigurator<Entrega> {
+
+        public void Configure(EntityTypeBuilder<Entrega> entityTypeBuilder){
+            entityTypeBuilder.HasKey(entrega => entrega.Identificador);
+            entityTypeBuilder.OwnsOne(entrega => entrega.DataEntrega, dataEntrega => {dataEntrega.Property("dia").IsRequired(true);
+                dataEntrega.Property("mes").IsRequired(true);
+                dataEntrega.Property("ano").IsRequired(true);
+                });
+            entityTypeBuilder.OwnsOne(entrega => entrega.Massa, massa => {massa.Property("massa").IsRequired(true);});
+            entityTypeBuilder.OwnsOne(entrega => entrega.TempoColocação, tempoColocação => {tempoColocação.Property("tempoColocação").IsRequired(true);});
+            entityTypeBuilder.OwnsOne(entrega => entrega.TempoRetirada, tempoRetirada => {tempoRetirada.Property("tempoRetirada").IsRequired(true);});
+        }
+    }
+}
