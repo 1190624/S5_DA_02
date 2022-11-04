@@ -21,6 +21,7 @@ export default class CamiaoService implements ICamiaoService {
             }
             else {
               camiao.matricula.props.value = camiaoDTO.matricula;
+              // TODO: acrescentar os atibutos
               await this.camiaoRepo.save(camiao);
       
               const camiaoDTOResult = CamiaoMap.toDTO( camiao) as CamiaoDTO;
@@ -36,7 +37,7 @@ export default class CamiaoService implements ICamiaoService {
       try {
         const listaCamiao = await this.camiaoRepo.findAll();
 
-        if (listaCamiao === null) {
+        if (listaCamiao == null) {
             return Result.fail<CamiaoDTO[]>("Não existem camiões registados.");
         }
 
