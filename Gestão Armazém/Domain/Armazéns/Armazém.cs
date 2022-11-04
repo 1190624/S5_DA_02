@@ -19,7 +19,7 @@ namespace DDDSample1.Domain.Armazéns {
         public Armazém() {}
 
         public Armazém(Identificador identificador, Designação designação, Endereço endereço, Munícipio munícipio, Coordenadas coordenadas) {
-            this.id = identificador;
+            this.Id = identificador;
             this.designação = designação;
             this.endereço = endereço;
             this.munícipio = munícipio;
