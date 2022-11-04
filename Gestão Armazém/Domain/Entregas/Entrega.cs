@@ -3,6 +3,9 @@ using DDDSample1.Domain.Common;
 
 namespace DDDSample1.Domain.Entregas {
     public class Entrega : Entity<Identificador>, IAggregateRoot {
+
+        private Identificador identificador;
+
         private DataEntrega dataEntrega;
 
         private Massa massa;
@@ -15,19 +18,21 @@ namespace DDDSample1.Domain.Entregas {
         public Entrega() {}
 
         public Entrega(Identificador identificador, DataEntrega dataEntrega, Massa massa, TempoColocação tempoColocação, TempoRetirada tempoRetirada) {
+            this.identificador = identificador;
             this.dataEntrega = dataEntrega;
             this.massa = massa;
             this.tempoColocação = tempoColocação;
             this.tempoRetirada = tempoRetirada;
         }
 
-        public DataEntrega dataEntrega => dataEntrega;
+        public Identificador Identificador => identificador;
+        public DataEntrega DataEntrega => dataEntrega;
 
-        public Massa massa => massa;
+        public Massa Massa => massa;
 
-        public TempoColocação tempoColocação => tempoColocação;
+        public TempoColocação TempoColocação => tempoColocação;
 
-        public TempoRetirada tempoRetirada => tempoRetirada;
+        public TempoRetirada TempoRetirada => tempoRetirada;
 
     }
 }

@@ -37,8 +37,8 @@ namespace DDDSample1.Domain.Entregas.DTO {
             this.mes = mes;
             this.ano = ano;
             this.massa = massa;
-            this.tempoColocação;
-            this.tempoRetirada;
+            this.tempoColocação = tempoColocação;
+            this.tempoRetirada = tempoRetirada;
         }
 
         public String GetIdentificador => identificador;

@@ -5521,19 +5521,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Legion\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
+      "projectUniqueName": "C:\\Users\\Legion\\Documents\\S5_DA_02\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
       "projectName": "DDDNetCore",
-      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\S5_DA_02\\Gestão Armazém\\obj\\",
+      "projectPath": "C:\\Users\\Legion\\Documents\\S5_DA_02\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
+      "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Legion\\Documents\\S5_DA_02\\S5_DA_02\\Gestão Armazém\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp6.0"

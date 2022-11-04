@@ -29,7 +29,7 @@ namespace DDDSample1.Domain.Entregas {
     }
 
     public override string ToString() {
-        return tempoColocação;
+        return tempoColocação.ToString();
     }
 
     }

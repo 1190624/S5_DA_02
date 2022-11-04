@@ -5,12 +5,12 @@ namespace DDDSample1.Domain.Entregas.DTO {
     public class EntregasMapper {
         public static EntregasDTO toDTO(Entrega entrega){
             return new EntregasDTO(entrega.Identificador.GetValue,
-            entrega.dataEntrega.GetDia,
-            entrega.dataEntrega.GetMes,
-            entrega.dataEntrega.GetAno,
-            entrega.massa.massa,
-            entrega.tempoColocação.GetTempoColocação,
-            entrega.tempoRetirada.tempoRetirada);
+            entrega.DataEntrega.GetDia,
+            entrega.DataEntrega.GetMes,
+            entrega.DataEntrega.GetAno,
+            entrega.Massa.GetMassa,
+            entrega.TempoColocação.GetTempoColocação,
+            entrega.TempoRetirada.GetTempoRetirada);
         }
 
         public static Entrega toEntrega(EntregasDTO entregasDTO){

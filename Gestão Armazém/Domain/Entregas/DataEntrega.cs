@@ -51,7 +51,7 @@ namespace DDDSample1.Domain.Entregas {
             .Append(ano);
 
 
-        return builder.ToString;
+        return builder.ToString();
     }
 
     }
