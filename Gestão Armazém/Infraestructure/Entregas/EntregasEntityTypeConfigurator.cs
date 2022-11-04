@@ -5,7 +5,7 @@ using DDDSample1.Domain.Entregas;
 
 namespace DDDSample1.Infrastructure.Entregas{
 
-    public class EntregasEntityTypeConfigurator : IEntityTypeConfigurator<Entrega> {
+    public class EntregasEntityTypeConfigurator : IEntityTypeConfiguration<Entrega> {
 
         public void Configure(EntityTypeBuilder<Entrega> entityTypeBuilder){
             entityTypeBuilder.HasKey(entrega => entrega.Identificador);
