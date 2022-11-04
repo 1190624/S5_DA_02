@@ -82,3 +82,12 @@ C:\ARQSI\S5_DA_02\Gestão Armazém\bin\Debug\netcoreapp6.0\Newtonsoft.Json.Bson.
 C:\ARQSI\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\DDDNetCore.csproj.CopyComplete
 C:\ARQSI\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\DDDNetCore.genruntimeconfig.cache
 C:\ARQSI\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\ref\DDDNetCore.dll
+C:\Users\User\Documents\GitHub\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\DDDNetCore.csproj.AssemblyReference.cache
+C:\Users\User\Documents\GitHub\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\DDDNetCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\GitHub\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\DDDNetCore.AssemblyInfoInputs.cache
+C:\Users\User\Documents\GitHub\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\DDDNetCore.AssemblyInfo.cs
+C:\Users\User\Documents\GitHub\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\DDDNetCore.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\DDDNetCore.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\User\Documents\GitHub\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\DDDNetCore.dll
+C:\Users\User\Documents\GitHub\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\refint\DDDNetCore.dll
+C:\Users\User\Documents\GitHub\S5_DA_02\Gestão Armazém\obj\Debug\netcoreapp6.0\DDDNetCore.pdb

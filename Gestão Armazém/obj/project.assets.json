@@ -5521,19 +5521,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\asus\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ARQSI\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
       "projectName": "DDDNetCore",
-      "projectPath": "C:\\ARQSI\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
-      "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-      "outputPath": "C:\\ARQSI\\S5_DA_02\\Gestão Armazém\\obj\\",
+      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\S5_DA_02\\Gestão Armazém\\DDDNetCore.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\S5_DA_02\\Gestão Armazém\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp6.0"

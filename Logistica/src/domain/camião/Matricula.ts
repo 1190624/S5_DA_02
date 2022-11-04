@@ -1,5 +1,4 @@
 import { ValueObject } from "../../core/domain/ValueObject";
-import { Guard } from "../../core/logic/Guard";
 import { Result } from "../../core/logic/Result";
 
 interface MatriculaProps {
