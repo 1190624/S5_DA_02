@@ -2,13 +2,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using DDDSample1.Domain.Entregas;
+using DDDSample1.Domain.Armazéns;
 
 namespace DDDSample1.Infrastructure.Entregas{
 
     public class EntregasEntityTypeConfigurator : IEntityTypeConfiguration<Entrega> {
 
         public void Configure(EntityTypeBuilder<Entrega> entityTypeBuilder){
-            entityTypeBuilder.HasKey(entrega => entrega.Identificador);
+            entityTypeBuilder.HasKey(entrega => entrega.Id);
+            entityTypeBuilder.HasKey(entrega => entrega.Armazém);
             entityTypeBuilder.OwnsOne(entrega => entrega.DataEntrega, dataEntrega => {dataEntrega.Property("dia").IsRequired(true);
                 dataEntrega.Property("mes").IsRequired(true);
                 dataEntrega.Property("ano").IsRequired(true);
