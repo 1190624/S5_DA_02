@@ -6,7 +6,7 @@ using DDDSample1.Domain.Entregas.DTO;
 using System;
 using DDDSample1.Domain.Entregas;
 
-namespace DDDSample1.Domain.Armazéns
+namespace DDDSample1.Domain.Entregas
 {
     public class EntregaService
     {
