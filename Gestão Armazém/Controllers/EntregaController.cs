@@ -47,5 +47,37 @@ namespace DDDSample1.Controllers
                 return BadRequest(new {Message = ex.Message});
             }
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<EntregasDTO>>> GetAll()
+        {
+            return await service.GetAllAsync();
+        }
+
+        [HttpGet("{ID}")]
+        public async Task<ActionResult<EntregasDTO>> GetById(String Id) {
+            var response = await service.GetByIdAsync(Id);
+
+            if (response == null)
+                return NotFound();
+            
+            return response;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<EntregasDTO>> Create(JObject entregaJSON) {
+            try {
+                var response = await service.RegistarEntrega(entregaJSON.ToObject<EntregasDTO>());
+
+                return CreatedAtAction(nameof(GetById), new {Id = response.identificador}, response);
+            } catch (BusinessRuleValidationException exception) {
+                return BadRequest(new {exception.Message});
+            }
+
+        }
+
+
+
     }
+    
 }

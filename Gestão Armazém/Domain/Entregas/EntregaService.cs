@@ -42,5 +42,35 @@ namespace DDDSample1.Domain.Entregas
 
             return EntregasMapper.toDTO(entrega);
         }
+
+
+        public async Task<EntregasDTO> RegistarEntrega(EntregasDTO entregasDTO) {
+            Entrega entrega = EntregasMapper.toEntrega(entregasDTO);
+
+            await _repo.AddAsync(entrega);
+            await gestorPersist.CommitAsync();
+
+            return EntregasMapper.toDTO(entrega);
+        }
+
+        public async Task<List<EntregasDTO>> GetAllAsync() {
+            var list = await _repo.GetAllAsync();
+
+            List<EntregasDTO> entregasDTOList = list.ConvertAll<EntregasDTO>(entrega => EntregasMapper.toDTO(entrega));
+
+            return entregasDTOList;
+        }
+
+        public async Task<EntregasDTO> GetByIdAsync(String Id) {
+            Identificador identificador = new Identificador(Id);
+            var entrega = await _repo.GetByIdAsync(identificador);
+
+            if (entrega == null)
+                return null;
+
+            return EntregasMapper.toDTO(entrega);
+        }
+
+
     }
 }
