@@ -48,15 +48,9 @@ namespace DDDSample1.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<EntregasDTO>>> GetAll()
-        {
-            return await service.GetAllAsync();
-        }
-
         [HttpGet("{ID}")]
         public async Task<ActionResult<EntregasDTO>> GetById(String Id) {
-            var response = await service.GetByIdAsync(Id);
+            var response = await _service.GetByIdAsync(Id);
 
             if (response == null)
                 return NotFound();
@@ -67,7 +61,7 @@ namespace DDDSample1.Controllers
         [HttpPost]
         public async Task<ActionResult<EntregasDTO>> Create(JObject entregaJSON) {
             try {
-                var response = await service.RegistarEntrega(entregaJSON.ToObject<EntregasDTO>());
+                var response = await _service.RegistarEntrega(entregaJSON.ToObject<EntregasDTO>());
 
                 return CreatedAtAction(nameof(GetById), new {Id = response.identificador}, response);
             } catch (BusinessRuleValidationException exception) {
@@ -76,7 +70,18 @@ namespace DDDSample1.Controllers
 
         }
 
+        // GET: api/Entregas
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<JObject>>> GetAll()
+        {
+            var listaEntregasDTO = await _service.GetAllAsync();
 
+            List<JObject> listaEntregaJSON = new List<JObject>();
+
+            foreach(EntregasDTO entregasDTO in listaEntregasDTO)
+                listaEntregaJSON.Add(JObject.FromObject(entregasDTO));
+            return listaEntregaJSON;
+        }
 
     }
     

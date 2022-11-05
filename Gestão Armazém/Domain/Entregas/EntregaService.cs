@@ -5,6 +5,7 @@ using DDDSample1.Domain.Common;
 using DDDSample1.Domain.Entregas.DTO;
 using System;
 using DDDSample1.Domain.Entregas;
+using DDDSample1.Domain.Armazéns;
 
 namespace DDDSample1.Domain.Entregas
 {
@@ -13,6 +14,8 @@ namespace DDDSample1.Domain.Entregas
         private readonly IEntregasRepository _repo;
 
         private readonly IUnitOfWork gestorPersist;
+
+        //private readonly IArmazémRepository armazémRepo;
 
         public EntregaService(IUnitOfWork gestorPersist, IEntregasRepository repo)
         {
@@ -47,18 +50,15 @@ namespace DDDSample1.Domain.Entregas
         public async Task<EntregasDTO> RegistarEntrega(EntregasDTO entregasDTO) {
             Entrega entrega = EntregasMapper.toEntrega(entregasDTO);
 
+           /* var armazém = await this.armazémRepo.GetByIdAsync(new Identificador(entregasDTO.GetArmazém));
+            if(armazém == null)
+                return null;
+*/
             await _repo.AddAsync(entrega);
             await gestorPersist.CommitAsync();
+            
 
             return EntregasMapper.toDTO(entrega);
-        }
-
-        public async Task<List<EntregasDTO>> GetAllAsync() {
-            var list = await _repo.GetAllAsync();
-
-            List<EntregasDTO> entregasDTOList = list.ConvertAll<EntregasDTO>(entrega => EntregasMapper.toDTO(entrega));
-
-            return entregasDTOList;
         }
 
         public async Task<EntregasDTO> GetByIdAsync(String Id) {
@@ -70,6 +70,16 @@ namespace DDDSample1.Domain.Entregas
 
             return EntregasMapper.toDTO(entrega);
         }
+        
+        public async Task<List<EntregasDTO>> GetAllAsync()
+        {
+            var list = await this._repo.GetAllAsync();
+
+            List<EntregasDTO> listaEntregasDTO = list.ConvertAll<EntregasDTO>(entrega => EntregasMapper.toDTO(entrega));
+
+            return listaEntregasDTO;
+        }
+
 
 
     }

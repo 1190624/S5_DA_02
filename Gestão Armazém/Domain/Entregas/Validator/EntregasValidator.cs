@@ -9,6 +9,8 @@ namespace DDDSample1.Domain.Entregas.Validator {
         // TODO ID DIA MES ANO
         private const String ID_REGEX = "[0-9]{6}";
 
+        private const String ID_ARMAZEM = "([A-Z]|[0-9]){3}";
+
         private const String DIA_REGEX = "";
 
         private const String MES_REGEX = "";

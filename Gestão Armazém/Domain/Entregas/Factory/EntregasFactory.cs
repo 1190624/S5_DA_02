@@ -6,7 +6,7 @@ using DDDSample1.Domain.Armazéns;
 namespace DDDSample1.Domain.Entregas.Factory {
     public class EntregasFactory : IEntregasFactory {
         public Entrega CriarEntrega(String identificador,
-            Armazém armazém,
+            String armazém,
             String dia,
             String mes,
             String ano,
