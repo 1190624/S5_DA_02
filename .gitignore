@@ -78,3 +78,11 @@ Gestão Armazém/obj/project.nuget.cache
 GestãoArmazénsTests/bin
 GestãoArmazénsTests/obj
 Gestão Armazém\obj\Debug\netcoreapp6.0
+*.json
+Gestão Armazém/obj/DDDNetCore.csproj.nuget.g.props
+*.cache
+*.cache
+*.editorconfig
+*.json
+*.json
+*.cache
