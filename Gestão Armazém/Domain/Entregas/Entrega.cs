@@ -42,7 +42,7 @@ namespace DDDSample1.Domain.Entregas {
         
 
 
-        public void changeArmazém (Armazém armazém){
+        public void changeArmazém (String armazém){
             this.armazém = armazém;
         }
 

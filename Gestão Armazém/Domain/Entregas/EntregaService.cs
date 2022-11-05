@@ -29,13 +29,13 @@ namespace DDDSample1.Domain.Entregas
             var entrega = await this._repo.GetByIdAsync(new Identificador(novaEntregaDTO.GetIdentificador));
             if(entrega == null)
             return null;
-
+/*
             var armazém = await this.armazémRepo.GetByIdAsync(new Identificador(novaEntregaDTO.armazém.Id.GetValue));
             if(armazém == null)
             return null; 
-            
+            */
 
-            entrega.changeArmazém(novaEntregaDTO.GetArmazém);
+            entrega.changeArmazém(novaEntregaDTO.armazém);
             entrega.changeDataEntrega(novaEntregaDTO.GetDia, novaEntregaDTO.GetMes, novaEntregaDTO.GetAno);
             entrega.changeMassa(novaEntregaDTO.GetMassa);
             entrega.changeTempoColocação(novaEntregaDTO.GetTempoColocação);
