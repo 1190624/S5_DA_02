@@ -5,12 +5,14 @@ using DDDSample1.Domain.Common;
 using DDDSample1.Domain.Entregas.DTO;
 using System;
 using DDDSample1.Domain.Entregas;
+using DDDSample1.Domain.Armazéns;
 
 namespace DDDSample1.Domain.Entregas
 {
     public class EntregaService
     {
         private readonly IEntregasRepository _repo;
+        private readonly IArmazémRepository armazémRepo;
 
         private readonly IUnitOfWork gestorPersist;
 
@@ -26,17 +28,16 @@ namespace DDDSample1.Domain.Entregas
             if(entrega == null)
             return null;
 
-
-            //TODO verificar se existe armazem 
-            // change all fields
+            var armazém = await this.armazémRepo.GetByIdAsync(new Identificador(novaEntregaDTO.armazém.Id.GetValue));
+            if(armazém == null)
+            return null; 
             
-        /*
-            armazém.changeDesignação(novoArmazémDTO.GetDesignação);
-            armazém.changeEndereço(novoArmazémDTO.códigoPostal, novoArmazémDTO.GetNúmeroPorta, novoArmazémDTO.GetNomeRua,
-                novoArmazémDTO.GetLocalidade, novoArmazémDTO.GetPaís);
-            armazém.changeMunicípio(novoArmazémDTO.GetMunícipio);
-            armazém.changeCoordenadas(novoArmazémDTO.latitude, novoArmazémDTO.longitude);
-*/
+
+            entrega.changeArmazém(novaEntregaDTO.GetArmazém);
+            entrega.changeDataEntrega(novaEntregaDTO.GetDia, novaEntregaDTO.GetMes, novaEntregaDTO.GetAno);
+            entrega.changeMassa(novaEntregaDTO.GetMassa);
+            entrega.changeTempoColocação(novaEntregaDTO.GetTempoColocação);
+            entrega.changeTempoRetirada(novaEntregaDTO.GetTempoRetirada);
 
             await this.gestorPersist.CommitAsync();
 

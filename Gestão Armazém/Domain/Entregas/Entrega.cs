@@ -1,6 +1,7 @@
 using DDDSample1.Domain.Shared;
 using DDDSample1.Domain.Common;
 using DDDSample1.Domain.Armazéns;
+using System;
 
 namespace DDDSample1.Domain.Entregas {
     public class Entrega : Entity<Identificador>, IAggregateRoot {
@@ -38,6 +39,27 @@ namespace DDDSample1.Domain.Entregas {
         public TempoColocação TempoColocação => tempoColocação;
 
         public TempoRetirada TempoRetirada => tempoRetirada;
+        
 
+
+        public void changeArmazém (Armazém armazém){
+            this.armazém = armazém;
+        }
+
+        public void changeDataEntrega(String dia, String mês, String ano){
+            this.dataEntrega = new DataEntrega(dia, mês, ano);
+        }
+
+        public void changeMassa(Double massa){
+            this.massa = new Massa(massa);
+        }
+
+        public void changeTempoColocação(Double tempoColocação){
+            this.tempoColocação = new TempoColocação(tempoColocação);
+        }
+
+        public void changeTempoRetirada(Double tempoRetirada){
+            this.tempoRetirada = new TempoRetirada(tempoRetirada);
+        }
     }
 }
