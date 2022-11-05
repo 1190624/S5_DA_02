@@ -8,8 +8,8 @@ namespace DDDSample1.Domain.Entregas.DTO {
         [DataMember(Name = "Identificador")]
         public String identificador;
 
-        [DataMember(Name = "Armazém")]
-        public Armazém armazém;
+        [DataMember(Name = "ArmazémId")]
+        public String armazém;
 
         [DataMember(Name = "Dia")]
         public String dia;
@@ -30,7 +30,7 @@ namespace DDDSample1.Domain.Entregas.DTO {
         public Double tempoRetirada;
 
         public EntregasDTO(String identificador,
-            Armazém armazém,
+            String armazém,
             String dia,
             String mes,
             String ano,
@@ -48,7 +48,7 @@ namespace DDDSample1.Domain.Entregas.DTO {
         }
 
         public String GetIdentificador => identificador;
-        public Armazém GetArmazém => armazém;
+        public String GetArmazém => armazém;
         public String GetDia => dia;
         public String GetMes => mes;
         public String GetAno => ano;

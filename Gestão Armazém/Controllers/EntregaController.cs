@@ -47,5 +47,42 @@ namespace DDDSample1.Controllers
                 return BadRequest(new {Message = ex.Message});
             }
         }
+
+        [HttpGet("{ID}")]
+        public async Task<ActionResult<EntregasDTO>> GetById(String Id) {
+            var response = await _service.GetByIdAsync(Id);
+
+            if (response == null)
+                return NotFound();
+            
+            return response;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<EntregasDTO>> Create(JObject entregaJSON) {
+            try {
+                var response = await _service.RegistarEntrega(entregaJSON.ToObject<EntregasDTO>());
+
+                return CreatedAtAction(nameof(GetById), new {Id = response.identificador}, response);
+            } catch (BusinessRuleValidationException exception) {
+                return BadRequest(new {exception.Message});
+            }
+
+        }
+
+        // GET: api/Entregas
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<JObject>>> GetAll()
+        {
+            var listaEntregasDTO = await _service.GetAllAsync();
+
+            List<JObject> listaEntregaJSON = new List<JObject>();
+
+            foreach(EntregasDTO entregasDTO in listaEntregasDTO)
+                listaEntregaJSON.Add(JObject.FromObject(entregasDTO));
+            return listaEntregaJSON;
+        }
+
     }
+    
 }
