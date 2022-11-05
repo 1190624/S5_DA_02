@@ -87,3 +87,8 @@ Gestão Armazém/obj/DDDNetCore.csproj.nuget.dgspec.json
 Gestão Armazém/obj/Debug/netcoreapp6.0/DDDNetCore.assets.cache
 *.dll
 *.pdb
+Gestão Armazém/bin
+Gestão Armazém/obj
+GestãoArmazénsTests/bin
+GestãoArmazénsTests/obj
+Gestão Armazém\obj\Debug\netcoreapp6.0
