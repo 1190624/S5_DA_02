@@ -24,7 +24,12 @@ export default async ({ expressApp }) => {
 
   const camiaoSchema = {
     name: 'camiaoSchema',
-    schema: '../persistence/schemas/camiaoSchema',
+    schema: '../persistence/schemas/camiaoSchema'}
+
+  const rotaSchema = {
+    // compare with the approach followed in repos and services
+    name: 'rotaSchema',
+    schema: '../persistence/schemas/rotaSchema',
   };
 
   const roleController = {
@@ -34,7 +39,10 @@ export default async ({ expressApp }) => {
 
   const camiaoController = {
     name: config.controllers.camiao.name,
-    path: config.controllers.camiao.path
+    path: config.controllers.camiao.path}
+  const rotaController = {
+    name: config.controllers.rota.name,
+    path: config.controllers.rota.path
   }
 
   const roleRepo = {
@@ -47,10 +55,16 @@ export default async ({ expressApp }) => {
     path: config.repos.user.path
   }
 
+  const rotaRepo = {
+    name: config.repos.rota.name,
+    path: config.repos.rota.path
+  }
+
   const camiaoRepo = {
     name: config.repos.camiao.name,
     path: config.repos.camiao.path
   }
+
 
   const roleService = {
     name: config.services.role.name,
@@ -62,25 +76,34 @@ export default async ({ expressApp }) => {
     path: config.services.camiao.path
   }
 
+  const rotaService = {
+    name: config.services.rota.name,
+    path: config.services.rota.path
+  }
+
   await dependencyInjectorLoader({
     mongoConnection,
     schemas: [
       userSchema,
       roleSchema,
+      rotaSchema,
       camiaoSchema
     ],
     controllers: [
       roleController,
-      camiaoController
+      camiaoController,
+      rotaController
     ],
     repos: [
       roleRepo,
       userRepo,
-      camiaoRepo
+      camiaoRepo,
+      rotaRepo
     ],
     services: [
       roleService,
-      camiaoService
+      camiaoService,
+      rotaService
     ]
   });
   Logger.info('✌️ Schemas, Controllers, Repositories, Services, etc. loaded');

@@ -1,11 +1,15 @@
 using System;
 using System.Runtime.Serialization;
+using DDDSample1.Domain.Armazéns;
 
 namespace DDDSample1.Domain.Entregas.DTO {
     [DataContract]
     public class EntregasDTO{
-        [DataMember(Name = "Indentificador")]
+        [DataMember(Name = "Identificador")]
         public String identificador;
+
+        [DataMember(Name = "ArmazémId")]
+        public String armazém;
 
         [DataMember(Name = "Dia")]
         public String dia;
@@ -26,6 +30,7 @@ namespace DDDSample1.Domain.Entregas.DTO {
         public Double tempoRetirada;
 
         public EntregasDTO(String identificador,
+            String armazém,
             String dia,
             String mes,
             String ano,
@@ -33,6 +38,7 @@ namespace DDDSample1.Domain.Entregas.DTO {
             Double tempoColocação,
             Double tempoRetirada){
             this.identificador = identificador;
+            this.armazém = armazém;
             this.dia = dia;
             this.mes = mes;
             this.ano = ano;
@@ -42,6 +48,7 @@ namespace DDDSample1.Domain.Entregas.DTO {
         }
 
         public String GetIdentificador => identificador;
+        public String GetArmazém => armazém;
         public String GetDia => dia;
         public String GetMes => mes;
         public String GetAno => ano;

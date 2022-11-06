@@ -42,7 +42,13 @@ export default class CamiaoService implements ICamiaoService {
             }
             else {
               camiao.matricula.props.value = camiaoDTO.matricula;
-              // TODO: acrescentar os atibutos
+              camiao.caracteristica.props.value = camiaoDTO.caracteristica;
+              camiao.autonomia.props.value = camiaoDTO.autonomia;
+              camiao.capacidadeTransporte.props.value = camiaoDTO.capacidadeTransporte;
+              camiao.capacidadeBateria.props.value = camiaoDTO.capacidadeBateria;
+              camiao.tara.props.value = camiaoDTO.tara;
+              camiao.tempoCarregamento.props.value = camiaoDTO.tempoCarregamento;
+        
               await this.camiaoRepo.save(camiao);
       
               const camiaoDTOResult = CamiaoMapper.toDTO( camiao) as CamiaoDTO;

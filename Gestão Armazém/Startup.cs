@@ -87,7 +87,7 @@ namespace DDDSample1
             services.AddTransient<EditarArmazémService>();
 
             services.AddTransient<IEntregasRepository, EntregasRepository>();
-            
+             services.AddTransient<EntregaService>();
         }
     }
 }
