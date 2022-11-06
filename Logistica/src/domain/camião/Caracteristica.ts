@@ -16,6 +16,7 @@ export class Caracteristica extends ValueObject<CaracteristicaProps>{
 
     public static create(texto: string): Result<Caracteristica> {
         if (!texto)
+        return Result.fail("Necessário inserir uma Característica do Camião Elétrico!");
             //throw new BusinessRuleValidationException("Necessário inserir uma Característica do Camião Elétrico;<br/>");
             
         return Result.ok<Caracteristica>(new Caracteristica({ value: texto }));

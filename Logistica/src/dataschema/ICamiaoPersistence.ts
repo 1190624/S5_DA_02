@@ -1,5 +1,5 @@
 export interface ICamiaoPersistence {
-    _id: number,
+    //_id: number,
     matricula: string;
     caracteristica: string;
     autonomia: number;

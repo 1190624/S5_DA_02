@@ -17,7 +17,8 @@ export class CapacidadeBateria extends ValueObject<CapacidadeBateriaProps>{
     public static create(valor: number): Result<CapacidadeBateria> {
         const CAPACIDADE_BATERIA_MIN = 55;
 
-        if (valor || valor < CAPACIDADE_BATERIA_MIN)
+        if (valor < CAPACIDADE_BATERIA_MIN)
+        return Result.fail("Capacidade da Bateria do Camião Elétrico é inferior ao minímo estipulado!");
             //throw new BusinessRuleValidationException("Capacidade da Bateria do Camião Elétrico é inferior ao minímo estipulado (" + CAPACIDADE_BATERIA_MIN + "kWh);<br/>");
 
         return Result.ok<CapacidadeBateria>(new CapacidadeBateria({ value: valor }))

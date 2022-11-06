@@ -61,22 +61,22 @@ export class Camiao extends AggregateRoot<CamiaoProps> {
     }
 
     public static create(camiaoDTO: CamiaoDTO | any, id?: UniqueEntityID): Result<Camiao> {
-        const matriculaAux = camiaoDTO.matricula;
-        const caracteristicaAux = camiaoDTO.caracteristica;
-        const autonomiaAux = camiaoDTO.autonomia;
-        const capTransAux = camiaoDTO.capacidadeTransporte;
-        const capBateriaAux = camiaoDTO.capacidadeBateria;
-        const taraAux = camiaoDTO.tara;
-        const tempoAux = camiaoDTO.tempoCarregamento;
+        const matriculaAux = Matricula.create(camiaoDTO.matricula);
+        const caracteristicaAux = Caracteristica.create(camiaoDTO.caracteristica);
+        const autonomiaAux = Autonomia.create(camiaoDTO.autonomia);
+        const capTransAux = CapacidadeTransporte.create(camiaoDTO.capacidadeTransporte);
+        const capBateriaAux = CapacidadeBateria.create(camiaoDTO.capacidadeBateria);
+        const taraAux = Tara.create(camiaoDTO.tara);
+        const tempoAux = TempoCarregamento.create(camiaoDTO.tempoCarregamento);
 
         const camiao = new Camiao({
-            matricula: new Matricula(matriculaAux),
-            caracteristica: new Caracteristica(caracteristicaAux),
-            autonomia: new Autonomia(autonomiaAux),
-            capacidadeTransporte: new CapacidadeTransporte(capTransAux),
-            capacidadeBateria: new CapacidadeBateria(capBateriaAux),
-            tara: new Tara(taraAux),
-            tempoCarregamento: new TempoCarregamento(tempoAux)
+            matricula: matriculaAux.getValue(),
+            caracteristica: caracteristicaAux.getValue(),
+            autonomia: autonomiaAux.getValue(),
+            capacidadeTransporte: capTransAux.getValue(),
+            capacidadeBateria: capBateriaAux.getValue(),
+            tara: taraAux.getValue(),
+            tempoCarregamento: tempoAux.getValue()
         }, id);
 
         return Result.ok<Camiao>(camiao);

@@ -16,10 +16,18 @@ interface MatriculaProps {
   
     public static create (matricula: string): Result<Matricula> {
       const MATRICULA_REGEX = new RegExp(/[A-Z]{2}-[0-9]{2}-[A-Z]{2}/);
-
+      
+      if(MATRICULA_REGEX.test(matricula)) {
+        return Result.ok<Matricula>(new Matricula({value: matricula}));
+      }
+      return Result.fail("A matrícula inserida não é valida!");
+    }
+      
+      /*
       if (!new RegExp(MATRICULA_REGEX).test(matricula))
         //throw new BusinessRuleValidationException("Formato da Matrícula do Camião Elétrico inválido;<br/>Formato da Matrícula deve reger pelas regras estipuladas pelo IMT;<br/>");
 
         return Result.ok<Matricula>(new Matricula({ value: matricula })) 
-  }
+        */
+  
 }

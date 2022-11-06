@@ -20,7 +20,7 @@ export default class camiaoRepo implements ICamiaoRepo {
 
     public async findAll(): Promise<Camiao[]> {
         const camiaoRecord = await this.camiaoSchema.find(Camiao);
-        return camiaoRecord !== null ? camiaoRecord.map((postRecord) => CamiaoMapper.toDomain(postRecord)): null  
+        return camiaoRecord !== null ? camiaoRecord.map((camiaoRecord) => CamiaoMapper.toDomain(camiaoRecord)): null  
     }
 
 
@@ -63,13 +63,13 @@ export default class camiaoRepo implements ICamiaoRepo {
 
                 return CamiaoMapper.toDomain(camiaoCreated);
             } else {
-                camiaoDocument.matricula = c.matricula.toString();
-                camiaoDocument.caracteristica = c.caracteristica.toString();
-                camiaoDocument.autonomia = c.autonomia.props.value;
-                camiaoDocument.capacidadeTransporte = c.capacidadeTransporte.props.value;
-                camiaoDocument.capacidadeBateria= c.capacidadeBateria.props.value;
-                camiaoDocument.tara = c.tara.props.value;
-                camiaoDocument.tempoCarregamento = c.tempoCarregamento.props.value;
+                camiaoDocument.matricula = c.matricula.value;
+                camiaoDocument.caracteristica = c.caracteristica.value;
+                camiaoDocument.autonomia = c.autonomia.value;
+                camiaoDocument.capacidadeTransporte = c.capacidadeTransporte.value;
+                camiaoDocument.capacidadeBateria= c.capacidadeBateria.value;
+                camiaoDocument.tara = c.tara.value;
+                camiaoDocument.tempoCarregamento = c.tempoCarregamento.value;
                 await camiaoDocument.save();
                 return c;
             }

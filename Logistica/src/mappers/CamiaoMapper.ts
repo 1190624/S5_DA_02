@@ -13,7 +13,7 @@ export class CamiaoMapper extends Mapper<Camiao> {
   
   public static toDTO(camiao: Camiao): CamiaoDTO {
     return {
-        id: camiao.id.toString(),
+        //id: camiao.id.toString(),
         matricula: camiao.matricula.value,
         caracteristica: camiao.caracteristica.value,
         autonomia: camiao.autonomia.value,
@@ -36,15 +36,18 @@ export class CamiaoMapper extends Mapper<Camiao> {
   }
 
   public static toPersistence (camiao: Camiao): any {
-    return {
-      domainId: camiao.id.toString(),
-      matricula: camiao.matricula,
-      caracteristica: camiao.caracteristica,
-      autonomia: camiao.autonomia,
-      capacidadeTransporte: camiao.capacidadeTransporte,
-      capacidadeBateria: camiao.capacidadeBateria,
-      tara: camiao.tara,
-      tempoCarregamento: camiao.tempoCarregamento,
-    }
+    const res = {
+            //domainId: camiao.id.toString(),
+            matricula: camiao.matricula.value,
+            caracteristica: camiao.caracteristica.value,
+            autonomia: camiao.autonomia.value,
+            capacidadeTransporte: camiao.capacidadeTransporte.value,
+            capacidadeBateria: camiao.capacidadeBateria.value,
+            tara: camiao.tara.value,
+            tempoCarregamento: camiao.tempoCarregamento.value,
+    };
+    return res;
+
+    
   }
 }

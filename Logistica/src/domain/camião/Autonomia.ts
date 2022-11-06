@@ -18,6 +18,7 @@ export class Autonomia extends ValueObject<AutonomiaProps>{
         const AUTONOMIA_MIN = 90;
 
         if (valor < AUTONOMIA_MIN)
+        return Result.fail("Automia do Camião Elétrico é inferior ao minímo estipulado.");
             //throw new BusinessRuleValidationException("Automia do Camião Elétrico é inferior ao minímo estipulado (" + AUTONOMIA_MIN + "km);<br/>");
 
         return Result.ok<Autonomia>(new Autonomia({ value: valor}));
