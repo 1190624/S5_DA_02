@@ -4,10 +4,10 @@ import { Service, Inject } from 'typedi';
 import { Document, FilterQuery, Model } from 'mongoose';
 
 import ICamiaoRepo from '../services/IRepos/ICamiaoRepo';
-import { Camiao } from '../domain/camião/Camiao';
 import { Matricula } from '../domain/camião/Matricula';
 import { ICamiaoPersistence } from '../dataschema/ICamiaoPersistence';
-import { CamiaoMap } from '../mappers/CamiaoMap';
+import { CamiaoMapper } from '../mappers/CamiaoMapper';
+import { Camiao } from '../domain/camião/Camiao';
 
 @Service()
 export default class camiaoRepo implements ICamiaoRepo {
@@ -20,7 +20,7 @@ export default class camiaoRepo implements ICamiaoRepo {
 
     public async findAll(): Promise<Camiao[]> {
         const camiaoRecord = await this.camiaoSchema.find(Camiao);
-        return camiaoRecord !== null ? camiaoRecord.map((postRecord) => CamiaoMap.toDomain(postRecord)): null  
+        return camiaoRecord !== null ? camiaoRecord.map((postRecord) => CamiaoMapper.toDomain(postRecord)): null  
     }
 
 
@@ -29,7 +29,7 @@ export default class camiaoRepo implements ICamiaoRepo {
         const camiaoRecord = await this.camiaoSchema.findOne( query as FilterQuery<ICamiaoPersistence & Document> );
     
         if( camiaoRecord != null) {
-          return CamiaoMap.toDomain(camiaoRecord);
+          return CamiaoMapper.toDomain(camiaoRecord);
         }
         else
           return null;
@@ -58,10 +58,10 @@ export default class camiaoRepo implements ICamiaoRepo {
 
         try {
             if (camiaoDocument === null) {
-                const rawcamiao: any = CamiaoMap.toPersistence(c);
+                const rawcamiao: any = CamiaoMapper.toPersistence(c);
                 const camiaoCreated = await this.camiaoSchema.create(rawcamiao);
 
-                return CamiaoMap.toDomain(camiaoCreated);
+                return CamiaoMapper.toDomain(camiaoCreated);
             } else {
                 camiaoDocument.matricula = c.matricula.toString();
                 camiaoDocument.caracteristica = c.caracteristica.toString();
@@ -77,7 +77,4 @@ export default class camiaoRepo implements ICamiaoRepo {
             throw err;
         }
     }
-
- 
-
 }

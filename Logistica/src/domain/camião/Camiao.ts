@@ -60,32 +60,26 @@ export class Camiao extends AggregateRoot<CamiaoProps> {
         super(props, id);
     }
 
-
     public static create(camiaoDTO: CamiaoDTO | any, id?: UniqueEntityID): Result<Camiao> {
-        const matriculaX = Matricula.create(camiaoDTO.matricula);
+        const matriculaAux = camiaoDTO.matricula;
+        const caracteristicaAux = camiaoDTO.caracteristica;
+        const autonomiaAux = camiaoDTO.autonomia;
+        const capTransAux = camiaoDTO.capacidadeTransporte;
+        const capBateriaAux = camiaoDTO.capacidadeBateria;
+        const taraAux = camiaoDTO.tara;
+        const tempoAux = camiaoDTO.tempoCarregamento;
 
-        if (!!matriculaX === false || matriculaX.getValue.length === 0) {
-            return Result.fail<Camiao>('Deve ter uma matrícula')
-        }
-
-        const caracteristicaX = Caracteristica.create(camiaoDTO.caracteristica);
-        const autonomiaX = Autonomia.create(camiaoDTO.autonomia);
-        const capTransX = CapacidadeTransporte.create(camiaoDTO.capacidadeTransporte);
-        const capBateriaX = CapacidadeBateria.create(camiaoDTO.capacidadeBateria);
-        const taraX = Tara.create(camiaoDTO.tara);
-        const tempoX = TempoCarregamento.create(camiaoDTO.tempoCarregamento);
-
-        const c = new Camiao({
-            matricula: matriculaX.getValue(),
-            caracteristica: caracteristicaX.getValue(),
-            autonomia: autonomiaX.getValue(),
-            capacidadeTransporte: capTransX.getValue(),
-            capacidadeBateria: capBateriaX.getValue(),
-            tara: taraX.getValue(),
-            tempoCarregamento: tempoX.getValue()
+        const camiao = new Camiao({
+            matricula: new Matricula(matriculaAux),
+            caracteristica: new Caracteristica(caracteristicaAux),
+            autonomia: new Autonomia(autonomiaAux),
+            capacidadeTransporte: new CapacidadeTransporte(capTransAux),
+            capacidadeBateria: new CapacidadeBateria(capBateriaAux),
+            tara: new Tara(taraAux),
+            tempoCarregamento: new TempoCarregamento(tempoAux)
         }, id);
 
-        return Result.ok<Camiao>(c)
+        return Result.ok<Camiao>(camiao);
 
     }
 }

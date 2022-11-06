@@ -6,5 +6,5 @@ export interface ICamiaoPersistence {
     capacidadeTransporte: number;
     capacidadeBateria: number;
     tara: number;
-    tempoCarregamento: number;
+    tempoCarregamento: string;
   }

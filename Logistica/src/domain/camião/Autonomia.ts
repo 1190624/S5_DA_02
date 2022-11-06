@@ -1,14 +1,11 @@
 import { ValueObject } from "../../core/domain/ValueObject";
 import { Result } from "../../core/logic/Result";
-import { Guard } from "../../core/logic/Guard";
 
 interface AutonomiaProps {
     value: number;
 }
 
 export class Autonomia extends ValueObject<AutonomiaProps>{
-
-
     get value(): number {
         return this.props.value;
     }
@@ -17,18 +14,16 @@ export class Autonomia extends ValueObject<AutonomiaProps>{
         super(props);
     }
 
-    public static create(autonomia: number): Result<Autonomia> {
-        let guardResult = Guard.againstNullOrUndefined(autonomia, '');
+    public static create(valor: number): Result<Autonomia> {
+        const AUTONOMIA_MIN = 90;
 
-        if (guardResult.succeeded) {
+        if (valor < AUTONOMIA_MIN)
+            //throw new BusinessRuleValidationException("Automia do Camião Elétrico é inferior ao minímo estipulado (" + AUTONOMIA_MIN + "km);<br/>");
 
-            return Result.ok<Autonomia>(new Autonomia({ value: autonomia}))
-        }else{
-            return Result.fail<Autonomia>(guardResult.message);
-        }
+        return Result.ok<Autonomia>(new Autonomia({ value: valor}));
     }
 
-    toString() {
+    public toString() {
         return String(this.props.value)
     }
 }

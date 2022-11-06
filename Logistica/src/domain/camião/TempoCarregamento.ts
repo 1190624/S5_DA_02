@@ -1,31 +1,26 @@
 import { ValueObject } from "../../core/domain/ValueObject";
 import { Result } from "../../core/logic/Result";
-import { Guard } from "../../core/logic/Guard";
 
 interface TempoCarregamentoProps {
-    value: number;
+    value: string;
 }
 
 export class TempoCarregamento extends ValueObject<TempoCarregamentoProps>{
-
-
-    get value(): number {
+    get value(): string {
         return this.props.value;
     }
 
-    private constructor(props: TempoCarregamentoProps) {
+    public constructor(props: TempoCarregamentoProps) {
         super(props);
     }
 
-    public static create(text: number): Result<TempoCarregamento> {
-        let guardResult = Guard.againstNullOrUndefined(text, 'text');
+    public static create(valor: string): Result<TempoCarregamento> {
+        const TEMPO_REGEX = /(([0-9]:0[1-9])|([0-9]:[1-5][0-9])|([1-3][0-9]:0[1-9])|([1-3][0-9]:[1-5][0-9]))/g
 
-        if (guardResult.succeeded) {
+        if (new RegExp(TEMPO_REGEX).test(valor))
+            //throw new BusinessRuleValidationException("Formato inválido do Tempo de Carregamento do Camião Elétrico;<br/>O Tempo de Carregamento deve seguir o seguinte formato \"HH:MM\";<br/>");
 
-            return Result.ok<TempoCarregamento>(new TempoCarregamento({ value: text }))
-        }else{
-            return Result.fail<TempoCarregamento>(guardResult.message);
-        }
+        return Result.ok<TempoCarregamento>(new TempoCarregamento({ value: valor }))
     }
 
     toString() {

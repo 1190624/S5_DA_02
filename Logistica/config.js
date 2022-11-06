@@ -46,11 +46,10 @@ export default {
       name: "RoleController",
       path: "../controllers/roleController"
     },
-    camiao:{
+    camiao: {
       name: "CamiaoController",
-      path: "../controllers/CamiaoController"
-    } 
-
+      path: "../controllers/camiaoController"
+    }
   },
 
   repos: {
@@ -63,7 +62,7 @@ export default {
       path: "../repos/userRepo"
     },
     camiao:{
-      name: "camiaoRepo",
+      name: "CamiaoRepo",
       path: "../repos/camiaoRepo"
     } 
   },
@@ -75,7 +74,7 @@ export default {
     },
     camiao:{
       name: "CamiaoService",
-      path: "../services/CamiaoServices"
+      path: "../services/camiaoService"
     } 
   },
 };

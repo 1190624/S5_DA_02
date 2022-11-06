@@ -13,10 +13,23 @@ import CamiaoDTO from '../dto/CamiaoDTO';
 export default class CamiaoController implements ICamiaoController /* TODO: extends ../core/infra/BaseController */ {
     
     constructor(
-        @Inject(config.services.role.name) private camiaoServiceInstance : ICamiaoService
+        @Inject(config.services.camiao.name) private camiaoServiceInstance : ICamiaoService
     ) {}
     
-    
+    public async createCamiao(request: Request, response: Response, next: NextFunction) {
+        try {
+            const result = await this.camiaoServiceInstance.criarCamiao(request.body as CamiaoDTO) as Result<CamiaoDTO>;
+
+            if (result.isFailure)
+                return response.status(402).send();
+
+            const camiaoDTO = result.getValue();
+            
+            return response.json(camiaoDTO).status(201);
+        } catch (exception) {
+            return next(exception);
+        }
+    }
     
     async updateCamiao(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction) {
         try {

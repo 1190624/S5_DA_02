@@ -6,10 +6,10 @@ import { IRolePersistence } from '../dataschema/IRolePersistence';
 import { Role } from "../domain/role";
 
 import { UniqueEntityID } from "../core/domain/UniqueEntityID";
-import { Camiao } from "../domain/camião/Camiao";
 import CamiaoDTO from "../dto/CamiaoDTO";
+import { Camiao } from "../domain/camião/Camiao";
 
-export class CamiaoMap extends Mapper<Camiao> {
+export class CamiaoMapper extends Mapper<Camiao> {
   
   public static toDTO(camiao: Camiao): CamiaoDTO {
     return {

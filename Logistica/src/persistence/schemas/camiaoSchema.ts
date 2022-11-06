@@ -13,44 +13,45 @@ const Camiao = new mongoose.Schema(
     tempoCarregamento: TempoCarregamento
     */
     matricula: { 
-      type: String,
-      unique: true
+      type: {
+        type: String
+      }
     },
 
     caracteristica: {
-      type: String,
-      required: [true, 'Por favor insira uma caracteristica do camião.'],
-      index: true,
+      type: {
+        type: String
+      }
     },
 
     autonomia: {
-      type: Number,
-      required: [true, 'Por favor insira a autonomia correspondente.'],
-      index: true,
+      type: {
+        type: Number
+      }
     },
 
     capacidadeTransporte: {
-        type: Number,
-        required: [true, 'Por favor insira a capacidade de transporte correspondente.'],
-        index: true,
-      },
+      type: {
+        type: Number
+      }
+    },
 
       capacidadeBateria: {
-        type: Number,
-        required: [true, 'Por favor insira a capacidade de bateria correspondente.'],
-        index: true,
+        type: {
+          type: Number
+        }
       },
 
       tara: {
-        type: Number,
-        required: [true, 'Por favor insira a tara correspondente.'],
-        index: true,
+        type: {
+          type: Number
+        }
       },
 
       tempoCarregamento: {
-        type: Number,
-        required: [true, 'Por favor insira o tempo de carregamento do camião.'],
-        index: true,
+        type: {
+          type: String
+        }
       },
   },
   { timestamps: true },

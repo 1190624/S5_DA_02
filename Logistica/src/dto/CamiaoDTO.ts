@@ -6,5 +6,5 @@ export default interface CamiaoDTO {
     capacidadeTransporte: number;
     capacidadeBateria: number;
     tara: number;
-    tempoCarregamento: number;
+    tempoCarregamento: string;
   }

@@ -10,19 +10,16 @@ interface MatriculaProps {
       return this.props.value;
     }
     
-    private constructor (props: MatriculaProps) {
+    public constructor (props: MatriculaProps) {
       super(props);
     }
   
     public static create (matricula: string): Result<Matricula> {
-      //const guardResult = Guard.againstNullOrUndefined(matricula, 'matricula');
-      
-      let sampleRegEx: RegExp = /[A-Z]{2}-[0-9]{2}-[0-9]{2}/;
-      if (!sampleRegEx.test(matricula)) {
-        return Result.fail<Matricula>("A sequência inserida nâo pertence às matriculas portuguesas emitidas pelo IMT (AA-00-AA)");
-      } else {
+      const MATRICULA_REGEX = /[A-Z]{2}-[0-9]{2}-[0-9]{2}/g;
+
+      if (!new RegExp(MATRICULA_REGEX).test(matricula))
+        //throw new BusinessRuleValidationException("Formato da Matrícula do Camião Elétrico inválido;<br/>Formato da Matrícula deve reger pelas regras estipuladas pelo IMT;<br/>");
+
         return Result.ok<Matricula>(new Matricula({ value: matricula })) 
-    }
-    return null;
   }
 }

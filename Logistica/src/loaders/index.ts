@@ -4,6 +4,7 @@ import mongooseLoader from './mongoose';
 import Logger from './logger';
 
 import config from '../../config';
+import camiaoSchema from '../persistence/schemas/camiaoSchema';
 
 export default async ({ expressApp }) => {
   const mongoConnection = await mongooseLoader();
@@ -21,9 +22,19 @@ export default async ({ expressApp }) => {
     schema: '../persistence/schemas/roleSchema',
   };
 
+  const camiaoSchema = {
+    name: 'camiaoSchema',
+    schema: '../persistence/schemas/camiaoSchema',
+  };
+
   const roleController = {
     name: config.controllers.role.name,
     path: config.controllers.role.path
+  }
+
+  const camiaoController = {
+    name: config.controllers.camiao.name,
+    path: config.controllers.camiao.path
   }
 
   const roleRepo = {
@@ -36,26 +47,40 @@ export default async ({ expressApp }) => {
     path: config.repos.user.path
   }
 
+  const camiaoRepo = {
+    name: config.repos.camiao.name,
+    path: config.repos.camiao.path
+  }
+
   const roleService = {
     name: config.services.role.name,
     path: config.services.role.path
+  }
+
+  const camiaoService = {
+    name: config.services.camiao.name,
+    path: config.services.camiao.path
   }
 
   await dependencyInjectorLoader({
     mongoConnection,
     schemas: [
       userSchema,
-      roleSchema
+      roleSchema,
+      camiaoSchema
     ],
     controllers: [
-      roleController
+      roleController,
+      camiaoController
     ],
     repos: [
       roleRepo,
-      userRepo
+      userRepo,
+      camiaoRepo
     ],
     services: [
-      roleService
+      roleService,
+      camiaoService
     ]
   });
   Logger.info('✌️ Schemas, Controllers, Repositories, Services, etc. loaded');

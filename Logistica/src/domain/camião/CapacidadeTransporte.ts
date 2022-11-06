@@ -1,34 +1,29 @@
 import { ValueObject } from "../../core/domain/ValueObject";
 import { Result } from "../../core/logic/Result";
-import { Guard } from "../../core/logic/Guard";
 
 interface CapacidadeTransporteProps {
     value: number;
 }
 
 export class CapacidadeTransporte extends ValueObject<CapacidadeTransporteProps>{
-
-
     get value(): number {
         return this.props.value;
     }
 
-    private constructor(props: CapacidadeTransporteProps) {
+    public constructor(props: CapacidadeTransporteProps) {
         super(props);
     }
 
-    public static create(text: number): Result<CapacidadeTransporte> {
-        let guardResult = Guard.againstNullOrUndefined(text, 'text');
+    public static create(valor: number): Result<CapacidadeTransporte> {
+        const CAPACIDADE_TRANSPORTE_MIN = 800;
+        
+        if (valor || valor < CAPACIDADE_TRANSPORTE_MIN)
+            //throw new BusinessRuleValidationException("Capacidade de Transporte do Camião Elétrico é inferior ao minímo estipulado (" + CAPACIDADE_TRANSPORTE_MIN + "kg);<br/>");
 
-        if (guardResult.succeeded) {
-
-            return Result.ok<CapacidadeTransporte>(new CapacidadeTransporte({ value: text }))
-        }else{
-            return Result.fail<CapacidadeTransporte>(guardResult.message);
-        }
+        return Result.ok<CapacidadeTransporte>(new CapacidadeTransporte({ value: valor }))
     }
 
-    toString() {
+    public toString() {
         return String(this.props.value)
     }
 }

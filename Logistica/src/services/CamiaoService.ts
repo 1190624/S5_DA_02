@@ -4,13 +4,34 @@ import { Result } from "../core/logic/Result";
 import ICamiaoRepo from './IRepos/ICamiaoRepo';
 import ICamiaoService from './IServices/ICamiaoService';
 import CamiaoDTO from '../dto/CamiaoDTO';
-import { CamiaoMap } from '../mappers/CamiaoMap';
+import { CamiaoMapper } from '../mappers/CamiaoMapper';
+import { Camiao } from '../domain/camião/Camiao';
 
 @Service()
 export default class CamiaoService implements ICamiaoService {
   constructor(
-      @Inject(config.repos.camiao.matricula) private camiaoRepo : ICamiaoRepo
+      @Inject(config.repos.camiao.name) private camiaoRepo : ICamiaoRepo
   ) {}
+
+    public async criarCamiao(camiaoDTO : CamiaoDTO) : Promise<Result<CamiaoDTO>> {
+      try {
+        const result = await Camiao.create(camiaoDTO);
+
+        if (result.isFailure)
+          return Result.fail<CamiaoDTO>(result.errorValue());
+
+        
+        const camiaoResult = result.getValue();
+
+        await this.camiaoRepo.save(camiaoResult);
+
+        const camiaoDTOResult = CamiaoMapper.toDTO(camiaoResult) as CamiaoDTO;
+
+        return Result.ok<CamiaoDTO>(camiaoDTOResult);
+      } catch (exception) {
+        throw exception;
+      }
+    }
 
     public async updateCamiao(camiaoDTO: CamiaoDTO): Promise<Result<CamiaoDTO>> {
         try {
@@ -24,7 +45,7 @@ export default class CamiaoService implements ICamiaoService {
               // TODO: acrescentar os atibutos
               await this.camiaoRepo.save(camiao);
       
-              const camiaoDTOResult = CamiaoMap.toDTO( camiao) as CamiaoDTO;
+              const camiaoDTOResult = CamiaoMapper.toDTO( camiao) as CamiaoDTO;
               return Result.ok<CamiaoDTO>( camiaoDTOResult)
               }
           } catch (e) {
@@ -41,7 +62,7 @@ export default class CamiaoService implements ICamiaoService {
             return Result.fail<CamiaoDTO[]>("Não existem camiões registados.");
         }
 
-        const resultado = listaCamiao.map((listaCamiao) => CamiaoMap.toDTO(listaCamiao) as CamiaoDTO);
+        const resultado = listaCamiao.map((listaCamiao) => CamiaoMapper.toDTO(listaCamiao) as CamiaoDTO);
         return Result.ok<CamiaoDTO[]>(resultado);
     } catch(e) {
         throw e;

@@ -10,22 +10,21 @@ const route = Router();
 export default (app: Router) => {
   app.use('/camiao', route);
 
-  const ctrl = Container.get(config.controllers.role.name) as ICamiaoController;
-/*
+  const ctrl = Container.get(config.controllers.camiao.name) as ICamiaoController;
+  
   route.post('',
     celebrate({
       body: Joi.object({
         matricula: Joi.string().required(),
         caracteristica: Joi.string().required(),
-        autonomia: Joi.string().required(),
-        capacidadeTransporte: Joi.string().required(),
-        capacidadeBateria: Joi.string().required(),
-        tara: Joi.string().required(),
+        autonomia: Joi.number().required(),
+        capacidadeTransporte: Joi.number().required(),
+        capacidadeBateria: Joi.number().required(),
+        tara: Joi.number().required(),
         tempoCarregamento: Joi.string().required()
       })
     }),
-    (req, res, next) => ctrl.createRole(req, res, next) );
-*/
+    (req, res, next) => ctrl.createCamiao(req, res, next) );
 
   route.put('',
     celebrate({
@@ -36,7 +35,7 @@ export default (app: Router) => {
         capacidadeTransporte: Joi.number().required(),
         capacidadeBateria: Joi.number().required(),
         tara: Joi.number().required(),
-        tempoCarregamento: Joi.number().required()
+        tempoCarregamento: Joi.string().required()
       }),
     }),
     (req, res, next) => ctrl.updateCamiao(req, res, next));

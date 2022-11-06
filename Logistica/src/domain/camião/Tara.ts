@@ -1,34 +1,29 @@
 import { ValueObject } from "../../core/domain/ValueObject";
 import { Result } from "../../core/logic/Result";
-import { Guard } from "../../core/logic/Guard";
 
 interface TaraProps {
     value: number;
 }
 
 export class Tara extends ValueObject<TaraProps>{
-
-
     get value(): number {
         return this.props.value;
     }
 
-    private constructor(props: TaraProps) {
+    public constructor(props: TaraProps) {
         super(props);
     }
 
-    public static create(text: number): Result<Tara> {
-        let guardResult = Guard.againstNullOrUndefined(text, 'text');
+    public static create(valor: number): Result<Tara> {
+        const TARA_MIN = 1000;
 
-        if (guardResult.succeeded) {
+        if (valor || valor < TARA_MIN)
+            //throw new BusinessRuleValidationException("A Tara inserida é inferior ao minímo estabelecido (" + TARA_MIN + "kg);<br/>");
 
-            return Result.ok<Tara>(new Tara({ value: text }))
-        }else{
-            return Result.fail<Tara>(guardResult.message);
-        }
+        return Result.ok<Tara>(new Tara({ value: valor }))
     }
 
-    toString() {
+    public toString() {
         return String(this.props.value)
     }
 }
