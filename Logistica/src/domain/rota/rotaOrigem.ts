@@ -18,7 +18,7 @@ export class RotaOrigem extends ValueObject<RotaOrigemProps> {
     super(props);
   }
 
-  public static create(props: RotaOrigemProps): Result<RotaOrigem> {
-    return Result.ok<RotaOrigem>(new RotaOrigem({origem: props.origem,}));
+  public static create(text: string): Result<RotaOrigem> {
+    return Result.ok<RotaOrigem>(new RotaOrigem({origem: text}));
   }
 }

@@ -31,7 +31,7 @@ export default class RotaService implements IRotaService {
 
   public async getListaRota(): Promise<Result<IRotaDTO[]>> {
     try {
-      const listaRota = await this.rotaRepo.findAllRota();
+      const listaRota = await this.rotaRepo.findAll();
 
       if (listaRota == null) {
           return Result.fail<IRotaDTO[]>("Não existem rotas registadas.");

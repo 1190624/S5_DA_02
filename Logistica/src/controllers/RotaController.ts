@@ -5,6 +5,8 @@ import IRotaService from '../services/IServices/IRotaService';
 import { NextFunction, Request, Response } from 'express';
 import { Result } from '../core/logic/Result';
 import IRotaDTO from '../dto/IRotaDTO';
+import { ParamsDictionary } from 'express-serve-static-core';
+import { ParsedQs } from 'qs';
 
 @Service()
 export default class RotaController implements IRotaController {
@@ -19,7 +21,6 @@ export default class RotaController implements IRotaController {
           return res.status(402).send();
         }
         
-  
         const rotaDTO = rotaOrError.getValue();
         return res.json(rotaDTO).status(201);
       } catch (e) {

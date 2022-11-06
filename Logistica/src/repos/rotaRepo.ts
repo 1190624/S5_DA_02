@@ -60,11 +60,12 @@ export default class RotaRepo implements IRotaRepo {
   }
 
   public async findAll(): Promise<Rota[]> {
+    const routeArray = await this.rotaSchema.find();
+
+    return routeArray.map(item => RotaMap.toDomain(item));
+    /**
     const rotaRecord = await this.rotaSchema.find(Rota);
-    return rotaRecord !== null ? rotaRecord.map((postRecord) => RotaMap.toDomain(postRecord)): null  
-}
-
-
-
-
+    return rotaRecord !== null ? rotaRecord.map((postRecord) => RotaMap.toDomain(postRecord)): null
+    */
+  }
 }
