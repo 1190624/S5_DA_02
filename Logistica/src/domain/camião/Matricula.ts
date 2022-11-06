@@ -15,7 +15,7 @@ interface MatriculaProps {
     }
   
     public static create (matricula: string): Result<Matricula> {
-      const MATRICULA_REGEX = /[A-Z]{2}-[0-9]{2}-[0-9]{2}/g;
+      const MATRICULA_REGEX = new RegExp(/[A-Z]{2}-[0-9]{2}-[A-Z]{2}/);
 
       if (!new RegExp(MATRICULA_REGEX).test(matricula))
         //throw new BusinessRuleValidationException("Formato da Matrícula do Camião Elétrico inválido;<br/>Formato da Matrícula deve reger pelas regras estipuladas pelo IMT;<br/>");

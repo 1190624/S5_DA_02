@@ -10,7 +10,7 @@ export class Autonomia extends ValueObject<AutonomiaProps>{
         return this.props.value;
     }
 
-    private constructor(props: AutonomiaProps) {
+    public constructor(props: AutonomiaProps) {
         super(props);
     }
 
