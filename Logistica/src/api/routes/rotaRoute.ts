@@ -24,4 +24,12 @@ export default (app: Router) => {
       })
     }),
     (req, res, next) => ctrl.createRota(req, res, next) );
+
+    route.get('',
+    celebrate({
+        params: Joi.object({
+        })
+    }),
+    (req, res, next) => ctrl.getListaRota(req, res, next));
+
 };

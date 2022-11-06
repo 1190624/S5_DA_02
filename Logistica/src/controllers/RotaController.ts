@@ -26,4 +26,25 @@ export default class RotaController implements IRotaController {
         return next(e);
       }
     }
+
+    async getListaRota(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction){
+      try {
+          const listaRotaOrError = await this.rotaServiceInstance.getListaRota() as Result<IRotaDTO[]>
+
+          if (listaRotaOrError.isFailure) {
+              return res.status(400).send();
+          }
+
+          const rotaPosts = listaRotaOrError.getValue();
+          res.status(200);
+          return  res.json(rotaPosts);
+      } catch(e) {
+          return next(e);
+      }
+  }
+
+
+
+
+
 }

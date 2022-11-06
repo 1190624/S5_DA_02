@@ -28,4 +28,25 @@ export default class RotaService implements IRotaService {
       throw e;
     }
   }
+
+  public async getListaRota(): Promise<Result<IRotaDTO[]>> {
+    try {
+      const listaRota = await this.rotaRepo.findAllRota();
+
+      if (listaRota == null) {
+          return Result.fail<IRotaDTO[]>("Não existem rotas registadas.");
+      }
+
+      const resultado = listaRota.map((listaRota) => RotaMap.toDTO(listaRota) as IRotaDTO);
+      return Result.ok<IRotaDTO[]>(resultado);
+  } catch(e) {
+      throw e;
+  }
+    
+  }
+
+
+
+
+
 }

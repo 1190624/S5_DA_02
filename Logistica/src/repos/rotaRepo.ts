@@ -58,4 +58,13 @@ export default class RotaRepo implements IRotaRepo {
       throw err;
     }
   }
+
+  public async findAll(): Promise<Rota[]> {
+    const rotaRecord = await this.rotaSchema.find(Rota);
+    return rotaRecord !== null ? rotaRecord.map((postRecord) => RotaMap.toDomain(postRecord)): null  
+}
+
+
+
+
 }
