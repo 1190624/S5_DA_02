@@ -18,10 +18,11 @@ namespace DDDSample1.Domain.Entregas
 
         //private readonly IArmazémRepository armazémRepo;
 
-        public EntregaService(IUnitOfWork gestorPersist, IEntregasRepository repo)
+        public EntregaService(IUnitOfWork gestorPersist, IEntregasRepository repo, IArmazémRepository armazémRepository)
         {
             this.gestorPersist = gestorPersist;
             this._repo = repo;
+            this.armazémRepo = armazémRepository;
         }
 
         public async Task<EntregasDTO> editarEntregaAsync(EntregasDTO novaEntregaDTO)
@@ -29,11 +30,11 @@ namespace DDDSample1.Domain.Entregas
             var entrega = await this._repo.GetByIdAsync(new Identificador(novaEntregaDTO.GetIdentificador));
             if(entrega == null)
             return null;
-/*
-            var armazém = await this.armazémRepo.GetByIdAsync(new Identificador(novaEntregaDTO.armazém.Id.GetValue));
+
+            var armazém = await this.armazémRepo.GetByIdAsync(new Identificador(novaEntregaDTO.GetArmazém));
             if(armazém == null)
             return null; 
-            */
+            
 
             entrega.changeArmazém(novaEntregaDTO.armazém);
             entrega.changeDataEntrega(novaEntregaDTO.GetDia, novaEntregaDTO.GetMes, novaEntregaDTO.GetAno);
@@ -50,10 +51,10 @@ namespace DDDSample1.Domain.Entregas
         public async Task<EntregasDTO> RegistarEntrega(EntregasDTO entregasDTO) {
             Entrega entrega = EntregasMapper.toEntrega(entregasDTO);
 
-           /* var armazém = await this.armazémRepo.GetByIdAsync(new Identificador(entregasDTO.GetArmazém));
+            var armazém = await this.armazémRepo.GetByIdAsync(new Identificador(entregasDTO.GetArmazém));
             if(armazém == null)
                 return null;
-*/
+
             await _repo.AddAsync(entrega);
             await gestorPersist.CommitAsync();
             

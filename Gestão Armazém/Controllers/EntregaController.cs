@@ -22,7 +22,7 @@ namespace DDDSample1.Controllers
         }
 
         // PUT: api/EditarEntrega/id
-       [HttpPut]
+       [HttpPut("{Id}")]
         public async Task<ActionResult<JObject>> EditarEntrega(String Id, JObject novaEntregaJSON)
         {
             

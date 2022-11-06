@@ -5,7 +5,7 @@ namespace DDDSample1.Domain.Entregas.DTO {
     public class EntregasMapper {
         public static EntregasDTO toDTO(Entrega entrega){
             return new EntregasDTO(entrega.Id.GetValue,
-            entrega.Armazém,
+            entrega.ArmazémId.GetValue,
             entrega.DataEntrega.GetDia,
             entrega.DataEntrega.GetMes,
             entrega.DataEntrega.GetAno,

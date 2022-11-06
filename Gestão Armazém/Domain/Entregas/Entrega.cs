@@ -6,7 +6,7 @@ using System;
 namespace DDDSample1.Domain.Entregas {
     public class Entrega : Entity<Identificador>, IAggregateRoot {
 
-        private string armazém;
+        private Identificador armazémId;
         private DataEntrega dataEntrega;
 
         private Massa massa;
@@ -18,20 +18,21 @@ namespace DDDSample1.Domain.Entregas {
 
         public Entrega() {}
 
-        public Entrega(Identificador identificador,string armazém, DataEntrega dataEntrega, Massa massa, TempoColocação tempoColocação, TempoRetirada tempoRetirada) {
+        public Entrega(Identificador identificador, String armazémId, DataEntrega dataEntrega, Massa massa, TempoColocação tempoColocação, TempoRetirada tempoRetirada) {
 
-            if(armazém == null){
+            if(armazémId == null){
                 throw new BusinessRuleValidationException("Armazém não pode ter um valor nulo");
             }
             this.Id = identificador;
-            this.armazém = armazém;
+           // this.armazém = armazém;
+            this.armazémId = new Identificador(armazémId);
             this.dataEntrega = dataEntrega;
             this.massa = massa;
             this.tempoColocação = tempoColocação;
             this.tempoRetirada = tempoRetirada;
         }
 
-        public string Armazém => armazém;
+        public Identificador ArmazémId => armazémId;
         public DataEntrega DataEntrega => dataEntrega;
 
         public Massa Massa => massa;
@@ -43,7 +44,7 @@ namespace DDDSample1.Domain.Entregas {
 
 
         public void changeArmazém (String armazém){
-            this.armazém = armazém;
+            this.armazémId = new Identificador(armazém);
         }
 
         public void changeDataEntrega(String dia, String mês, String ano){
