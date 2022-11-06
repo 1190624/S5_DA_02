@@ -10,10 +10,7 @@ namespace DDDSample1.Infrastructure.Entregas{
 
         public void Configure(EntityTypeBuilder<Entrega> entityTypeBuilder){
             entityTypeBuilder.HasKey(entrega => entrega.Id);
-            //entityTypeBuilder.HasKey(entrega => entrega.Armazém);
-           /*
-            entityTypeBuilder.OwnsOne(entrega => entrega.ArmazémId,
-                armazémId => { armazémId.Property("Value").IsRequired(); });
+            entityTypeBuilder.HasAlternateKey(entrega => entrega.ArmazémId);
             entityTypeBuilder.OwnsOne(entrega => entrega.DataEntrega, dataEntrega => {dataEntrega.Property("dia").IsRequired(true);
                 dataEntrega.Property("mes").IsRequired(true);
                 dataEntrega.Property("ano").IsRequired(true);
@@ -21,7 +18,6 @@ namespace DDDSample1.Infrastructure.Entregas{
             entityTypeBuilder.OwnsOne(entrega => entrega.Massa, massa => {massa.Property("massa").IsRequired(true);});
             entityTypeBuilder.OwnsOne(entrega => entrega.TempoColocação, tempoColocação => {tempoColocação.Property("tempoColocação").IsRequired(true);});
             entityTypeBuilder.OwnsOne(entrega => entrega.TempoRetirada, tempoRetirada => {tempoRetirada.Property("tempoRetirada").IsRequired(true);});
-       */
         }
     }
 }
