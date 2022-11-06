@@ -48,7 +48,7 @@ export default {
     },
     camiao: {
       name: "CamiaoController",
-      path: "../controllers/camiaoController"
+      path: "../controllers/CamiaoController"
     },
     rota:{
       name: "RotaController",
@@ -82,7 +82,7 @@ export default {
     },
     camiao:{
       name: "CamiaoService",
-      path: "../services/camiaoService"
+      path: "../services/CamiaoService"
     },
     rota:{
       name: "RotaService",

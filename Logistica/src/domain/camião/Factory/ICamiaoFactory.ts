@@ -1,5 +1,6 @@
 import { Camiao } from "../Camiao";
 
+/**
 export interface ICamiaoFactory {
     criarCamiao(matricula: string, 
         caracteristica: string, 
@@ -9,3 +10,4 @@ export interface ICamiaoFactory {
         tara: number, 
         tempoCarregamento: string): Camiao
 }
+*/

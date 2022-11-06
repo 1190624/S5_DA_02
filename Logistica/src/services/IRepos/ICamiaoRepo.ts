@@ -1,5 +1,5 @@
 import { Repo } from "../../core/infra/Repo";
-import { Camiao } from "../../domain/camião/camiao";
+import { Camiao } from "../../domain/camião/Camiao";
 import { Matricula } from "../../domain/camião/Matricula";
 
 export default interface ICamiaoRepo extends Repo<Camiao> {
