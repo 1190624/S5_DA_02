@@ -1,60 +1,45 @@
 import { ICamiaoPersistence } from '../../dataschema/ICamiaoPersistence';
 import mongoose from 'mongoose';
 
-const Camiao = new mongoose.Schema(
+const CamiaoSchema = new mongoose.Schema(
   {
-    /*
-        matricula: Matricula
-    caracteristica: Caracteristica
-    autonomia: Autonomia
-    capacidadeTransporte: CapacidadeTransporte
-    capacidadeBateria: CapacidadeBateria
-    tara: Tara
-    tempoCarregamento: TempoCarregamento
-    */
     matricula: { 
-      type: {
-        type: String
-      }
+        type: String,
+        index: true,
     },
 
     caracteristica: {
-      type: {
-        type: String
-      }
+        type: String,
+        index: true,
     },
 
     autonomia: {
-      type: {
-        type: Number
-      }
+        type: Number,
+        index: true,
     },
 
     capacidadeTransporte: {
-      type: {
-        type: Number
-      }
+        type: Number,
+        index: true,
     },
 
       capacidadeBateria: {
-        type: {
-          type: Number
-        }
+          type: Number,
+          index: true,
       },
 
       tara: {
-        type: {
-          type: Number
-        }
+          type: Number,
+          index: true,
+
       },
 
       tempoCarregamento: {
-        type: {
-          type: String
-        }
+          type: String,
+          index: true,
       },
   },
   { timestamps: true },
 );
 
-export default mongoose.model<ICamiaoPersistence & mongoose.Document>('Camiao', Camiao);
+export default mongoose.model<ICamiaoPersistence & mongoose.Document>('Camiao', CamiaoSchema);
