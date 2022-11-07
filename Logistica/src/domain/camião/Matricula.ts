@@ -15,13 +15,16 @@ interface MatriculaProps {
     }
   
     public static create (matricula: string): Result<Matricula> {
+      return Result.ok<Matricula>(new Matricula({value: matricula}));
+      /**
       const MATRICULA_REGEX = new RegExp(/[A-Z]{2}-[0-9]{2}-[A-Z]{2}/);
       
       if(MATRICULA_REGEX.test(matricula)) {
         return Result.ok<Matricula>(new Matricula({value: matricula}));
       }
-      return Result.fail("A matrícula inserida não é valida!");
+      return Result.fail("A matrícula inserida não é valida!");*/
     }
+    
       
       /*
       if (!new RegExp(MATRICULA_REGEX).test(matricula))
@@ -29,5 +32,4 @@ interface MatriculaProps {
 
         return Result.ok<Matricula>(new Matricula({ value: matricula })) 
         */
-  
 }

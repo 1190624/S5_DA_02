@@ -68,7 +68,7 @@ export class Camiao extends AggregateRoot<CamiaoProps> {
         const capBateriaAux = CapacidadeBateria.create(camiaoDTO.capacidadeBateria);
         const taraAux = Tara.create(camiaoDTO.tara);
         const tempoAux = TempoCarregamento.create(camiaoDTO.tempoCarregamento);
-
+        
         const camiao = new Camiao({
             matricula: matriculaAux.getValue(),
             caracteristica: caracteristicaAux.getValue(),

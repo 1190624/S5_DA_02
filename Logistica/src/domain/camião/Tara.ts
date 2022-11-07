@@ -21,7 +21,7 @@ export class Tara extends ValueObject<TaraProps>{
         return Result.fail("A Tara inserida é inferior ao minímo estabelecido!");
             //throw new BusinessRuleValidationException("A Tara inserida é inferior ao minímo estabelecido (" + TARA_MIN + "kg);<br/>");
 
-        return Result.ok<Tara>(new Tara({ value: valor }))
+        return Result.ok<Tara>(new Tara({ value: valor }));
     }
 
     public toString() {

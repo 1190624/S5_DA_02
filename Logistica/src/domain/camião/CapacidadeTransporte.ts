@@ -21,7 +21,7 @@ export class CapacidadeTransporte extends ValueObject<CapacidadeTransporteProps>
         return Result.fail("Capacidade de Transporte do Camião Elétrico é inferior ao minímo estipulado!");
             //throw new BusinessRuleValidationException("Capacidade de Transporte do Camião Elétrico é inferior ao minímo estipulado (" + CAPACIDADE_TRANSPORTE_MIN + "kg);<br/>");
 
-        return Result.ok<CapacidadeTransporte>(new CapacidadeTransporte({ value: valor }))
+        return Result.ok<CapacidadeTransporte>(new CapacidadeTransporte({ value: valor }));
     }
 
     public toString() {

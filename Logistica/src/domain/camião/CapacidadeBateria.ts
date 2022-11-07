@@ -21,7 +21,7 @@ export class CapacidadeBateria extends ValueObject<CapacidadeBateriaProps>{
         return Result.fail("Capacidade da Bateria do Camião Elétrico é inferior ao minímo estipulado!");
             //throw new BusinessRuleValidationException("Capacidade da Bateria do Camião Elétrico é inferior ao minímo estipulado (" + CAPACIDADE_BATERIA_MIN + "kWh);<br/>");
 
-        return Result.ok<CapacidadeBateria>(new CapacidadeBateria({ value: valor }))
+        return Result.ok<CapacidadeBateria>(new CapacidadeBateria({ value: valor }));
     }
 
     public toString() {
