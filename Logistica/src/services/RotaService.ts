@@ -11,7 +11,7 @@ import { RotaMap } from '../mappers/RotaMap';
 export default class RotaService implements IRotaService {
   constructor(@Inject(config.repos.rota.name) private rotaRepo: IRotaRepo) {}
 
-  async createRota(rotaDTO: IRotaDTO): Promise<Result<IRotaDTO>> {
+public async createRota(rotaDTO: IRotaDTO): Promise<Result<IRotaDTO>> {
     try {
       const rotaOrError = await Rota.create(rotaDTO);
 
