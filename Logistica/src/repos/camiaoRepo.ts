@@ -10,7 +10,7 @@ import { CamiaoMapper } from '../mappers/CamiaoMapper';
 import { Camiao } from '../domain/camião/Camiao';
 
 @Service()
-export default class camiaoRepo implements ICamiaoRepo {
+export default class CamiaoRepo implements ICamiaoRepo {
     private models: any;
 
     constructor(
@@ -19,8 +19,13 @@ export default class camiaoRepo implements ICamiaoRepo {
 
 
     public async findAll(): Promise<Camiao[]> {
+        const routeArray = await this.camiaoSchema.find();
+
+        return routeArray.map(item => CamiaoMapper.toDomain(item));
+        /**
         const camiaoRecord = await this.camiaoSchema.find(Camiao);
-        return camiaoRecord !== null ? camiaoRecord.map((camiaoRecord) => CamiaoMapper.toDomain(camiaoRecord)): null  
+        return camiaoRecord !== null ? camiaoRecord.map((camiaoRecord) => CamiaoMapper.toDomain(camiaoRecord)): null
+        */  
     }
 
 
@@ -51,30 +56,34 @@ export default class camiaoRepo implements ICamiaoRepo {
         }
     }
  
-    public async save(c: Camiao): Promise<Camiao> {
-        const query = { Matricula: c.matricula.value};
-
-        const camiaoDocument = await this.camiaoSchema.findOne(query);
-
+    public async save(camiao: Camiao): Promise<Camiao> {
+        const query = { Matricula : camiao.matricula.value };
+    
+        const camiaoDoc = await this.camiaoSchema.findOne(query);
+    
         try {
-            if (camiaoDocument === null) {
-                const rawcamiao: any = CamiaoMapper.toPersistence(c);
-                const camiaoCreated = await this.camiaoSchema.create(rawcamiao);
+          if (camiaoDoc === null) {
+            const rawCamiao: any = CamiaoMapper.toPersistence(camiao);
+            const camiaoCreated = await this.camiaoSchema.create(rawCamiao);
+    
+            return CamiaoMapper.toDomain(camiaoCreated);
+          } else {
 
-                return CamiaoMapper.toDomain(camiaoCreated);
-            } else {
-                camiaoDocument.matricula = c.matricula.value;
-                camiaoDocument.caracteristica = c.caracteristica.value;
-                camiaoDocument.autonomia = c.autonomia.value;
-                camiaoDocument.capacidadeTransporte = c.capacidadeTransporte.value;
-                camiaoDocument.capacidadeBateria= c.capacidadeBateria.value;
-                camiaoDocument.tara = c.tara.value;
-                camiaoDocument.tempoCarregamento = c.tempoCarregamento.value;
-                await camiaoDocument.save();
-                return c;
-            }
+            camiaoDoc.matricula = camiao.matricula.value;
+            camiaoDoc.caracteristica = camiao.caracteristica.value;
+            camiaoDoc.autonomia = camiao.autonomia.value;
+            camiaoDoc.capacidadeTransporte = camiao.capacidadeTransporte.value;
+            camiaoDoc.capacidadeBateria = camiao.capacidadeBateria.value;
+            camiaoDoc.tara = camiao.tara.value;
+            camiaoDoc.tempoCarregamento = camiao.tempoCarregamento.value;
+
+            await camiaoDoc.save();
+    
+            return camiao;
+          }
         } catch (err) {
-            throw err;
+          throw err;
         }
-    }
+      }
+    
 }
