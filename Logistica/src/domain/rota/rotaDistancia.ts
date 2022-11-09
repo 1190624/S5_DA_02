@@ -2,15 +2,15 @@ import { ValueObject } from '../../core/domain/ValueObject';
 import { Result } from '../../core/logic/Result';
 
 interface RotaDistanciaProps {
-  distancia: string;
+  distancia: number;
 }
 
 export class RotaDistancia extends ValueObject<RotaDistanciaProps> {
-  get distancia(): string {
+  get distancia(): number {
     return this.props.distancia;
   }
 
-  set distancia(value: string) {
+  set distancia(value: number) {
     this.props.distancia = value;
   }
 
@@ -18,12 +18,12 @@ export class RotaDistancia extends ValueObject<RotaDistanciaProps> {
     super(props);
   }
 
-  public static create(text: string): Result<RotaDistancia> {
-    const regex = new RegExp(/([1-9][0-9]*)((.|,)([0-9]{2}))?/);
-      
-    if(regex.test(text)) {
-      return Result.ok<RotaDistancia>(new RotaDistancia({distancia: text}));
+  public static create(num: number): Result<RotaDistancia> {
+    const DISTANCIA_MINIMA = 0;
+    
+    if(num <= DISTANCIA_MINIMA) {
+      return Result.fail("Distância mínima não pode ser menor que 0!");
     }
-    return Result.fail("A distância inserida não é valida!");
-  }
+    return Result.ok<RotaDistancia>(new RotaDistancia({ distancia: num }));
+    }
 }
