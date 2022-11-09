@@ -53,7 +53,7 @@ namespace Tests.TestesUnitarios.User
 
         [Fact]
         public async Task GetById_Sucess(){
-            Identificador id = new Identificador("wtv");
+            Identificador id = new Identificador("exemplo");
 
             var mockRepository = new Mock<IArmazémRepository>();
             mockRepository.Setup(repository => repository.GetByIdAsync(It.IsAny<Identificador>()));
