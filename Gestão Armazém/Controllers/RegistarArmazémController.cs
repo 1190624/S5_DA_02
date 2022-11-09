@@ -6,7 +6,6 @@ using Newtonsoft.Json.Linq;
 using DDDSample1.Domain.Armazéns;
 using DDDSample1.Domain.Armazéns.DTO;
 using DDDSample1.Domain.Shared;
-using DDDSample1.Domain.Families;
 
 namespace DDDSample1.Controllers {
     [Route("/api/[controller]")]
@@ -14,7 +13,7 @@ namespace DDDSample1.Controllers {
     public class RegistarArmazémController : ControllerBase {
         private readonly RegistarArmazémService service;
 
-        public RegistarArmazémController(RegistarArmazémService service, FamilyService _service) {
+        public RegistarArmazémController(RegistarArmazémService service) {
             this.service = service;
         }
 
