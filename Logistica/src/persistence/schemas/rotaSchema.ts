@@ -19,7 +19,7 @@ const RotaSchema = new mongoose.Schema(
     },
 
     distancia: {
-      type: String,
+      type: Number,
       index: true,
     },
 
@@ -29,7 +29,7 @@ const RotaSchema = new mongoose.Schema(
     },
 
     gastoEnergetico: {
-      type: String,
+      type: Number,
       index: true,
     },
 
