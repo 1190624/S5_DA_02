@@ -46,7 +46,7 @@ export default class RotaRepo implements IRotaRepo {
         rotaDoc.rotaOrigem = rota.rotaOrigem.origem;
         rotaDoc.rotaDestino = rota.rotaDestino.destino;
         rotaDoc.rotaDistancia = rota.rotaDistancia.distancia;
-        rotaDoc.rotaDistancia = rota.rotaDistancia.distancia;
+        rotaDoc.rotaTempo = rota.rotaTempo.tempo;
         rotaDoc.rotaGastoEnergetico = rota.rotaGastoEnergetico.gastoEnergetico;
         rotaDoc.rotaTempoCargaExtra = rota.rotaTempoCargaExtra.tempoCargaExtra;
 
