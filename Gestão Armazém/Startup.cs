@@ -31,7 +31,7 @@ namespace DDDSample1
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        /** public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DDDSample1DbContext>(opt =>
                 opt.UseInMemoryDatabase("DDDSample1DB")
@@ -42,6 +42,7 @@ namespace DDDSample1
 
             services.AddControllers().AddNewtonsoftJson();
         }
+        */
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -88,6 +89,22 @@ namespace DDDSample1
 
             services.AddTransient<IEntregasRepository, EntregasRepository>();
              services.AddTransient<EntregaService>();
+        }    
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllers().AddNewtonsoftJson();
+            services.AddCors(options => { options.AddPolicy("AllowAll", builder => { builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); }); });
+
+            services.AddDbContext<DDDSample1DbContext>(opt =>
+                opt.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+                        new MySqlServerVersion(new System.Version(10, 4, 17)))
+                    .ReplaceService<IValueConverterSelector, StronglyEntityIdValueConverterSelector>()
+            );
+            ConfigureMyServices(services);
+
+
+            services.AddControllers().AddNewtonsoftJson();
         }
     }
+
 }
