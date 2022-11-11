@@ -1,0 +1,1127 @@
+{
+	"info": {
+		"_postman_id": "25218149-5007-4d1e-b8a4-8506d2a91bd3",
+		"name": "Armazém",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Armazém que não existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar novo armazém",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        Identificador:\"T16\",\r\n        Designação:\"Armazém de Matosinhos\",\r\n        CódigoPostal:\"2311-412\",\r\n        NúmeroPorta:\"2311\",\r\n        NomeRua:\"Rua de Matosinhos\",\r\n        Localidade:\"Senhora da Hora\",\r\n        País:\"Portugal\",\r\n        Munícipio:\"Matosinhos\",\r\n        Latitude:23.11,\r\n        Longitude:23.11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar se o armazém foi criado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Armazém registado\", () => {\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res.Identificador).to.eql(\"T16\");\r",
+							"    pm.expect(res.Designação).to.eql(\"Armazém de Matosinhos\");\r",
+							"    pm.expect(res.CódigoPostal).to.eql(\"2311-412\");\r",
+							"    pm.expect(res.NúmeroPorta).to.eql(2311);\r",
+							"    pm.expect(res.NomeRua).to.eql(\"Rua de Matosinhos\");\r",
+							"    pm.expect(res.Localidade).to.eql(\"Senhora da Hora\");\r",
+							"    pm.expect(res.País).to.eql(\"Portugal\");\r",
+							"    pm.expect(res.Munícipio).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.Latitude).to.eql(23.11);\r",
+							"    pm.expect(res.Longitude).to.eql(23.11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Designação",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        Identificador:\"T16\",\r\n        Designação:\"Armazém do Porto\",\r\n        CódigoPostal:\"2311-412\",\r\n        NúmeroPorta:\"2311\",\r\n        NomeRua:\"Rua de Matosinhos\",\r\n        Localidade:\"Senhora da Hora\",\r\n        País:\"Portugal\",\r\n        Munícipio:\"Matosinhos\",\r\n        Latitude:23.11,\r\n        Longitude:23.11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/EditarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"EditarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar se a Designação foi atualizada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Designação alterada com sucesso\", () => {\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res.Identificador).to.eql(\"T16\");\r",
+							"    pm.expect(res.Designação).to.eql(\"Armazém do Porto\");\r",
+							"    pm.expect(res.CódigoPostal).to.eql(\"2311-412\");\r",
+							"    pm.expect(res.NúmeroPorta).to.eql(2311);\r",
+							"    pm.expect(res.NomeRua).to.eql(\"Rua de Matosinhos\");\r",
+							"    pm.expect(res.Localidade).to.eql(\"Senhora da Hora\");\r",
+							"    pm.expect(res.País).to.eql(\"Portugal\");\r",
+							"    pm.expect(res.Munícipio).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.Latitude).to.eql(23.11);\r",
+							"    pm.expect(res.Longitude).to.eql(23.11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Código Postal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        Identificador:\"T16\",\r\n        Designação:\"Armazém do Porto\",\r\n        CódigoPostal:\"2581-134\",\r\n        NúmeroPorta:\"2311\",\r\n        NomeRua:\"Rua de Matosinhos\",\r\n        Localidade:\"Senhora da Hora\",\r\n        País:\"Portugal\",\r\n        Munícipio:\"Matosinhos\",\r\n        Latitude:23.11,\r\n        Longitude:23.11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/EditarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"EditarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar se o Código Postal foi atualizado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Armazém registado\", () => {\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res.Identificador).to.eql(\"T16\");\r",
+							"    pm.expect(res.Designação).to.eql(\"Armazém do Porto\");\r",
+							"    pm.expect(res.CódigoPostal).to.eql(\"2581-134\");\r",
+							"    pm.expect(res.NúmeroPorta).to.eql(2311);\r",
+							"    pm.expect(res.NomeRua).to.eql(\"Rua de Matosinhos\");\r",
+							"    pm.expect(res.Localidade).to.eql(\"Senhora da Hora\");\r",
+							"    pm.expect(res.País).to.eql(\"Portugal\");\r",
+							"    pm.expect(res.Munícipio).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.Latitude).to.eql(23.11);\r",
+							"    pm.expect(res.Longitude).to.eql(23.11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Número da Porta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        Identificador:\"T16\",\r\n        Designação:\"Armazém do Porto\",\r\n        CódigoPostal:\"2581-134\",\r\n        NúmeroPorta:\"3414\",\r\n        NomeRua:\"Rua de Matosinhos\",\r\n        Localidade:\"Senhora da Hora\",\r\n        País:\"Portugal\",\r\n        Munícipio:\"Matosinhos\",\r\n        Latitude:23.11,\r\n        Longitude:23.11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/EditarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"EditarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar se o Número da Porta foi atualizado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Armazém registado\", () => {\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res.Identificador).to.eql(\"T16\");\r",
+							"    pm.expect(res.Designação).to.eql(\"Armazém do Porto\");\r",
+							"    pm.expect(res.CódigoPostal).to.eql(\"2581-134\");\r",
+							"    pm.expect(res.NúmeroPorta).to.eql(3414);\r",
+							"    pm.expect(res.NomeRua).to.eql(\"Rua de Matosinhos\");\r",
+							"    pm.expect(res.Localidade).to.eql(\"Senhora da Hora\");\r",
+							"    pm.expect(res.País).to.eql(\"Portugal\");\r",
+							"    pm.expect(res.Munícipio).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.Latitude).to.eql(23.11);\r",
+							"    pm.expect(res.Longitude).to.eql(23.11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Nome da Rua",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        Identificador:\"T16\",\r\n        Designação:\"Armazém do Porto\",\r\n        CódigoPostal:\"2581-134\",\r\n        NúmeroPorta:\"3414\",\r\n        NomeRua:\"Rua do Porto\",\r\n        Localidade:\"Senhora da Hora\",\r\n        País:\"Portugal\",\r\n        Munícipio:\"Matosinhos\",\r\n        Latitude:23.11,\r\n        Longitude:23.11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/EditarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"EditarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar se o Nome da Rua foi atualizado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Armazém registado\", () => {\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res.Identificador).to.eql(\"T16\");\r",
+							"    pm.expect(res.Designação).to.eql(\"Armazém do Porto\");\r",
+							"    pm.expect(res.CódigoPostal).to.eql(\"2581-134\");\r",
+							"    pm.expect(res.NúmeroPorta).to.eql(3414);\r",
+							"    pm.expect(res.NomeRua).to.eql(\"Rua do Porto\");\r",
+							"    pm.expect(res.Localidade).to.eql(\"Senhora da Hora\");\r",
+							"    pm.expect(res.País).to.eql(\"Portugal\");\r",
+							"    pm.expect(res.Munícipio).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.Latitude).to.eql(23.11);\r",
+							"    pm.expect(res.Longitude).to.eql(23.11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Localidade",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        Identificador:\"T16\",\r\n        Designação:\"Armazém do Porto\",\r\n        CódigoPostal:\"2581-134\",\r\n        NúmeroPorta:\"3414\",\r\n        NomeRua:\"Rua do Porto\",\r\n        Localidade:\"Matosinhos\",\r\n        País:\"Portugal\",\r\n        Munícipio:\"Matosinhos\",\r\n        Latitude:23.11,\r\n        Longitude:23.11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/EditarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"EditarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar se a Localidade foi atualizada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Armazém registado\", () => {\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res.Identificador).to.eql(\"T16\");\r",
+							"    pm.expect(res.Designação).to.eql(\"Armazém do Porto\");\r",
+							"    pm.expect(res.CódigoPostal).to.eql(\"2581-134\");\r",
+							"    pm.expect(res.NúmeroPorta).to.eql(3414);\r",
+							"    pm.expect(res.NomeRua).to.eql(\"Rua do Porto\");\r",
+							"    pm.expect(res.Localidade).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.País).to.eql(\"Portugal\");\r",
+							"    pm.expect(res.Munícipio).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.Latitude).to.eql(23.11);\r",
+							"    pm.expect(res.Longitude).to.eql(23.11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar País",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        Identificador:\"T16\",\r\n        Designação:\"Armazém do Porto\",\r\n        CódigoPostal:\"2581-134\",\r\n        NúmeroPorta:\"3414\",\r\n        NomeRua:\"Rua do Porto\",\r\n        Localidade:\"Matosinhos\",\r\n        País:\"Bélgica\",\r\n        Munícipio:\"Matosinhos\",\r\n        Latitude:23.11,\r\n        Longitude:23.11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/EditarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"EditarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar se o País foi atualizado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Armazém registado\", () => {\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res.Identificador).to.eql(\"T16\");\r",
+							"    pm.expect(res.Designação).to.eql(\"Armazém do Porto\");\r",
+							"    pm.expect(res.CódigoPostal).to.eql(\"2581-134\");\r",
+							"    pm.expect(res.NúmeroPorta).to.eql(3414);\r",
+							"    pm.expect(res.NomeRua).to.eql(\"Rua do Porto\");\r",
+							"    pm.expect(res.Localidade).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.País).to.eql(\"Bélgica\");\r",
+							"    pm.expect(res.Munícipio).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.Latitude).to.eql(23.11);\r",
+							"    pm.expect(res.Longitude).to.eql(23.11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Município",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        Identificador:\"T16\",\r\n        Designação:\"Armazém do Porto\",\r\n        CódigoPostal:\"2581-134\",\r\n        NúmeroPorta:\"3414\",\r\n        NomeRua:\"Rua do Porto\",\r\n        Localidade:\"Matosinhos\",\r\n        País:\"Bélgica\",\r\n        Munícipio:\"Porto\",\r\n        Latitude:23.11,\r\n        Longitude:23.11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/EditarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"EditarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar se o Município foi atualizado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Armazém registado\", () => {\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res.Identificador).to.eql(\"T16\");\r",
+							"    pm.expect(res.Designação).to.eql(\"Armazém do Porto\");\r",
+							"    pm.expect(res.CódigoPostal).to.eql(\"2581-134\");\r",
+							"    pm.expect(res.NúmeroPorta).to.eql(3414);\r",
+							"    pm.expect(res.NomeRua).to.eql(\"Rua do Porto\");\r",
+							"    pm.expect(res.Localidade).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.País).to.eql(\"Bélgica\");\r",
+							"    pm.expect(res.Munícipio).to.eql(\"Porto\");\r",
+							"    pm.expect(res.Latitude).to.eql(23.11);\r",
+							"    pm.expect(res.Longitude).to.eql(23.11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Latitude",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        Identificador:\"T16\",\r\n        Designação:\"Armazém do Porto\",\r\n        CódigoPostal:\"2581-134\",\r\n        NúmeroPorta:\"3414\",\r\n        NomeRua:\"Rua do Porto\",\r\n        Localidade:\"Matosinhos\",\r\n        País:\"Bélgica\",\r\n        Munícipio:\"Porto\",\r\n        Latitude:25.55,\r\n        Longitude:23.11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/EditarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"EditarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar se a Latitude foi atualizada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Armazém registado\", () => {\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res.Identificador).to.eql(\"T16\");\r",
+							"    pm.expect(res.Designação).to.eql(\"Armazém do Porto\");\r",
+							"    pm.expect(res.CódigoPostal).to.eql(\"2581-134\");\r",
+							"    pm.expect(res.NúmeroPorta).to.eql(3414);\r",
+							"    pm.expect(res.NomeRua).to.eql(\"Rua do Porto\");\r",
+							"    pm.expect(res.Localidade).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.País).to.eql(\"Bélgica\");\r",
+							"    pm.expect(res.Munícipio).to.eql(\"Porto\");\r",
+							"    pm.expect(res.Latitude).to.eql(25.55);\r",
+							"    pm.expect(res.Longitude).to.eql(23.11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Altera Longitude",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        Identificador:\"T16\",\r\n        Designação:\"Armazém do Porto\",\r\n        CódigoPostal:\"2581-134\",\r\n        NúmeroPorta:\"3414\",\r\n        NomeRua:\"Rua do Porto\",\r\n        Localidade:\"Matosinhos\",\r\n        País:\"Bélgica\",\r\n        Munícipio:\"Porto\",\r\n        Latitude:25.55,\r\n        Longitude:25.55\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/EditarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"EditarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar se a Longitude foi atualizada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Armazém registado\", () => {\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res.Identificador).to.eql(\"T16\");\r",
+							"    pm.expect(res.Designação).to.eql(\"Armazém do Porto\");\r",
+							"    pm.expect(res.CódigoPostal).to.eql(\"2581-134\");\r",
+							"    pm.expect(res.NúmeroPorta).to.eql(3414);\r",
+							"    pm.expect(res.NomeRua).to.eql(\"Rua do Porto\");\r",
+							"    pm.expect(res.Localidade).to.eql(\"Matosinhos\");\r",
+							"    pm.expect(res.País).to.eql(\"Bélgica\");\r",
+							"    pm.expect(res.Munícipio).to.eql(\"Porto\");\r",
+							"    pm.expect(res.Latitude).to.eql(25.55);\r",
+							"    pm.expect(res.Longitude).to.eql(25.55);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Armazém",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Armazém que não existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/RegistarArmazém/T16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"RegistarArmazém",
+						"T16"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
