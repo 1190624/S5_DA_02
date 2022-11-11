@@ -41,5 +41,20 @@ namespace DDDSample1.Domain.Armazéns {
 
             return ArmazémMapper.toDTO(armazém);
         }
+
+        public async Task<ArmazémDTO> DeleteAsync(String Id)
+        {
+            Identificador identificador = new Identificador(Id);
+            var armazém = await armazémRepo.GetByIdAsync(identificador); 
+
+            if (armazém == null)
+                return null;   
+
+            
+            this.armazémRepo.Remove(armazém);
+            await this.gestorPersist.CommitAsync();
+
+            return ArmazémMapper.toDTO(armazém);
+        }
     }
 }
