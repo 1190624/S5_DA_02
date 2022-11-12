@@ -31,7 +31,7 @@ export default class CamiaoController implements ICamiaoController /* TODO: exte
         }
     }
     
-    async updateCamiao(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction) {
+    async updateCamiao(req: Request, res: Response, next: NextFunction) {
         try {
             const camiaoOrError = await this.camiaoServiceInstance.updateCamiao(req.body as CamiaoDTO) as Result<CamiaoDTO>;
       

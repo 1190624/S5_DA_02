@@ -23,6 +23,7 @@ interface CamiaoProps {
 }
 
 export class Camiao extends AggregateRoot<CamiaoProps> {
+  camiao: Result<Matricula>;
     get id(): UniqueEntityID {
         return this._id;
     }
@@ -54,6 +55,32 @@ export class Camiao extends AggregateRoot<CamiaoProps> {
     get tempoCarregamento(): TempoCarregamento {
         return this.props.tempoCarregamento;
     }
+
+    set matricula ( value: Matricula) {
+        this.props.matricula = value;
+      }
+
+    set caracteristica ( value: Caracteristica) {
+      this.props.matricula = value;
+    }
+    
+    set autonomia ( value: Autonomia) {
+      this.props.autonomia = value;
+    }
+    
+    set capacidadeTransporte ( value: CapacidadeTransporte) {
+        this.props.capacidadeTransporte = value;
+      }
+      set capacidadeBateria ( value: CapacidadeBateria) {
+        this.props.capacidadeBateria = value;
+      }
+      set tara ( value: Tara) {
+        this.props.tara = value;
+      }
+
+      set tempoCarregamento(value: TempoCarregamento){
+        this.props.tempoCarregamento;
+      }
 
 
     private constructor(props: CamiaoProps, id?: UniqueEntityID) {

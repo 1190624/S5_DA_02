@@ -15,7 +15,8 @@ export default (app: Router) => {
   route.post('',
     celebrate({
       body: Joi.object({
-        matricula: Joi.string().required(),
+        matricula: Joi.string().regex(/[A-Z]{2}-[0-9]{2}-[A-Z]{2}/).required(),
+        //matricula: Joi.string().required(),
         caracteristica: Joi.string().required(),
         autonomia: Joi.number().required(),
         capacidadeTransporte: Joi.number().required(),
