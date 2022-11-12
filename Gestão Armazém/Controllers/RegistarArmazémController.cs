@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 using DDDSample1.Domain.Armazéns;
 using DDDSample1.Domain.Armazéns.DTO;
 using DDDSample1.Domain.Shared;
-using DDDSample1.Domain.Families;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DDDSample1.Controllers {
     [Route("/api/[controller]")]
@@ -14,7 +14,7 @@ namespace DDDSample1.Controllers {
     public class RegistarArmazémController : ControllerBase {
         private readonly RegistarArmazémService service;
 
-        public RegistarArmazémController(RegistarArmazémService service, FamilyService _service) {
+        public RegistarArmazémController(RegistarArmazémService service) {
             this.service = service;
         }
 
@@ -42,6 +42,27 @@ namespace DDDSample1.Controllers {
                 return CreatedAtAction(nameof(GetById), new {Id = response.identificador}, response);
             } catch (BusinessRuleValidationException exception) {
                 return BadRequest(new {exception.Message});
+            }
+        }
+
+        [HttpDelete("{ID}")]
+        //[Authorize]
+        public async Task<ActionResult<JObject>> HardDelete(String Id)
+        {
+            try
+            {
+                var response = await service.DeleteAsync(Id);
+
+                if (response == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(response);
+            }
+            catch(BusinessRuleValidationException ex)
+            {
+               return BadRequest(new {Message = ex.Message});
             }
         }
     }

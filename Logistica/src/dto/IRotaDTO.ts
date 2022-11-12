@@ -2,8 +2,8 @@ export default interface IRotaDTO {
     rotaId: string;
     origem: string;
     destino: string;
-    distancia: string;
+    distancia: number;
     tempo: string;
-    gastoEnergetico: string;
+    gastoEnergetico: number;
     tempoCargaExtra: string;
   }

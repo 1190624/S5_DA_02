@@ -8,7 +8,7 @@ using Xunit.Abstractions;
 
 namespace Tests.TestesUnitarios.User
 {
-    public class DesignaçãoTest
+    public class ArmazemTest
     {
 
         [Fact]

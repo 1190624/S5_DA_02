@@ -3,8 +3,8 @@ export interface IRotaPersistence {
     rotaId: string;
     rotaOrigem: string;
     rotaDestino: string;
-    rotaDistancia: string;
+    rotaDistancia: number;
     rotaTempo: string;
-    rotaGastoEnergetico: string;
+    rotaGastoEnergetico: number;
     rotaTempoCargaExtra: string;
   }

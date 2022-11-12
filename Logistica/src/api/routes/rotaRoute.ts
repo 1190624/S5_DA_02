@@ -17,9 +17,9 @@ export default (app: Router) => {
         rotaId: Joi.string().required(),
         origem: Joi.string().required(),
         destino: Joi.string().required(),
-        distancia: Joi.string().required(),
+        distancia: Joi.number().required(),
         tempo: Joi.string().required(),
-        gastoEnergetico: Joi.string().required(),
+        gastoEnergetico: Joi.number().required(),
         tempoCargaExtra: Joi.string().required()
       })
     }),
