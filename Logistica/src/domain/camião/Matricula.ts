@@ -10,6 +10,9 @@ interface MatriculaProps {
       return this.props.value;
     }
     
+    set value(value : string){
+      this.props.value = value;
+    }
     public constructor (props: MatriculaProps) {
       super(props);
     }
@@ -32,4 +35,8 @@ interface MatriculaProps {
 
         return Result.ok<Matricula>(new Matricula({ value: matricula })) 
         */
+
+
+
+
 }
