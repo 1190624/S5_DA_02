@@ -6,6 +6,7 @@ const CamiaoSchema = new mongoose.Schema(
     matricula: { 
         type: String,
         index: true,
+        unique: true,
         writable: true
     },
 
