@@ -61,7 +61,7 @@ export default class CamiaoService implements ICamiaoService {
         
               await this.camiaoRepo.save(camiao);
       
-              const camiaoDTOResult = CamiaoMapper.toDTO( camiao) as CamiaoDTO;
+              const camiaoDTOResult = CamiaoMapper.toDTO(camiao) as CamiaoDTO;
               return Result.ok<CamiaoDTO>( camiaoDTOResult)
               }
           } catch (e) {

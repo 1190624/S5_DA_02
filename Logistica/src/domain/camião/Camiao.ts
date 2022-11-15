@@ -61,7 +61,7 @@ export class Camiao extends AggregateRoot<CamiaoProps> {
       }
 
     set caracteristica ( value: Caracteristica) {
-      this.props.matricula = value;
+      this.props.caracteristica = value;
     }
     
     set autonomia ( value: Autonomia) {

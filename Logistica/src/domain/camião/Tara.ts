@@ -17,11 +17,14 @@ export class Tara extends ValueObject<TaraProps>{
     public static create(valor: number): Result<Tara> {
         const TARA_MIN = 1000;
 
-        if (valor < TARA_MIN)
+        if (valor < TARA_MIN){
         return Result.fail("A Tara inserida é inferior ao minímo estabelecido!");
             //throw new BusinessRuleValidationException("A Tara inserida é inferior ao minímo estabelecido (" + TARA_MIN + "kg);<br/>");
-
-        return Result.ok<Tara>(new Tara({ value: valor }));
+        } 
+        else {
+            return Result.ok<Tara>(new Tara({ value: valor }))
+        }
+        
     }
 
     public toString() {
