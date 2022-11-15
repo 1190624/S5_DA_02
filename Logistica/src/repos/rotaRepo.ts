@@ -25,13 +25,13 @@ export default class RotaRepo implements IRotaRepo {
     const idX = rotaId instanceof RotaId ? (<RotaId>rotaId).value : rotaId;
 
     const query = { domainId: idX };
-    const userDoc = await this.rotaSchema.findOne(query as FilterQuery<IRotaPersistence & Document>);
+    const rotaDoc = await this.rotaSchema.findOne(query as FilterQuery<IRotaPersistence & Document>);
 
-    return !!userDoc === true;
+    return !!rotaDoc === true;
   }
 
   public async save(rota: Rota): Promise<Rota> {
-    const query = { RotaId: rota.rotaId.value };
+    const query = { domainId: rota.rotaId.value.toString() };
 
     const rotaDoc = await this.rotaSchema.findOne(query);
 
