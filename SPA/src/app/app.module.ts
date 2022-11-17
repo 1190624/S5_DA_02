@@ -3,14 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { CriarCamiaoCompComponent } from './criar-camiao-comp/criar-camiao-comp.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CriarCamiaoCompComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
