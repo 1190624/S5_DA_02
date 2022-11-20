@@ -1,0 +1,42 @@
+
+<app-menu-navegacao></app-menu-navegacao>
+
+<body>
+    <header>
+        <h1>Adicionar Camião</h1>
+    </header>
+    <div id ="adicionarCamiao">
+
+        <div class="caixaTexto"> 
+            <input type = "text" id= "matricula" name="Matricula" placeholder="Matrícula" required [(ngModel)] = "matricula">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id="caracteristica" name="Característica" placeholder="Característica" required [(ngModel)] = "caracteristica">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id="autonomia" name="Autonomia" placeholder="Autonomia" required [(ngModel)] = "autonomia">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id ="capacidadeTransporte" name="capacidadeTransporte" placeholder="Capacidade de Transporte" required [(ngModel)] = "capacidadeTransporte">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id= "capacidadeBateria" name="capacidadeBateria" placeholder="Capacidade de Bateria" required [(ngModel)] = "capacidadeBateria">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" name="Tara" placeholder="Tara" required [(ngModel)] = "tara">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" name="tempoCarregamento" placeholder="Tempo de Carregamento" required [(ngModel)] = "tempoCarregamento">
+        </div>
+        <br>
+        <button class=btn style="background-color: #F12D2A" (click)="Return()">Return</button>
+        <button class=btn style="background-color: #56D225" (click)="Submit()">Submit</button>   
+    </div>
+
+</body>
