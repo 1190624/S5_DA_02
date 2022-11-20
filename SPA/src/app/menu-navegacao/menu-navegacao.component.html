@@ -1,0 +1,36 @@
+<div id="navLista">
+    <div id="GestaoCamioes">
+        
+        <button id="GestaoCamioesButton">
+            <i class='bx bxs-truck'></i>
+            Gestão de Camiões</button>
+
+            <div class="item_div">
+                <!--<a href="/adiconarCamiao">Adicionar Camião</a>-->
+                <button class = "button" routerLink="/adicionarCamiao">Adicionar Camião</button>
+                <br>
+                <button class = "button" [routerLink]="['/adicionarCamiao']">Listar Camiões</button>
+                <!--<a href="#">Listar Camiões</a>-->
+            </div>
+            
+    
+    
+        </div> 
+        
+    <div id="GestaoArmazens">
+        
+    </div>
+    <div id="GestaoDeEntregas">
+        
+    </div>
+    <div id="GestaoDePercursos">
+        
+    </div>
+    
+</div>
+
+<div>
+    <app-criar-camiao></app-criar-camiao>
+</div>
+
+
