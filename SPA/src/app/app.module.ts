@@ -4,17 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-import { CriarCamiaoCompComponent } from './criar-camiao-comp/criar-camiao-comp.component';
+import { MenuNavegacaoComponent } from './menu-navegacao/menu-navegacao.component';
+import { CriarCamiaoComponent } from './criar-camiao/criar-camiao.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CriarCamiaoCompComponent
+    MenuNavegacaoComponent,
+    CriarCamiaoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
