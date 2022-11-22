@@ -27,10 +27,7 @@ export class CriarCamiaoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-/*   public criarCamiao():void{
-    this.service.criarCamiao(matricula: string, caracteristica: string, autonomia:number, capacidadeTransporte:number, capacidadeBateria:number,
-      tara: number, tempoCarregamento:string)
-      this.camiao = data}) */
+
     
       Submit(): void {
 
