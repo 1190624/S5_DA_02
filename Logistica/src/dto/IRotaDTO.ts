@@ -1,5 +1,4 @@
 export default interface IRotaDTO {
-    rotaId: string;
     origem: string;
     destino: string;
     distancia: number;
