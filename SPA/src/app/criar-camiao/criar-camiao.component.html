@@ -1,6 +1,5 @@
 
-<app-menu-navegacao></app-menu-navegacao>
-
+<app-root></app-root>
 <body>
     <header>
         <h1>Adicionar Camião</h1>
@@ -28,11 +27,11 @@
         </div>
         <br>
         <div class="caixaTexto"> 
-            <input type = "text" name="Tara" placeholder="Tara" required [(ngModel)] = "tara">
+            <input type = "text" id= "tara" name="Tara" placeholder="Tara" required [(ngModel)] = "tara">
         </div>
         <br>
         <div class="caixaTexto"> 
-            <input type = "text" name="tempoCarregamento" placeholder="Tempo de Carregamento" required [(ngModel)] = "tempoCarregamento">
+            <input type = "text" id="tempoCarregamento" name="tempoCarregamento" placeholder="Tempo de Carregamento" required [(ngModel)] = "tempoCarregamento">
         </div>
         <br>
         <button class=btn style="background-color: #F12D2A" (click)="Return()">Return</button>
