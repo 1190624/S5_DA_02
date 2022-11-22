@@ -12,7 +12,6 @@ import { RotaOrigem } from './rotaOrigem';
 import { RotaTempo } from './rotaTempo';
 
 interface RotaProps {
-  rotaId: RotaId;
   rotaOrigem: RotaOrigem;
   rotaDestino: RotaDestino;
   rotaDistancia: RotaDistancia;
@@ -27,7 +26,7 @@ export class Rota extends AggregateRoot<RotaProps> {
     }
 
     get rotaId(): RotaId {
-        return this.props.rotaId;
+        return RotaId.caller(this.id);
     }
 
     get rotaOrigem(): RotaOrigem {
@@ -60,7 +59,6 @@ export class Rota extends AggregateRoot<RotaProps> {
 
     public static create(rotaDTO: IRotaDTO | any, id?: UniqueEntityID): Result<Rota> {
 
-        const rotaId = RotaId.create(rotaDTO.rotaId);
         const rotaOrigem = RotaOrigem.create(rotaDTO.origem);
         const rotaDestino = RotaDestino.create(rotaDTO.destino);
         const rotaDistancia = RotaDistancia.create(rotaDTO.distancia);
@@ -68,12 +66,11 @@ export class Rota extends AggregateRoot<RotaProps> {
         const rotaGastoEnergetico = RotaGastoEnergetico.create(rotaDTO.gastoEnergetico);
         const rotaTempoCargaExtra = RotaTempoCargaExtra.create(rotaDTO.tempoCargaExtra);
 
-        if (rotaId === undefined || rotaDestino === undefined || rotaDestino === undefined) {
+        if (rotaDestino === undefined || rotaDestino === undefined) {
             return Result.fail<Rota>('Rota Id, Origem e Destino são obirgatórios.');
         } else {
             const rota = new Rota(
             {
-                rotaId: rotaId.getValue(),
                 rotaOrigem: rotaOrigem.getValue(),
                 rotaDestino: rotaDestino.getValue(),
                 rotaDistancia: rotaDistancia.getValue(),
