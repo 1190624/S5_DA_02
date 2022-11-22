@@ -6,12 +6,19 @@ import { RotaId } from '../domain/rota/rotaId';
 import { Rota } from '../domain/rota/rota';
 import { RotaMap } from '../mappers/RotaMap';
 import { Filter } from 'mongodb';
+import { executionAsyncResource } from 'async_hooks';
 
 @Service()
 export default class RotaRepo implements IRotaRepo {
   private models: any;
 
   constructor(@Inject('rotaSchema') private rotaSchema: Model<IRotaPersistence & Document>) {}
+  findByRotaId(rotaId: string | RotaId): Promise<Rota> {
+    throw new Error('Method not implemented.');
+  }
+  update(rota: Rota): Promise<Rota> {
+    throw new Error('Method not implemented.');
+  }
 
   private createBaseQuery(): any {
     return {
@@ -20,9 +27,9 @@ export default class RotaRepo implements IRotaRepo {
   }
 
   // @ts-ignore
-  public async exists(rotaId: RotaId | string): Promise<boolean> {
+  public async exists(rota: Rota): Promise<boolean> {
     // eslint-disable-next-line @typescript-eslint/no-angle-bracket-type-assertion
-    const idX = rotaId instanceof RotaId ? (<RotaId>rotaId).value : rotaId;
+    const idX = rota.id instanceof RotaId ? (<RotaId>rota.id).toValue() : rota.id;
 
     const query = { domainId: idX };
     const rotaDoc = await this.rotaSchema.findOne(query as FilterQuery<IRotaPersistence & Document>);
@@ -31,7 +38,7 @@ export default class RotaRepo implements IRotaRepo {
   }
 
   public async save(rota: Rota): Promise<Rota> {
-    const query = { domainId: rota.rotaId.value.toString() };
+    const query = { domainId: rota.id.toString() };
 
     const rotaDoc = await this.rotaSchema.findOne(query);
 
@@ -42,7 +49,6 @@ export default class RotaRepo implements IRotaRepo {
 
         return RotaMap.toDomain(rotaCreated);
       } else {
-        rotaDoc.rotaId = rota.rotaId.value;
         rotaDoc.rotaOrigem = rota.rotaOrigem.origem;
         rotaDoc.rotaDestino = rota.rotaDestino.destino;
         rotaDoc.rotaDistancia = rota.rotaDistancia.distancia;
