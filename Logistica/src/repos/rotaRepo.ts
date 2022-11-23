@@ -7,6 +7,7 @@ import { Rota } from '../domain/rota/rota';
 import { RotaMap } from '../mappers/RotaMap';
 import { Filter } from 'mongodb';
 import { executionAsyncResource } from 'async_hooks';
+import { Result } from '../core/logic/Result';
 
 @Service()
 export default class RotaRepo implements IRotaRepo {
@@ -38,7 +39,7 @@ export default class RotaRepo implements IRotaRepo {
   }
 
   public async save(rota: Rota): Promise<Rota> {
-    const query = { domainId: rota.id.toString() };
+    const query = { rotaId: rota.id.toString() };
 
     const rotaDoc = await this.rotaSchema.findOne(query);
 
@@ -49,6 +50,7 @@ export default class RotaRepo implements IRotaRepo {
 
         return RotaMap.toDomain(rotaCreated);
       } else {
+        //rotaDoc.rotaId = rota.rotaId.toString();
         rotaDoc.rotaOrigem = rota.rotaOrigem.origem;
         rotaDoc.rotaDestino = rota.rotaDestino.destino;
         rotaDoc.rotaDistancia = rota.rotaDistancia.distancia;
