@@ -23,6 +23,9 @@ namespace DDDNetCore.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<bool>("Active")
+                        .HasColumnType("tinyint(1)");
+
                     b.HasKey("Id");
 
                     b.ToTable("armazéns");
@@ -50,12 +53,11 @@ namespace DDDNetCore.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("ArmazémId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("ArmazémId");
+                    b.HasIndex("ArmazémId");
 
                     b.ToTable("entrega");
                 });
@@ -193,6 +195,10 @@ namespace DDDNetCore.Migrations
 
             modelBuilder.Entity("DDDSample1.Domain.Entregas.Entrega", b =>
                 {
+                    b.HasOne("DDDSample1.Domain.Armazéns.Armazém", "armazem")
+                        .WithMany("entregas")
+                        .HasForeignKey("ArmazémId");
+
                     b.OwnsOne("DDDSample1.Domain.Entregas.DataEntrega", "DataEntrega", b1 =>
                         {
                             b1.Property<string>("EntregaId")
@@ -273,6 +279,13 @@ namespace DDDNetCore.Migrations
                     b.Navigation("TempoColocação");
 
                     b.Navigation("TempoRetirada");
+
+                    b.Navigation("armazem");
+                });
+
+            modelBuilder.Entity("DDDSample1.Domain.Armazéns.Armazém", b =>
+                {
+                    b.Navigation("entregas");
                 });
 #pragma warning restore 612, 618
         }
