@@ -1,15 +1,25 @@
 
+#main{
+    position:relative;
+    padding-top: 0 auto;
+    width: 80%;
+    height: 100%;
+    margin:0 auto; 
+}
+
 #adicionarCamiao{
-    align-content: center;
-    
+    width: 80%;
+    height: 100%;
+    margin: auto;     
 }
 
 div {
-    vertical-align: middle;
+    vertical-align:top;
     align-content: center;
     padding-top: 0px;
     text-align: center;
 }
+
 .caixaTexto{
     align-content: center;
 }
