@@ -57,6 +57,7 @@ namespace DDDSample1.Controllers
             
             return response;
         }
+        /*
 
         [HttpPost]
         public async Task<ActionResult<EntregasDTO>> Create(JObject entregaJSON) {
@@ -68,6 +69,35 @@ namespace DDDSample1.Controllers
                 return BadRequest(new {exception.Message});
             }
 
+        }
+
+*/
+        [HttpPost]
+        public async Task<ActionResult<EntregasDTO>> Create(EntregasDTO dto)
+        {
+            var list = await _service.GetAllAsync();
+            if (list != null)
+            {
+                foreach (var deliveryDto in list)
+                {
+                    if (deliveryDto.GetIdentificador.Equals(dto.GetIdentificador))
+                    {
+                        return BadRequest(new
+                            { Message = "This Delivery identifier already exists try another one." });
+                    }
+                }
+            }
+            
+            try
+            {
+                var delivery = await _service.RegistarEntrega(dto);
+
+                return CreatedAtAction(nameof(GetById), new { id = delivery.identificador }, delivery);
+            }
+            catch (BusinessRuleValidationException ex)
+            {
+                return BadRequest(new { ex.Message });
+            }
         }
 
         // GET: api/Entregas
