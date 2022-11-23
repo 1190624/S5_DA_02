@@ -24,6 +24,7 @@ namespace DDDSample1.Domain.Entregas.Validator {
 
 
         public bool IsValid(params Object[] listParameter){
+            
            if(!Regex.IsMatch((String)listParameter[0], ID_REGEX))
                 throw new BusinessRuleValidationException("Formato inválido do Identificador da Entrega;\nO Identificador da Entrega deve ser composto por 6 caratéres numéricos;");
             

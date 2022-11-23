@@ -8,13 +8,13 @@ namespace DDDSample1.Domain.Entregas {
 
         private Identificador armazémId;
         private DataEntrega dataEntrega;
-
         private Massa massa;
 
         private TempoColocação tempoColocação;
 
         private TempoRetirada tempoRetirada;
 
+         public Armazém armazem{get;set;}
 
         public Entrega() {}
 

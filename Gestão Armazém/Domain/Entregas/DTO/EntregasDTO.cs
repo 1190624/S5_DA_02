@@ -29,6 +29,8 @@ namespace DDDSample1.Domain.Entregas.DTO {
         [DataMember(Name = "Tempo Retirada")]
         public Double tempoRetirada;
 
+        public Armazém armazem{get;set;}
+
         public EntregasDTO(String identificador,
             String armazém,
             String dia,
