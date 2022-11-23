@@ -14,7 +14,6 @@ export default (app: Router) => {
   route.post('',
     celebrate({
       body: Joi.object({
-        rotaId: Joi.string().required(),
         origem: Joi.string().required(),
         destino: Joi.string().required(),
         distancia: Joi.number().required(),

@@ -3,7 +3,7 @@ import { IRotaPersistence } from '../../dataschema/IRotaPersistence';
 
 const RotaSchema = new mongoose.Schema(
   {
-    rotaId: {
+    domainId: {
       type: String,
       unique: true,
     },

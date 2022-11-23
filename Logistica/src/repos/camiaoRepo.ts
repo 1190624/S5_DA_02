@@ -57,7 +57,7 @@ export default class CamiaoRepo implements ICamiaoRepo {
     }
  
     public async save(camiao: Camiao): Promise<Camiao> {
-        const query = { Matricula : camiao.matricula.value };
+        const query = { domainId : camiao.id.toString(), matricula : camiao.matricula.toString() };
     
         const camiaoDoc = await this.camiaoSchema.findOne(query);
     
