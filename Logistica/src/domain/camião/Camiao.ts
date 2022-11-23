@@ -88,7 +88,7 @@ export class Camiao extends AggregateRoot<CamiaoProps> {
     }
 
     public static create(camiaoDTO: CamiaoDTO | any, id?: UniqueEntityID): Result<Camiao> {
-        const matriculaAux = Matricula.create(camiaoDTO.matricula);
+        const matriculaAux = new Matricula(camiaoDTO.matricula);
         const caracteristicaAux = Caracteristica.create(camiaoDTO.caracteristica);
         const autonomiaAux = Autonomia.create(camiaoDTO.autonomia);
         const capTransAux = CapacidadeTransporte.create(camiaoDTO.capacidadeTransporte);
@@ -97,7 +97,7 @@ export class Camiao extends AggregateRoot<CamiaoProps> {
         const tempoAux = TempoCarregamento.create(camiaoDTO.tempoCarregamento);
         
         const camiao = new Camiao({
-            matricula: matriculaAux.getValue(),
+            matricula: matriculaAux,
             caracteristica: caracteristicaAux.getValue(),
             autonomia: autonomiaAux.getValue(),
             capacidadeTransporte: capTransAux.getValue(),

@@ -42,7 +42,7 @@ export default class CamiaoRepo implements ICamiaoRepo {
 
 
     public async exists(t: Camiao): Promise<boolean> {
-        const idX = t.matricula instanceof Matricula ? (<Matricula>t.matricula).value : t.matricula;
+        const idX = t.matricula instanceof Matricula ? (<Matricula>t.matricula).toValue() : t.matricula;
 
         const query = { domainId: idX };
         const camiaoDocument = await this.camiaoSchema.findOne(query as FilterQuery<ICamiaoPersistence & Document>);
@@ -57,7 +57,7 @@ export default class CamiaoRepo implements ICamiaoRepo {
     }
  
     public async save(camiao: Camiao): Promise<Camiao> {
-        const query = { matricula : camiao.matricula.value.toString() }; 
+        const query = { matricula : camiao.id }; 
     
         const camiaoDoc = await this.camiaoSchema.findOne(query);
     
@@ -69,14 +69,14 @@ export default class CamiaoRepo implements ICamiaoRepo {
             return CamiaoMapper.toDomain(camiaoCreated);
           } else {
 
-            camiaoDoc.matricula = camiao.matricula.value;
+            //camiaoDoc.matricula = camiao.matricula.value;
             camiaoDoc.caracteristica = camiao.caracteristica.value;
             camiaoDoc.autonomia = camiao.autonomia.value;
             camiaoDoc.capacidadeTransporte = camiao.capacidadeTransporte.value;
             camiaoDoc.capacidadeBateria = camiao.capacidadeBateria.value;
             camiaoDoc.tara = camiao.tara.value;
-            camiaoDoc.tempoCarregamento = camiao.tempoCarregamento.value;
-
+            camiaoDoc.tempoCarregamento = camiao.tempoCarregamento.value; 
+            
             await camiaoDoc.save();
     
             return camiao;
@@ -85,5 +85,4 @@ export default class CamiaoRepo implements ICamiaoRepo {
           throw err;
         }
       }
-    
 }

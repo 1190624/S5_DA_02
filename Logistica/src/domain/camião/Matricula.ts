@@ -1,11 +1,12 @@
-import { ValueObject } from "../../core/domain/ValueObject";
-import { Result } from "../../core/logic/Result";
-
+import { UniqueEntityID } from "../../core/domain/UniqueEntityID";
+/*
 interface MatriculaProps {
     value: string;
   }
+  */
   
-  export class Matricula extends ValueObject<MatriculaProps> {
+  export class Matricula extends UniqueEntityID {
+    /**
     get value (): string {
       return this.props.value;
     }
@@ -38,8 +39,3 @@ interface MatriculaProps {
 
         return Result.ok<Matricula>(new Matricula({ value: matricula })) 
         */
-
-
-
-
-}

@@ -50,14 +50,13 @@ export default class CamiaoService implements ICamiaoService {
             else {
               //utilizadors[e].email = new UtilizadorEmail({value: utilizadorDTO.novo});
       
-              camiao.matricula= new Matricula({value: camiaoDTO.matricula});
+              //camiao.matricula= new Matricula(camiaoDTO.matricula);
               camiao.caracteristica= new Caracteristica({value: camiaoDTO.caracteristica});
               camiao.autonomia = new Autonomia({value: camiaoDTO.autonomia});
               camiao.capacidadeBateria = new CapacidadeBateria({value: camiaoDTO.capacidadeBateria});
               camiao.capacidadeTransporte = new CapacidadeTransporte({value: camiaoDTO.capacidadeTransporte});
               camiao.tara = new Tara({value: camiaoDTO.tara});
               camiao.tempoCarregamento = new TempoCarregamento({value: camiaoDTO.tempoCarregamento});
-
         
               await this.camiaoRepo.save(camiao);
       
