@@ -8,7 +8,7 @@ import { UniqueEntityID } from '../core/domain/UniqueEntityID';
 export class RotaMap extends Mapper<Rota> {
   public static toDTO(rota: Rota): IRotaDTO {
     return {
-        id: rota.id.toString(),
+        rotaId: rota.rotaId.toString(),
         origem: rota.rotaOrigem.origem,
         destino: rota.rotaDestino.destino,
         distancia: rota.rotaDistancia.distancia,
@@ -28,7 +28,7 @@ export class RotaMap extends Mapper<Rota> {
 
   public static toPersistence(rota: Rota): any {
     const res = {
-        domainId: rota.id.toString(),
+        rotaId: rota.rotaId.toString(),
         origem: rota.rotaOrigem.origem,
         destino: rota.rotaDestino.destino,
         distancia: rota.rotaDistancia.distancia,

@@ -30,7 +30,7 @@ export default class CamiaoRepo implements ICamiaoRepo {
 
 
     public async findByDomainMatricula(matricula: string | Matricula): Promise<Camiao> {
-        const query = { domainId: matricula};
+        const query = { matricula : matricula.toString()};
         const camiaoRecord = await this.camiaoSchema.findOne( query as FilterQuery<ICamiaoPersistence & Document> );
     
         if( camiaoRecord != null) {
@@ -57,7 +57,7 @@ export default class CamiaoRepo implements ICamiaoRepo {
     }
  
     public async save(camiao: Camiao): Promise<Camiao> {
-        const query = { domainId : camiao.id.toString(), matricula : camiao.matricula.toString() };
+        const query = { matricula : camiao.matricula.value.toString() }; 
     
         const camiaoDoc = await this.camiaoSchema.findOne(query);
     

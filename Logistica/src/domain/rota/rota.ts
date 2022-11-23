@@ -12,12 +12,13 @@ import { RotaOrigem } from './rotaOrigem';
 import { RotaTempo } from './rotaTempo';
 
 interface RotaProps {
-  rotaOrigem: RotaOrigem;
-  rotaDestino: RotaDestino;
-  rotaDistancia: RotaDistancia;
-  rotaTempo: RotaTempo;
-  rotaGastoEnergetico: RotaGastoEnergetico;
-  rotaTempoCargaExtra: RotaTempoCargaExtra;
+    rotaId: RotaId;
+    rotaOrigem: RotaOrigem;
+    rotaDestino: RotaDestino;
+    rotaDistancia: RotaDistancia;
+    rotaTempo: RotaTempo;
+    rotaGastoEnergetico: RotaGastoEnergetico;
+    rotaTempoCargaExtra: RotaTempoCargaExtra;
 }
 
 export class Rota extends AggregateRoot<RotaProps> {
@@ -26,7 +27,7 @@ export class Rota extends AggregateRoot<RotaProps> {
     }
 
     get rotaId(): RotaId {
-        return RotaId.caller(this.id);
+        return this.props.rotaId;
     }
 
     get rotaOrigem(): RotaOrigem {
@@ -58,7 +59,8 @@ export class Rota extends AggregateRoot<RotaProps> {
     }
 
     public static create(rotaDTO: IRotaDTO | any, id?: UniqueEntityID): Result<Rota> {
-
+        
+        const rotaId = new RotaId(rotaDTO.rotaId);
         const rotaOrigem = RotaOrigem.create(rotaDTO.origem);
         const rotaDestino = RotaDestino.create(rotaDTO.destino);
         const rotaDistancia = RotaDistancia.create(rotaDTO.distancia);
@@ -71,6 +73,7 @@ export class Rota extends AggregateRoot<RotaProps> {
         } else {
             const rota = new Rota(
             {
+                rotaId: rotaId,
                 rotaOrigem: rotaOrigem.getValue(),
                 rotaDestino: rotaDestino.getValue(),
                 rotaDistancia: rotaDistancia.getValue(),
