@@ -7,14 +7,15 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { MenuNavegacaoComponent } from './menu-navegacao/menu-navegacao.component';
 import { CriarCamiaoComponent } from './criar-camiao/criar-camiao.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CriarArmazemComponent } from './criar-armazem/criar-armazem.component';
 //import { CriarArmazemComponent } from './criar-armazem/criar-armazem.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuNavegacaoComponent,
-    CriarCamiaoComponent
-    /*CriarArmazemComponent*/
+    CriarCamiaoComponent,
+    CriarArmazemComponent
   ],
   imports: [
     BrowserModule,

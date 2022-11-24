@@ -1,0 +1,54 @@
+<div id  ="main">
+<app-root></app-root>
+<body>
+    <header>
+        <h1>Adicionar Armazém</h1>
+    </header>
+    <div id ="adicionarArmazem">
+
+        <div class="caixaTexto"> 
+            <input type = "text" id= "identificador" name="Identificador" placeholder="Identificador" required [(ngModel)] = "identificador">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id="designacao" name="Designação" placeholder="Designação" required [(ngModel)] = "designacao">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id="codigoPostal" name="Código-Postal" placeholder="Código-Postal" required [(ngModel)] = "codigoPostal">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id ="numeroPorta" name="Número da Porta" placeholder="Número da Porta" required [(ngModel)] = "numeroPorta">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id= "nomeRua" name="Nome da Rua" placeholder="Nome da Rua" required [(ngModel)] = "nomeRua">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id = "localidade" name="Localidade" placeholder="Localidade" required [(ngModel)] = "localidade">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id = "pais" name="País" placeholder="País" required [(ngModel)] = "pais">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id = "municipio" name="Município" placeholder="Município" required [(ngModel)] = "municipio">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id = "latitude" name="Latitude" placeholder="Latitude" required [(ngModel)] = "latitude">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id = "longitude" name="Longitude" placeholder="Longitude" required [(ngModel)] = "longitude">
+        </div>
+        <br>
+        <button class=btn style="background-color: #F12D2A" (click)="Return()">Return</button>
+        <button class=btn style="background-color: #56D225" (click)="Submit()">Submit</button>   
+    </div>
+
+</body>
+</div>

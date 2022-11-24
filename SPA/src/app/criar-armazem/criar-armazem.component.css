@@ -1,0 +1,43 @@
+
+#main{
+    position:relative;
+    padding-top: 0 auto;
+    width: 80%;
+    height: 100%;
+    margin:0 auto; 
+}
+
+#adicionarArmazem{
+    width: 80%;
+    height: 100%;
+    margin: auto;     
+}
+
+div {
+    vertical-align:top;
+    align-content: center;
+    padding-top: 0px;
+    text-align: center;
+}
+
+.caixaTexto{
+    align-content: center;
+}
+
+
+textarea{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+}
+
+input{
+    width: 80%;
+    text-align: center;
+}
+
+button{
+    padding: 5px 20px;
+    width: 30%;
+    max-width: 30%;
+}
