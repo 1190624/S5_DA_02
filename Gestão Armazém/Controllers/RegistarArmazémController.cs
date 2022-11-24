@@ -9,7 +9,7 @@ using DDDSample1.Domain.Shared;
 using Microsoft.AspNetCore.Authorization;
 
 namespace DDDSample1.Controllers {
-    [Route("/api/[controller]")]
+    [Route("/api/armazem")]
     [ApiController]
     public class RegistarArmazémController : ControllerBase {
         private readonly RegistarArmazémService service;
