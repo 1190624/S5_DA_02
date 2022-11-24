@@ -47,6 +47,7 @@ namespace DDDSample1
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("AllowOrigin");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,19 +68,32 @@ namespace DDDSample1
             {
                 endpoints.MapControllers();
             });
+            /**
+             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+            app.UseCors("AllowOrigin");
+
+            // custom jwt auth middleware
+            app.UseMiddleware<>();
+            */
+
         }
 
         public void ConfigureMyServices(IServiceCollection services)
         {
-            services.AddTransient<IUnitOfWork,UnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
-            services.AddTransient<ICategoryRepository,CategoryRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<CategoryService>();
 
-            services.AddTransient<IProductRepository,ProductRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ProductService>();
 
-            services.AddTransient<IFamilyRepository,FamilyRepository>();
+            services.AddTransient<IFamilyRepository, FamilyRepository>();
             services.AddTransient<FamilyService>();
 
             services.AddTransient<IArmazémRepository, ArmazémRepository>();
@@ -88,8 +102,19 @@ namespace DDDSample1
             services.AddTransient<EditarArmazémService>();
 
             services.AddTransient<IEntregasRepository, EntregasRepository>();
-             services.AddTransient<EntregaService>();
-        }    
+            services.AddTransient<EntregaService>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    name: "AllowOrigin",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                    });
+            });
+        }
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers().AddNewtonsoftJson();
