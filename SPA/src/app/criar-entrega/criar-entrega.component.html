@@ -1,0 +1,47 @@
+<div id  ="main">
+<app-root></app-root>
+<body>
+    <header>
+        <h1>Adicionar Entrega</h1>
+    </header>
+    <div id ="adicionarEntrega">
+
+        <div class="caixaTexto"> 
+            <input type = "text" id= "identificador" name="identificador" placeholder="Identificador" required [(ngModel)] = "identificador">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id="armazémID" name="armazémID" placeholder="ArmazémID" required [(ngModel)] = "armazemID">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id="dia" name="dia" placeholder="Dia" required [(ngModel)] = "dia">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id ="mês" name="mês" placeholder="Mês" required [(ngModel)] = "mes">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id= "ano" name="ano" placeholder="Ano" required [(ngModel)] = "ano">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id= "massa" name="massa" placeholder="Massa" required [(ngModel)] = "massa">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id="tempoColocação" name="tempoColocação" placeholder="Tempo de Colocação" required [(ngModel)] = "tempoColocacao">
+        </div>
+        <br>
+        <div class="caixaTexto"> 
+            <input type = "text" id="tempoRetirada" name="tempoRetirada" placeholder="Tempo de Retirada" required [(ngModel)] = "tempoRetirada">
+        </div>
+        <br>
+        <button class=btn style="background-color: #F12D2A" (click)="Return()">Return</button>
+        <button class=btn style="background-color: #56D225" (click)="Submit()">Submit</button>   
+    </div>
+
+</body>
+
+</div>
