@@ -9,13 +9,15 @@ import { CriarCamiaoComponent } from './criar-camiao/criar-camiao.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CriarArmazemComponent } from './criar-armazem/criar-armazem.component';
 //import { CriarArmazemComponent } from './criar-armazem/criar-armazem.component';
+import { CriarEntregaComponent } from './criar-entrega/criar-entrega.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuNavegacaoComponent,
     CriarCamiaoComponent,
-    CriarArmazemComponent
+    CriarArmazemComponent,
+    CriarEntregaComponent
   ],
   imports: [
     BrowserModule,
