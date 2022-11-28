@@ -50,7 +50,16 @@ export default class Mapa {
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(this.renderer.domElement);
-            //TODO - controlo da camara
+
+                    // Orbit controls
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+        this.controls.enableDamping = true;
+        this.controls.dampingFactor = 0.2;
+
+        this.controls.maxPolarAngle = Math.PI / 2;
+
+        this.controls.target.set(0, 5, 0);
+        this.controls.update();
         this.setUpScene(armazemData);
 
 
@@ -166,6 +175,11 @@ export default class Mapa {
 
     }
     //TODO - funçao update
+    update() {
+        this.controls.update();
+        this.renderer.render(this.scene, this.camera);
+    }
+
     windowResize() {
 
         this.camera.aspect = window.innerWidth / window.innerHeight;
