@@ -3,8 +3,6 @@ name: ElectriGo C.I.
 on:
   push:
     branches: [ main ]
-    paths:
-      - '../../Gestão Armazém/DDDNetCore.csproj'
   pull_request:
     branches: [ main ]
 
