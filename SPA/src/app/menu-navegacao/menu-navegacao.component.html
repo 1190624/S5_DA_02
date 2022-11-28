@@ -37,7 +37,18 @@
     
     </div>
     <div id="GestaoDeEntregas">
+        <button id="GestaoCamioesButton">
+            <i class='bx bx-package'></i>
+            Gestão de Entregas</button>
         
+        <div class="item_div">
+            <!--<a href="/adiconarCamiao">Adicionar Camião</a>-->
+            <button class = "button" routerLink="/adicionarEntrega">Adicionar Entrega</button>
+            <!--<li><a href="#" [routerLink]="['/adicionarCamiao']">Adicionar Camião</a></li>-->
+            <br>
+            <button class = "button" [routerLink]="['/adicionarEntrega']">Listar Entregas</button>
+            <!--<a href="#">Listar Camiões</a>-->
+        </div>
     </div>
     <div id="GestaoDePercursos">
         
