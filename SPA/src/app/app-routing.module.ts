@@ -4,11 +4,14 @@ import { CriarCamiaoComponent } from './criar-camiao/criar-camiao.component';
 import { CriarArmazemComponent } from './criar-armazem/criar-armazem.component';
 import { MenuNavegacaoComponent } from './menu-navegacao/menu-navegacao.component';
 import { AppComponent } from './app.component';
+import { CriarEntregaComponent } from './criar-entrega/criar-entrega.component';
+
 const routes: Routes = [
   {path: 'appRoot', component: AppComponent},
   {path: 'adicionarCamiao', component: CriarCamiaoComponent},
   {path: 'adicionarArmazem', component: CriarArmazemComponent},
-  {path: 'menuNav', component: MenuNavegacaoComponent}
+  {path: 'menuNav', component: MenuNavegacaoComponent},
+  {path: 'adicionarEntrega', component: CriarEntregaComponent}
 ];
 
 @NgModule({
