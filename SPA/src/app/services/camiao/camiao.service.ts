@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { Camiao } from '../model/camiao';
+import { Camiao } from '../../model/camiao';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,15 @@ export class CamiaoService {
       "autonomia":autonomia, "capacidadeTransporte":capacidadeTransporte, "capacidadeBateria":capacidadeBateria, "tara": tara, "tempoCarregamento":tempoCarregamento}
       
       console.log(body);
-      return this.httpClient.post(this.url, body).pipe(map(this.extractData));
+      return this.httpClient.post(this.url, body).pipe(catchError(err => {
+        if (err.status == 400) {
+          alert('Camião inválido!');
+        }
+        if (err.status == 500) {
+          alert('Camião inválido:\nPoderá já existir um camião com a matrícula introduzida!');
+        }
+        return throwError(err);
+      }));
     }
 
   
