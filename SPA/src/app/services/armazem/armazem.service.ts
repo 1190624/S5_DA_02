@@ -19,8 +19,20 @@ export class ArmazemService {
     "NomeRua":nomeRua, "Localidade":localidade, "País":pais, "Munícipio":municipio, "Latitude":latitude, "Longitude": longitude}
     console.log(body);
       
-    return this.httpClient.post(this.url, body).pipe(map(this.extractData));
+    return this.httpClient.post(this.url, body).pipe(catchError(err => {
+      if (err.status == 400) {
+        alert('Armazém não criado!');
+      }
+      if (err.status == 500) {
+        alert('Armazém inválido:\nPoderá já existir um armazém com o ID introduzido!');
+      }
+      return throwError(err);
+    }));
   
+  }
+
+  listarArmazens(): Observable<any> {
+    return this.httpClient.get(this.url).pipe(map(this.extractData));
   }
 
   public extractData(res:any){
