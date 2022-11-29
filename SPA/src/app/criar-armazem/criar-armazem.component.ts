@@ -22,7 +22,7 @@ export class CriarArmazemComponent implements OnInit {
   latitude: number;
   longitude: number;
 
-  constructor(private service : ArmazemService, private route: ActivatedRoute, private router:Router) { }
+  constructor(private service: ArmazemService, private route: ActivatedRoute, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -30,16 +30,17 @@ export class CriarArmazemComponent implements OnInit {
 
   Submit(): void {
 
+    const ID_REGEX= new RegExp(/^([A-Z]|[0-9]){3}$/);
     const CODIGO_POSTAL_REGEX = new RegExp(/^[0-9]{4}-[0-9]{3}$/);
 
-    if (this.identificador == null) {
-      alert("Necessário inserir um Id do Armazém!");
+    if (!ID_REGEX.test(this.identificador)) {
+      alert("O Identificador não é válido!\nFormato exemplo: A01");
     } else if (this.designacao == null) {
-      alert("Necessário inserir uma Designação do Armazém!.");
+      alert("Necessário inserir uma Designação do Armazém!");
     } else if (!CODIGO_POSTAL_REGEX.test(this.codigoPostal)) {
-      alert("O Código Postal não se apresenta no formato correto!");
-    } else if (this.numeroPorta < 0) {
-      alert("O número da Porta não pode ser um número negativo!");
+      alert("O Código Postal não se apresenta no formato correto!\nFormato exemplo: 1000-100");
+    } else if (this.numeroPorta < 0 || this.numeroPorta == null) {
+      alert("O Número da Porta não é válido!");
     } else if (this.nomeRua == null) {
       alert("Necessário inserir uma Rua!");
     } else if (this.localidade == null) {
@@ -48,25 +49,21 @@ export class CriarArmazemComponent implements OnInit {
       alert("Necessário inserir um País!");
     } else if (this.municipio == null) {
       alert("Necessário inserir um Município!");
-    } else if (this.latitude < -90) {
-      alert("A latitude deve ser um número entre -90 e 90!");
-    } else if (this.latitude > 90) {
-      alert("A latitude deve ser um número entre -90 e 90!");
-    } else if (this.longitude < -180) {
-      alert("A longitude deve ser um número entre -180 e 180!");
-    } else if (this.longitude > 180) {
-      alert("A longirude deve ser um número entre -180 e 180!");
+    } else if (this.latitude < -90 || this.latitude > 90 || this.latitude == null) {
+      alert("A latitude não é válida!");
+    } else if (this.longitude < -180 ||this.longitude > 180 || this.longitude == null) {
+      alert("A longitude não é válida!");
     } else {
 
-    this.armazem = new Armazem(this.identificador, this.designacao, this.codigoPostal, this.numeroPorta,
-      this.nomeRua, this.localidade, this.pais, this.municipio, this.latitude, this.longitude);
-    this.service.criarArmazem(this.identificador, this.designacao, this.codigoPostal, this.numeroPorta,
-      this.nomeRua, this.localidade, this.pais, this.municipio, this.latitude, this.longitude).subscribe(data => {alert("O armazém foi criado.")});
-    
-  }
-}
+      this.armazem = new Armazem(this.identificador, this.designacao, this.codigoPostal, this.numeroPorta,
+        this.nomeRua, this.localidade, this.pais, this.municipio, this.latitude, this.longitude);
+      this.service.criarArmazem(this.identificador, this.designacao, this.codigoPostal, this.numeroPorta,
+        this.nomeRua, this.localidade, this.pais, this.municipio, this.latitude, this.longitude).subscribe(data => { alert("O armazém foi criado.") });
 
-  Return(): void{
+    }
+  }
+
+  Return(): void {
     this.router.navigate(['/menuNav']);
   }
 }
