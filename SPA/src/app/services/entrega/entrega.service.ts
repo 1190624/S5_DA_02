@@ -20,7 +20,15 @@ export class EntregaService {
 
       const body = {"Identificador": identificador, "Armazém": armazemID, "Dia": dia, "Mes": mes, "Ano": ano, "Massa":massa,"TempoColocação":tempoColocacao, "TempoRetirada":tempoRetirada}
       console.log(body);
-      return this.httpClient.post(this.url, body).pipe(map(this.extractData));
+      return this.httpClient.post(this.url, body).pipe(catchError(err => {
+        if (err.status == 400) {
+          alert('Entrega inválida:\nPoderá já existir uma entrega com o ID introduzido!');
+        }
+        if (err.status == 500) {
+          alert('Entrega inválida:\nPoderá já existir um armazém com o ID introduzido!');
+        }
+        return throwError(err);
+      }));
     }
 
     public extractData(res: any) {
