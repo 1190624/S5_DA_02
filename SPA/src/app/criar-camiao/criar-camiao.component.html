@@ -1,43 +1,55 @@
-<div id  ="main">
-<app-root></app-root>
-<body>
-    <header>
-        <h1>Adicionar Camião</h1>
-    </header>
-    <div id ="adicionarCamiao">
+<app-menu-header></app-menu-header>
 
-        <div class="caixaTexto"> 
-            <input type = "text" id= "matricula" name="Matricula" placeholder="Matrícula" required [(ngModel)] = "matricula">
+<body style="background-color:grey;text-align:center">
+
+
+    <div class="contain">
+
+        <div class="wrapper">
+            <div class="contacts"
+                style="background-image: url('../../assets/truck.jpg'); background-repeat: no-repeat; background-size: cover;">
+                <h3><i class='bx bxs-truck'></i> Novo Camião</h3>
+
+            </div>
+
+            <div class="form">
+                <h3>Preencha os seguintes campos:</h3>
+                <form action="">
+                    <p>
+                        <label for="">Matrícula</label>
+                        <input type="text" id="matricula" name="Matrícula" required [(ngModel)]="matricula">
+                    </p>
+                    <p>
+                        <label for="">Característica</label>
+                        <input type="text" id="caracteristica" name="Característica" required [(ngModel)]="caracteristica">
+                    </p>
+                    <p>
+                        <label for="">Autonomia</label>
+                        <input type="text" id="autonomia" name="Autonomia" required [(ngModel)]="autonomia">
+                    </p>
+                    <p>
+                        <label for="">Capacidade de Transporte</label>
+                        <input type="text" id="capacidadeTransporte" name="Capacidade de Transporte" required [(ngModel)]="capacidadeTransporte">
+                    </p>
+                    <p>
+                        <label for="">Capacidade de Bateria</label>
+                        <input type="text" id="capacidadeBateria" name="Capacidade de Bateria" required [(ngModel)]="capacidadeBateria">
+                    </p>
+                    <p>
+                        <label for="">Tara</label>
+                        <input type="text" id="tara" name="Tara" required [(ngModel)]="tara">
+                    </p>
+                    <p>
+                        <label for="">Tempo de Carregamento</label>
+                        <input type="text" id="tempoCarregamento" name="Tempo de Carregamento" required [(ngModel)]="tempoCarregamento">
+                    </p>
+                    <p>
+
+                    <p class="full-width">
+                        <button (click)="Submit()">Submeter</button>
+                    </p>
+                </form>
+            </div>
         </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id="caracteristica" name="Característica" placeholder="Característica" required [(ngModel)] = "caracteristica">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id="autonomia" name="Autonomia" placeholder="Autonomia" required [(ngModel)] = "autonomia">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id ="capacidadeTransporte" name="capacidadeTransporte" placeholder="Capacidade de Transporte" required [(ngModel)] = "capacidadeTransporte">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id= "capacidadeBateria" name="capacidadeBateria" placeholder="Capacidade de Bateria" required [(ngModel)] = "capacidadeBateria">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id= "tara" name="Tara" placeholder="Tara" required [(ngModel)] = "tara">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id="tempoCarregamento" name="tempoCarregamento" placeholder="Tempo de Carregamento" required [(ngModel)] = "tempoCarregamento">
-        </div>
-        <br>
-        <button class=btn style="background-color: #F12D2A" (click)="Return()">Return</button>
-        <button class=btn style="background-color: #56D225" (click)="Submit()">Submit</button>   
     </div>
-
 </body>
-
-</div>
