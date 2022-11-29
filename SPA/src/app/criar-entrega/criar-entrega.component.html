@@ -1,47 +1,57 @@
-<div id  ="main">
-<app-root></app-root>
-<body>
-    <header>
-        <h1>Adicionar Entrega</h1>
-    </header>
-    <div id ="adicionarEntrega">
+<app-menu-header></app-menu-header>
 
-        <div class="caixaTexto"> 
-            <input type = "text" id= "identificador" name="identificador" placeholder="Identificador" required [(ngModel)] = "identificador">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id="armazémID" name="armazémID" placeholder="ArmazémID" required [(ngModel)] = "armazemID">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id="dia" name="dia" placeholder="Dia" required [(ngModel)] = "dia">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id ="mês" name="mês" placeholder="Mês" required [(ngModel)] = "mes">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id= "ano" name="ano" placeholder="Ano" required [(ngModel)] = "ano">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id= "massa" name="massa" placeholder="Massa" required [(ngModel)] = "massa">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id="tempoColocação" name="tempoColocação" placeholder="Tempo de Colocação" required [(ngModel)] = "tempoColocacao">
-        </div>
-        <br>
-        <div class="caixaTexto"> 
-            <input type = "text" id="tempoRetirada" name="tempoRetirada" placeholder="Tempo de Retirada" required [(ngModel)] = "tempoRetirada">
-        </div>
-        <br>
-        <button class=btn style="background-color: #F12D2A" (click)="Return()">Return</button>
-        <button class=btn style="background-color: #56D225" (click)="Submit()">Submit</button>   
+<body style="background-color:grey;text-align:center">
+
+
+  <div class="contain">
+
+    <div class="wrapper">
+      <div class="contacts" style="background-image: url('../../assets/deliveries.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <h3><i class='bx bxs-package'></i> Nova Entrega</h3>
+
+      </div>
+
+      <div class="form">
+        <h3>Preencha os seguintes campos:</h3>
+        <form action="">
+          <p>
+            <label for="">Identificador</label>
+            <input type="text" id="identificador" name="Identificador" required [(ngModel)]="identificador">
+          </p>
+          <p>
+            <label for="">ID do Armazém</label>
+            <input type="text" id="armazemID" name="Armazém ID" required [(ngModel)]="armazemID">
+          </p>
+          <p>
+            <label for="">Dia</label>
+            <input type="text" id="dia" name="Dia" required [(ngModel)]="dia">
+          </p>
+          <p>
+            <label for="">Mês</label>
+            <input type="text" id="mes" name="Mês" required [(ngModel)]="mes">
+          </p>
+          <p>
+            <label for="">Ano</label>
+            <input type="text" id="ano" name="Ano" required [(ngModel)]="ano">
+          </p>
+          <p>
+            <label for="">Massa</label>
+            <input type="text" id="massa" name="Massa" required [(ngModel)]="massa">
+          </p>
+          <p>
+            <label for="">Tempo de Colocação</label>
+            <input type="text" id="tempoColocacao" name="Tempo de Colocação" required [(ngModel)]="tempoColocacao">
+          </p>
+          <p>
+            <label for="">Tempo de Retirada</label>
+            <input type="text" id="tempoRetirada" name="Tempo de Retirada" required [(ngModel)]="tempoRetirada">
+          </p>
+
+          <p class="full-width">
+            <button (click)="Submit()">Submeter</button>
+          </p>
+        </form>
+      </div>
     </div>
-
+  </div>
 </body>
-
-</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntregaService } from "src/app/services/entrega.service";
+import { EntregaService } from "src/app/services/entrega/entrega.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Entrega } from '../model/entrega';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -33,30 +33,30 @@ export class CriarEntregaComponent implements OnInit {
     const DIA_REGEX = new RegExp(/^([1-9]|[12][0-9]|3[01])$/);
     const MES_REGEX = new RegExp(/^([1-9]|1[0-2])$/);
     const ANO_REGEX = new RegExp(/^(20[0-9]{2})$/);
-
-    if(this.massa < 0){
-      alert("O Valor da Massa deve ser acima de 0;");
-    }
-    else if(this.tempoColocacao < 0){
-      alert("O Valor do tempo de colocação deve ser acima de 0;");
-    }
-    else if(this.tempoRetirada < 0){
-      alert("O Valor do tempo de retirada deve ser acima de 0;");
-    }
-    else if(!IDENTIFICADOR_REGEX.test(this.identificador)){
-      alert("O Identificador da Entrega deve ser composto por 6 caratéres numéricos;");
+    
+    if(!IDENTIFICADOR_REGEX.test(this.identificador)){
+      alert("O Identificador da Entrega deve ser composto por 6 caratéres numéricos!");
     }
     else if(!ARMAZEMID_REGEX.test(this.armazemID)){
-      alert("O Identificador do Armazém deve ser composto por 3 caratéres alfanuméricos;");
+      alert("O Identificador do Armazém deve ser composto por 3 caratéres alfanuméricos!");
     }
     else if(!DIA_REGEX.test(this.dia.toString())){
-      alert("O Identificador do Dia da Entrega deve ser composto por um valor valido");
+      alert("O Identificador do Dia da Entrega deve ser composto por um valor válido!");
     }
     else if(!MES_REGEX.test(this.mes.toString())){
-      alert("Identificador do Mês da Entrega deve ser composto por um valor valido;");
+      alert("Identificador do Mês da Entrega deve ser composto por um valor válido!");
     }
     else if(!ANO_REGEX.test(this.ano.toString())){
-      alert("Identificador do Ano da Entrega deve ser composto por um valor valido;");
+      alert("Identificador do Ano da Entrega deve ser composto por um valor válido!");
+    }
+    else if(this.massa < 0 || this.massa == null){
+      alert("O Valor da Massa é inválido!");
+    }
+    else if(this.tempoColocacao < 0 || this.tempoColocacao == null){
+      alert("O Valor do Tempo de Colocação é inválido!");
+    }
+    else if(this.tempoRetirada < 0 || this.tempoRetirada == null){
+      alert("O Valor do Tempo de Retirada é inválido!");
     }
     else{
       this.entrega = new Entrega(this.identificador, this.armazemID, this.dia, this.mes, this.ano, this.massa, this.tempoColocacao, this.tempoRetirada);
