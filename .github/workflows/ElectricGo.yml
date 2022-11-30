@@ -17,7 +17,10 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-    - name: Build .NET
+    - name: Build & Test .NET
       run: echo 'Doing c# build' 
-        && dotnet build 'Gestão Armazém/DDDNetCore.csproj'
-        && dotnet test 'Gestão Armazém/DDDNetCore.csproj'
+        && dotnet restore 'Gestão Armazém/DDDNetCore.csproj' 
+        && dotnet build --no-restore --configuration Release 'Gestão Armazém/DDDNetCore.csproj'
+        && dotnet restore 'GestãoArmazénsTests/GestãoArmazénsTests.csproj'
+        && dotnet build --no-restore --configuration Release 'GestãoArmazénsTests/GestãoArmazénsTests.csproj'
+        && dotnet test --no-build --configuration Release 'GestãoArmazénsTests/GestãoArmazénsTests.csproj'
