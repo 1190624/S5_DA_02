@@ -20,4 +20,4 @@ jobs:
     - name: Install .NET Dependencies
       run: dotnet add package Microsoft.EntityFrameworkCore.Analyzers --version 6.0.10
     - name: Build .NET
-      run: echo 'Doing c# build' && dotnet build 'Gestão Armazém/DDDNetCore.csproj' --no-restore
+      run: echo 'Doing c# build' && dotnet build 'Gestão Armazém/DDDNetCore.csproj'
