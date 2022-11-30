@@ -21,7 +21,6 @@ namespace Tests.TestesUnitarios.User
 
             Entrega entrega1 = new EntregasFactory().CriarEntrega("123456","T16","20","10", "2020", 10, 10, 10);
             EntregasDTO entregasDTO = EntregasMapper.toDTO(entrega1);
-            JObject entregasJSon = JObject.FromObject(entregasDTO);
             
          
             var mockEntregasRepository = new Mock<IEntregasRepository>();
@@ -34,7 +33,7 @@ namespace Tests.TestesUnitarios.User
             EntregaService entregaService = new EntregaService(mockUnit.Object, mockEntregasRepository.Object, mockArmazemRepository.Object);
             EntregaController controller = new EntregaController(entregaService);
 
-            var result = await controller.Create(entregasJSon);
+            var result = await controller.Create(entregasDTO);
 
             mockEntregasRepository.Verify(repository => repository.AddAsync(It.IsAny<Entrega>()), Times.AtLeastOnce());
             mockUnit.Verify(unit => unit.CommitAsync(), Times.AtLeastOnce());
