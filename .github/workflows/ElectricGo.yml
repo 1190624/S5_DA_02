@@ -18,4 +18,6 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Build .NET
-      run: echo 'Doing c# build' && dotnet build 'Gestão Armazém/DDDNetCore.csproj'
+      run: echo 'Doing c# build' 
+        && dotnet build 'Gestão Armazém/DDDNetCore.csproj'
+        && dotnet test 'Gestão Armazém/DDDNetCore.csproj'
