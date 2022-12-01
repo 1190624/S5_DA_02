@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'https://unpkg.com/three@0.146.0/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://unpkg.com/three@0.146.0/examples/jsm/loaders/GLTFLoader.js';
+
 import Armazem from './armazem.js';
 
 
@@ -15,22 +17,24 @@ export default class Mapa {
         //adição de nevoeiro
         this.scene.fog = new THREE.FogExp2(0x34583d, 0.004);
 
+        
         // adição de uma fonte de iluminação
         const color = 0xFFFFFF;
         const intensity = 1;
         const light = new THREE.SpotLight(color, intensity);
-        light.position.set(80, 80, 0);
+        light.position.set(100, 100, 100);
         light.angle = THREE.MathUtils.degToRad(30);
         light.penumbra = 0.4;
         this.scene.add(light);
         this.scene.add(light.target);
 
+        //ajuda para saber a origem da luz qual é o comprimento que é projetada
         //const helper = new THREE.SpotLightHelper(light);
         //this.scene.add(helper);
 
-        //this.renderer.shadowMap.enable = true;
+       // this.renderer.shadowMap.enable = true;
 
-    
+
         this.scene.background = new THREE.CubeTextureLoader().load([
             'skybox/xpos.png',
             'skybox/xneg.png',
@@ -51,7 +55,7 @@ export default class Mapa {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(this.renderer.domElement);
 
-                    // Orbit controls
+        // Orbit controls
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.controls.enableDamping = true;
         this.controls.dampingFactor = 0.2;
@@ -73,8 +77,6 @@ export default class Mapa {
         mesh.position.y = -1;
         this.scene.add(mesh);
 
-
-
         armazemData.forEach(obj => {
             const armazem = new Armazem(obj);
             //adicionar a um array
@@ -82,11 +84,13 @@ export default class Mapa {
             this.scene.add(armazem.object);
         });
 
-        this.connections(new THREE.MeshBasicMaterial({ color: 0x000000 }))
+
+        this.connections(new THREE.MeshBasicMaterial({ color: 0x000000 }), armazemData)
 
 
     }
-    connections(material) {
+
+    connections(material, armazemData) {
         let points, geometry, mesh;
 
         const normals = new Float32Array([
@@ -169,12 +173,37 @@ export default class Mapa {
 
                 this.scene.add(mesh);
 
+
+                this.addArmazem3D(armazemData);
             }
         }
 
+    }
+
+
+    addArmazem3D(armazemData){
+
+
+        const gltfLoader = new GLTFLoader();
+
+        armazemData.forEach(obj => {
+            const armazem = new Armazem(obj);
+
+
+            gltfLoader.load('./armazem3D/imagem.gltf', (gltf) => {
+                let root = gltf.scene;
+                let newRoot = root.clone();
+                newRoot.scale.set(0.5, 0.5, 0.5);
+                newRoot.position.set(armazem.coordenadas.x + 0.5, armazem.coordenadas.y, armazem.coordenadas.z);
+
+                this.scene.add(newRoot);
+
+            });
+
+        });
 
     }
-    //TODO - funçao update
+
     update() {
         this.controls.update();
         this.renderer.render(this.scene, this.camera);
