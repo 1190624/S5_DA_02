@@ -23,10 +23,10 @@ namespace DDDSample1.Domain.Entregas.DTO {
         [DataMember(Name = "Massa")]
         public Double massa;
 
-        [DataMember(Name = "Tempo Colocação")]
+        [DataMember(Name = "TempoColocação")]
         public Double tempoColocação;
 
-        [DataMember(Name = "Tempo Retirada")]
+        [DataMember(Name = "TempoRetirada")]
         public Double tempoRetirada;
 
         public Armazém armazem{get;set;}
