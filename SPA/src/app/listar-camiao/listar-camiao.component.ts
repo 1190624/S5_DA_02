@@ -9,6 +9,16 @@ import { CamiaoService } from '../services/camiao/camiao.service';
   styleUrls: ['./listar-camiao.component.css']
 })
 export class ListarCamiaoComponent implements OnInit {
+  pesquisaMatricula: string;
+  pesquisaCaracteristica: string;
+  pesquisaAutonomia: string;
+  pesquisaCapacidadeTransporte: string;
+  pesquisaCapacidadeBateria: string;
+  pesquisaTara: string;
+  pesquisaTempoCarregamento: string;
+
+  camioes: Camiao [];
+
   camiao: Camiao;
   matricula: string;
   caracteristica: string;
@@ -21,6 +31,16 @@ export class ListarCamiaoComponent implements OnInit {
   constructor(private service: CamiaoService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.listaCamioes();
+    this.getCamioes();
+  }
+
+
+
+
+  public getCamioes(): void {
+
+    this.service.getCamioes().subscribe(data => {
+      this.camiao = data;
+    });
   }
 }
