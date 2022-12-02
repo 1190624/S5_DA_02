@@ -11,7 +11,10 @@ import { CriarEntregaComponent } from './criar-entrega/criar-entrega.component';
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListarCamiaoComponent } from './listar-camiao/listar-camiao.component';
+import { ListarArmazemComponent } from './listar-armazem/listar-armazem.component';
+import { ListarEntregaComponent } from './listar-entrega/listar-entrega.component';
 import { SharedModule } from './shared';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +24,8 @@ import { SharedModule } from './shared';
     CriarEntregaComponent,
     DashboardComponent,
     ListarCamiaoComponent,
+    ListarEntregaComponent,
+    ListarArmazemComponent
   ],
   imports: [
     BrowserModule,
