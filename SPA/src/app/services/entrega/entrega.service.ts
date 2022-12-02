@@ -31,22 +31,42 @@ export class EntregaService {
       }));
     }
 
-    public extractData(res: any) {
-      return res || {};
+    getEntregas(): Observable<any> {
+      return this.httpClient.get(this.url).pipe(map(this.extractData));
+    }
+  
+    listaEntregas(): void {
+  
+      let tbody = document.getElementById('tbody') as HTMLTableElement;
+      let array = this.getEntregas();
+  
+      array.forEach(function (i) {
+        for (let j = 0; j < i.length; j++) {
+          let tr = tbody.insertRow();
+  
+          let td_identificador = tr.insertCell();
+          let td_armazem = tr.insertCell();
+          let td_dia= tr.insertCell();
+          let td_mes = tr.insertCell();
+          let td_ano = tr.insertCell();
+          let td_massa = tr.insertCell();
+          let td_tempoColocacao = tr.insertCell();
+          let td_tempoRetirada = tr.insertCell();
+  
+          td_identificador.innerText = i[j].Identificador;
+          td_armazem.innerText = i[j].ArmazémId;
+          td_dia.innerText = i[j].Dia;
+          td_mes.innerText = i[j].Mes;
+          td_ano.innerText = i[j].Ano;
+          td_massa.innerText = i[j].Massa;
+          td_tempoColocacao.innerText = i[j].TempoColocação;
+          td_tempoRetirada.innerText = i[j].TempoRetirada;
+        }
+      });
     }
 
-    private handleError(error: HttpErrorResponse) {
-      if (error.status === 0) {
-        // A client-side or network error occurred. Handle it accordingly.
-        console.error('Ocorreu um erro:', error.error);
-      } else {
-        // The backend returned an unsuccessful response code.
-        // The response body may contain clues as to what went wrong.
-        console.error(
-          `Backend returnou o código ${error.status}, menssagem: `, error.error);
-      }
-      // Return an observable with a user-facing error message.
-      return throwError(() => new Error('Aconteceu algo; por favor tente mais tarde'));
+    public extractData(res: any) {
+      return res || {};
     }
 
 
