@@ -11,7 +11,7 @@ import { CriarEntregaComponent } from './criar-entrega/criar-entrega.component';
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListarCamiaoComponent } from './listar-camiao/listar-camiao.component';
-
+import { SharedModule } from './shared';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,8 @@ import { ListarCamiaoComponent } from './listar-camiao/listar-camiao.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
