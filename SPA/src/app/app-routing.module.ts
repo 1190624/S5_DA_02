@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CriarEntregaComponent } from './criar-entrega/criar-entrega.component';
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ListarCamiaoComponent } from './listar-camiao/listar-camiao.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'adicionarCamiao', component: CriarCamiaoComponent},
   {path: 'adicionarArmazem', component: CriarArmazemComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'adicionarEntrega', component: CriarEntregaComponent}
+  {path: 'adicionarEntrega', component: CriarEntregaComponent},
+  {path: 'listarCamiao' , component: ListarCamiaoComponent}
 ];
 
 @NgModule({

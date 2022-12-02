@@ -10,6 +10,7 @@ import { CriarArmazemComponent } from './criar-armazem/criar-armazem.component';
 import { CriarEntregaComponent } from './criar-entrega/criar-entrega.component';
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ListarCamiaoComponent } from './listar-camiao/listar-camiao.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CriarArmazemComponent,
     CriarEntregaComponent,
     DashboardComponent,
+    ListarCamiaoComponent,
   ],
   imports: [
     BrowserModule,
