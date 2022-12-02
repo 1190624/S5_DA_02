@@ -11,6 +11,7 @@ import { CriarEntregaComponent } from './criar-entrega/criar-entrega.component';
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListarCamiaoComponent } from './listar-camiao/listar-camiao.component';
+import { ListarArmazemComponent } from './listar-armazem/listar-armazem.component';
 import { ListarEntregaComponent } from './listar-entrega/listar-entrega.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ListarEntregaComponent } from './listar-entrega/listar-entrega.componen
     DashboardComponent,
     ListarCamiaoComponent,
     ListarEntregaComponent,
+    ListarArmazemComponent
   ],
   imports: [
     BrowserModule,
