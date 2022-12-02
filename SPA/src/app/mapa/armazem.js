@@ -17,10 +17,10 @@ export default class Armazem {
 
 
         let geometry, material, mesh;
-        geometry = new THREE.CylinderGeometry(this.raio, this.raio, 1, 32);
+        geometry = new THREE.CylinderGeometry(this.raio, this.raio, 0.1, 32);
         material = new THREE.MeshBasicMaterial({ color: 0x3ac9ad });
         mesh = new THREE.Mesh(geometry, material);
-        mesh.position.y = 0.5;
+        mesh.position.y = 0.1;
         this.object.add(mesh);
         //console.log(this.coordenadas);
         this.object.position.set(this.coordenadas.x, this.coordenadas.y, this.coordenadas.z);
