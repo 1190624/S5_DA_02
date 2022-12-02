@@ -11,6 +11,7 @@ import { CriarEntregaComponent } from './criar-entrega/criar-entrega.component';
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListarCamiaoComponent } from './listar-camiao/listar-camiao.component';
+import { ListarEntregaComponent } from './listar-entrega/listar-entrega.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ListarCamiaoComponent } from './listar-camiao/listar-camiao.component';
     CriarEntregaComponent,
     DashboardComponent,
     ListarCamiaoComponent,
+    ListarEntregaComponent,
   ],
   imports: [
     BrowserModule,
