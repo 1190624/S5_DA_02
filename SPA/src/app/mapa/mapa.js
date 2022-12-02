@@ -194,7 +194,12 @@ export default class Mapa {
                 let root = gltf.scene;
                 let newRoot = root.clone();
                 newRoot.scale.set(0.5, 0.5, 0.5);
-                newRoot.position.set(armazem.coordenadas.x + 0.5, armazem.coordenadas.y, armazem.coordenadas.z);
+                
+                //posição diretamente em cima da rotunda
+                //newRoot.position.set(armazem.coordenadas.x - 1, armazem.coordenadas.y-0.2, armazem.coordenadas.z);
+
+                //posição ao lado
+                newRoot.position.set(armazem.coordenadas.x , armazem.coordenadas.y, armazem.coordenadas.z -2);
 
                 this.scene.add(newRoot);
 
