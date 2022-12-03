@@ -17,26 +17,26 @@ export class FilterPipe implements PipeTransform {
 
     if (domainType === "entrega") {
 
-      if (!params.Identificador && !params.armazemID && !params.dia && !params.mes && !params.ano &&
-        !params.massa && !params.tempoColocacao && !params.tempoRetirada) {
+      if (!params.Identificador && !params.ArmazemId && !params.Dia && !params.Mes && !params.Ano &&
+        !params.Massa && !params.TempoColocacao && !params.TempoRetirada) {
         return items
       }
 
       if (params.Identificador) {
         finalList = finalList.filter((singleItem) =>
-          singleItem['Identificador'].toLowerCase().includes(params.Identificador.toLowerCase())
+          singleItem['Identificador'].toString().includes(params.Identificador.toLowerCase())
         );
       }
 
-      if (params.ArmazemID) {
+      if (params.ArmazemId) {
         finalList = finalList.filter((singleItem) =>
-          singleItem['ArmazemID'].toLowerCase().includes(params.ArmazemID.toLowerCase())
+          singleItem['ArmazemId'].toLowerCase().includes(params.ArmazemId.toLowerCase())
         );
       }
 
       if (params.Dia) {
         finalList = finalList.filter((singleItem) =>
-          singleItem['Dia'].toString().includes(params.Dia.toLowerCase())
+          singleItem['Dia'].toLowerCase().includes(params.Dia.toLowerCase())
         );
       }
       if (params.Mes) {
