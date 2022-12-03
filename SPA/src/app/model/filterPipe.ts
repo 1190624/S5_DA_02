@@ -67,9 +67,73 @@ export class FilterPipe implements PipeTransform {
           singleItem['tempoCarregamento'].toString().toLowerCase().includes(params.tempoCarregamento.toLowerCase())
         );
       }
-    } else if (domainType === "warehouse") {
 
-      //TODO
+    } else if (domainType === "armazem") {
+
+      if (!params.Identificador && !params.Designacao && !params.CodigoPostal && !params.NumeroPorta && !params.NomeRua &&
+        !params.Localidade && !params.Pais && !params.Municipio && !params.Latitude && !params.Longitude) {
+        return items
+      }
+
+      if (params.Identificador) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Identificador'].toLowerCase().includes(params.Identificador.toLowerCase())
+        );
+      }
+
+      if (params.Designacao) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Designacao'].toLowerCase().includes(params.Designacao.toLowerCase())
+        );
+      }
+
+      if (params.CodigoPostal) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['CodigoPostal'].toLowerCase().includes(params.CodigoPostal.toLowerCase())
+        );
+      }
+
+      if (params.NumeroPorta) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['NumeroPorta'].toString().includes(params.NumeroPorta.toLowerCase())
+        );
+      }
+
+      if (params.NomeRua) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['NomeRua'].toLowerCase().includes(params.NomeRua.toLowerCase())
+        );
+      }
+
+      if (params.Localidade) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Localidade'].toLowerCase().includes(params.Localidade.toLowerCase())
+        );
+      }
+
+      if (params.Pais) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Pais'].toLowerCase().includes(params.Pais.toLowerCase())
+        );
+      }
+
+      if (params.Municipio) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Municipio'].toLowerCase().includes(params.Municipio.toLowerCase())
+        );
+      }
+
+      if (params.Latitude) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Latitude'].toString().includes(params.Latitude.toLowerCase())
+        );
+      }
+
+      if (params.Longitude) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Longitude'].toString().includes(params.Longitude.toLowerCase())
+        );
+      }
     }
 
     return finalList;
