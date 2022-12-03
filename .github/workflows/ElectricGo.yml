@@ -30,9 +30,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 16.18.x
-        cache: 'npm'
+        cache: 'npm '
       
     - name: Build & Test Node
       run: echo 'Building and Testing Node'
         && npm install nodemon --save
-        && npm start 'Logistica/config.js'
+        && npm run-script build
