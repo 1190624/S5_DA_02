@@ -34,13 +34,10 @@ export class ListarCamiaoComponent implements OnInit {
     this.getCamioes();
   }
 
-
-
-
   public getCamioes(): void {
 
     this.service.getCamioes().subscribe(data => {
-      this.camiao = data;
+      this.camioes = data;
     });
   }
 }
