@@ -17,7 +17,58 @@ export class FilterPipe implements PipeTransform {
 
     if (domainType === "entrega") {
 
-      //TODO
+      if (!params.Identificador && !params.armazemID && !params.dia && !params.mes && !params.ano &&
+        !params.massa && !params.tempoColocacao && !params.tempoRetirada) {
+        return items
+      }
+
+      if (params.Identificador) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Identificador'].toLowerCase().includes(params.Identificador.toLowerCase())
+        );
+      }
+
+      if (params.ArmazemID) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['ArmazemID'].toLowerCase().includes(params.ArmazemID.toLowerCase())
+        );
+      }
+
+      if (params.Dia) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Dia'].toString().includes(params.Dia.toLowerCase())
+        );
+      }
+      if (params.Mes) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Mes'].toString().includes(params.Mes.toLowerCase())
+        );
+      }
+      if (params.Ano) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Ano'].toString().includes(params.Ano.toLowerCase())
+        );
+      }
+
+      if (params.Massa) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['Massa'].toString().includes(params.Massa.toLowerCase())
+        );
+      }
+
+      if (params.TempoColocacao) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['TempoColocacao'].toString().includes(params.TempoColocacao.toLowerCase())
+        );
+      }
+
+      if (params.TempoRetirada) {
+        finalList = finalList.filter((singleItem) =>
+          singleItem['TempoRetirada'].toString().includes(params.TempoRetirada.toLowerCase())
+        );
+      }
+      
+
     } else if (domainType === "rota") {
 
         //TODO
