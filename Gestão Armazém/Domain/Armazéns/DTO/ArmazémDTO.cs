@@ -6,19 +6,19 @@ namespace DDDSample1.Domain.Armazéns.DTO {
     public class ArmazémDTO {
         [DataMember(Name = "Identificador")]
         public String identificador;
-        [DataMember(Name = "Designação")]
+        [DataMember(Name = "Designacao")]
         public String designação;
-        [DataMember(Name = "CódigoPostal")]
+        [DataMember(Name = "CodigoPostal")]
         public String códigoPostal;
-        [DataMember(Name = "NúmeroPorta")]
+        [DataMember(Name = "NumeroPorta")]
         public Int16 númeroPorta;
         [DataMember(Name = "NomeRua")]
         public String nomeRua;
         [DataMember(Name = "Localidade")]
         public String localidade;
-        [DataMember(Name = "País")]
+        [DataMember(Name = "Pais")]
         public String país;
-        [DataMember(Name = "Munícipio")]
+        [DataMember(Name = "Municipio")]
         public String munícipio;
         [DataMember(Name = "Latitude")]
         public Double latitude;
