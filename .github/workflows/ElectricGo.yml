@@ -26,14 +26,26 @@ jobs:
         && dotnet build --no-restore --configuration Release 'GestãoArmazénsTests/GestãoArmazénsTests.csproj'
         && dotnet test --no-build --configuration Release 'GestãoArmazénsTests/GestãoArmazénsTests.csproj'
     
-    - name: Setup Node
+    - name: Setup Logistica Node
       uses: actions/setup-node@v3
       with:
         node-version: 16.18.x
         cache: 'npm '
         cache-dependency-path: Logistica/package-lock.json
       
-    - name: Build & Test Node
+    - name: Build & Test Logistica Node
+      run: echo 'Building and Testing Node'
+        && npm install nodemon --save
+        && npm run-script -build
+
+    - name: Setup SPA Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.18.x
+        cache: 'npm '
+        cache-dependency-path: SPA/package-lock.json
+      
+    - name: Build & Test SPA Node
       run: echo 'Building and Testing Node'
         && npm install nodemon --save
         && npm run-script -build
