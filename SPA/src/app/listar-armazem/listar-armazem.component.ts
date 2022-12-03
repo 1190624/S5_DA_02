@@ -9,6 +9,19 @@ import { ArmazemService } from '../services/armazem/armazem.service';
   styleUrls: ['./listar-armazem.component.css']
 })
 export class ListarArmazemComponent implements OnInit {
+  pesquisaIdentificador: string;
+  pesquisaDesignacao: string;
+  pesquisaCodigoPostal: string;
+  pesquisaNumeroPorta: string;
+  pesquisaNomeRua: string;
+  pesquisaLocalidade: string;
+  pesquisaPais: string;
+  pesquisaMunicipo: string;
+  pesquisaLatitude: string;
+  pesquisaLongitude: string;
+
+  armazens: Armazem[];
+
   armazem: Armazem;
   identificador: string;
   designacao: string;
@@ -24,7 +37,13 @@ export class ListarArmazemComponent implements OnInit {
   constructor(private service: ArmazemService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.listaArmazens();
+    this.getArmazens();
   }
 
+  public getArmazens(): void {
+
+    this.service.getArmazens().subscribe(data => {
+      this.armazens = data;
+    });
+  }
 }
