@@ -14,8 +14,8 @@
       <th><input type="text" class="header-filter" placeholder="Tara" [(ngModel)]="pesquisaTara"></th>
       <th style="border-radius: 0 5px 0 0"><input type="text" class="header-filter" placeholder="Tempo de Carregamento" [(ngModel)]="pesquisaTempoCarregamento"></th>
     </tr>
-    <tr *ngFor="let c of camioes | filter:'camioes':{matricula: pesquisaMatricula, caracteristica: pesquisaCaracteristica, autonomia: pesquisaAutonomia,capacidadeTransporte: pesquisaCapacidadeTransporte,capacidadeBateria: pesquisaCapacidadeBateria,tara: pesquisaTara, tempoCarregamento: pesquisaTempoCarregamento}">
-      <td>{{c.autonomia}}</td>
+    <tr *ngFor="let c of camioes | filter:'camiao':{matricula: pesquisaMatricula, caracteristica: pesquisaCaracteristica, autonomia: pesquisaAutonomia,capacidadeTransporte: pesquisaCapacidadeTransporte,capacidadeBateria: pesquisaCapacidadeBateria,tara: pesquisaTara, tempoCarregamento: pesquisaTempoCarregamento}">
+      <td>{{c.matricula}}</td>
       <td>{{c.caracteristica}}</td>
       <td>{{c.autonomia}}</td>
       <td>{{c.capacidadeTransporte}}</td>
@@ -23,16 +23,6 @@
       <td>{{c.tara}}</td>
       <td>{{c.tempoCarregamento}}</td>
     </tr>
-    <!--<tr>
-      <th>Matrícula</th>
-      <th>Característica</th>
-      <th>Autonomia</th>
-      <th>Capacidade de Transporte</th>
-      <th>Capacidade de Bateria</th>
-      <th>Tara</th>
-      <th>Tempo de Carregamento</th>
-    </tr>-->
-
   </table>
 </body>
 
