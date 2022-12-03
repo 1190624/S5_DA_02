@@ -36,4 +36,4 @@ jobs:
     - name: Build & Test Node
       run: echo 'Building and Testing Node'
         && npm install nodemon --save
-        && npm run-script build
+        && npm run-script -build
