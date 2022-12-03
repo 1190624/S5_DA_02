@@ -41,3 +41,15 @@ th {
 tr:nth-child(even) {
     background-color: #D6EEEE;
 }
+
+tr:hover {
+    background-color: #9270003b;
+}
+
+.header-filter {
+    align-self: left;
+    border:none;
+    max-width: 148.5px;
+    padding: 10px 1px;
+    text-align: center;
+}
