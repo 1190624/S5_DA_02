@@ -31,6 +31,7 @@ jobs:
       with:
         node-version: 16.18.x
         cache: 'npm '
+        cache-dependency-path: Logistica/package-lock.json
       
     - name: Build & Test Node
       run: echo 'Building and Testing Node'
