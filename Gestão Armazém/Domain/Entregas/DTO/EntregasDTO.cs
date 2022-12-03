@@ -8,7 +8,7 @@ namespace DDDSample1.Domain.Entregas.DTO {
         [DataMember(Name = "Identificador")]
         public String identificador;
 
-        [DataMember(Name = "ArmazémId")]
+        [DataMember(Name = "ArmazemId")]
         public String armazém;
 
         [DataMember(Name = "Dia")]
@@ -23,7 +23,7 @@ namespace DDDSample1.Domain.Entregas.DTO {
         [DataMember(Name = "Massa")]
         public Double massa;
 
-        [DataMember(Name = "TempoColocação")]
+        [DataMember(Name = "TempoColocacao")]
         public Double tempoColocação;
 
         [DataMember(Name = "TempoRetirada")]
