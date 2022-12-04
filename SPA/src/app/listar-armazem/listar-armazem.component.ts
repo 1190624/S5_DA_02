@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Armazem } from '../model/armazem';
+import { Armazem } from '../dto/armazem';
 import { ArmazemService } from '../services/armazem/armazem.service';
 
 @Component({
