@@ -117,3 +117,9 @@ calcTempoRet([Head1|Tail1], ListTempRet):-
     calcTempoRet(Tail1, TempList),
     entregaData(Head1, _, _, _, _, TempoRet),
     append([TempoRet], TempList, ListTempRet).
+
+%Dado um camião e uma lista de entregas, calculada a rota com menor tempo gasto para o serviço
+rotaMaisRapida(NomeCamiao,ListEntregasID,Rota):-
+    calcRotas(NomeCamiao, ListEntregasID, ListRotas),
+    sort(ListRotas, TempList),
+    TempList = [(_, Rota)|_].

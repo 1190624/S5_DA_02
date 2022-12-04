@@ -9,6 +9,18 @@ import { EntregaService } from '../services/entrega/entrega.service';
   styleUrls: ['./listar-entrega.component.css']
 })
 export class ListarEntregaComponent implements OnInit { 
+  pesquisaIdentificador: string;
+  pesquisaArmazemID: string;
+  pesquisaDia: string;
+  pesquisaMes: string;
+  pesquisaAno: string;
+  pesquisaMassa: string;
+  pesquisaTempoColocacao: string;
+  pesquisaTempoRetirada: string;
+
+  entregas: Entrega[]; 
+  
+  
   entrega: Entrega;
   identificador: string;
   armazemID: string;
@@ -22,7 +34,14 @@ export class ListarEntregaComponent implements OnInit {
   constructor(private service : EntregaService, private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
-    this.service.listaEntregas();
+    this.getEntregas();
+  }
+
+  public getEntregas(): void {
+
+    this.service.getEntregas().subscribe(data => {
+      this.entregas = data;
+    });
   }
 
 }
