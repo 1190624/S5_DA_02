@@ -130,3 +130,9 @@ tempoExecucao(NomeCamiao,ListEntregasID,Tempo):-
     calcRotas(NomeCamiao, ListEntregasID, ListRotas),
     get_time(Tf),
     Tempo is Tf-Ti.
+
+%tempoRotaMaisRapida (apresenta o tempo que demora a percorrer a rota mais rapida)
+tempoRotaMaisRapida(NomeCamiao,ListEntregasID,Rota,Tempo):-
+    calcRotas(NomeCamiao, ListEntregasID, ListRotas),
+    sort(ListRotas, TempList),
+    TempList = [(Tempo, Rota)|_].
