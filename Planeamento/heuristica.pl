@@ -263,7 +263,7 @@ entrega(4449, 20221205, 600, 14, 15, 20).
 
 responde_ola(_Request) :-
         format('Content-type: text/plain~n~n'),
-        format('Olá LAPR5!~n').
+        format('OlÃ¡ LAPR5!~n').
 
 
 
@@ -318,6 +318,7 @@ bestfsMassaDistancia(ListaArmazens, Data, Final):- ArmazemAtual is 5,
     bestfs3(ListaArmazens, Data, [ArmazemAtual], CaminhoFinal), 
     append(CaminhoFinal, [5], Final).
 
+
 bestfs3([],_,Cam, CaminhoFinal):- !,
     reverse(Cam, CaminhoFinal).
 
@@ -335,39 +336,24 @@ bestfs3(ListaArmazens, Data, Cam, CaminhoFinal):-
     bestfs3(ArmazensRestantes, Data, [Atual|Cam], CaminhoFinal).
 
 
+%TempoHeuristcaMenorDistancia
+tempoBestfsDistancia(ListaArmazens, Tempo):-
+    get_time(Ti),
+    bestfsDistancia(ListaArmazens, Final),
+    get_time(Tf),
+        Tempo is Tf-Ti.
 
+%TempoHeuristicaMaiorMassa
+tempoBestfsMassa(ListaArmazens, Data, Tempo):-
+    get_time(Ti),
+    bestfsMassa(ListaArmazens, Data, Final),
+    get_time(Tf),
+        Tempo is Tf-Ti.
 
-
-/*
-bestfs(Orig,Dest,Cam,Custo):-
-    bestfs2(Dest,(0,[Orig]),Cam,Custo).
-
-bestfs2(Dest,(Custo,[Dest|T]),Cam,Custo):-
-    !,
-    reverse([Dest|T],Cam).
-
-bestfs2(Dest,(Ca,LA),Cam,Custo):-
-    LA=[Act|_],
-    findall((CaX,[X|LA]), (distancia(Act,X,CX),\+member(X,LA), CaX is Ca+CX), Novos),
-    sort(Novos,NovosOrd),
-    NovosOrd = [(CM,Melhor)|_],
-    bestfs2(Dest,(CM,Melhor),Cam,Custo),
-    !.
-
-bestfs2(Dest,(Ca,LA),Cam,Custo):-
-    LA=[Act|_],
-    findall((CaX,[X|LA]),
-    (distancia(Act,X,CX),\+member(X,LA),
-    CaX is Ca+CX),Novos),
-    sort(Novos,NovosOrd),
-    NovosOrd = [_|Tail],
-    bestfs2Rec(Dest,Tail,Cam,Custo).
-
-bestfs2Rec(Dest, [(Ca,List)|_],Cam,Custo):-
-    bestfs2(Dest,(Ca,List),Cam,Custo),
-    !.
-
-bestfs2Rec(Dest, [_|Tail],Cam,Custo):-
-    bestfs2Rec(Dest,Tail,Cam,Custo).
-*/
+%TempoHeuristicaMelhorRelacao
+tempoBestfsMassaDistancia(ListaArmazens, Data, Tempo):-
+    get_time(Ti),
+    bestfsMassaDistancia(ListaArmazens, Data, Final),
+    get_time(Tf),
+        Tempo is Tf-Ti.
 
