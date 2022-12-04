@@ -123,3 +123,10 @@ rotaMaisRapida(NomeCamiao,ListEntregasID,Rota):-
     calcRotas(NomeCamiao, ListEntregasID, ListRotas),
     sort(ListRotas, TempList),
     TempList = [(_, Rota)|_].
+
+%Calcular o tempo de execução da rota mais rápida tendo em conta o tamanho do input
+tempoExecucao(NomeCamiao,ListEntregasID,Tempo):-
+    get_time(Ti),
+    calcRotas(NomeCamiao, ListEntregasID, ListRotas),
+    get_time(Tf),
+    Tempo is Tf-Ti.
