@@ -8,7 +8,7 @@
     <tr>
       <th style="border-radius: 5px 0 0 0"><input type="text" class="header-filter" placeholder="ID"
           [(ngModel)]="pesquisaIdentificador"></th>
-      <th><input type="text" class="header-filter" placeholder="ArmazémID" [(ngModel)]="pesquisaArmazemID"></th>
+      <th><input type="text" class="header-filter" placeholder="ID do Armazém" [(ngModel)]="pesquisaArmazemID"></th>
       <th><input type="text" class="header-filter" placeholder="Dia" [(ngModel)]="pesquisaDia"></th>
       <th><input type="text" class="header-filter" placeholder="Mês" [(ngModel)]="pesquisaMes"></th>
       <th><input type="text" class="header-filter" placeholder="Ano" [(ngModel)]="pesquisaAno"></th>
@@ -17,11 +17,11 @@
       <th style="border-radius: 0 5px 0 0"><input type="text" class="header-filter" placeholder="Tempo de Retirada" [(ngModel)]="pesquisaTempoRetirada"></th>
     </tr>
     <tr
-      *ngFor="let a of entregas | filter:'entrega':{Identificador: pesquisaIdentificador, ArmazemID: pesquisaArmazemID, Dia: pesquisaDia,
+      *ngFor="let a of entregas | filter:'entrega':{Identificador: pesquisaIdentificador, ArmazemId: pesquisaArmazemID, Dia: pesquisaDia,
       Mes: pesquisaMes, Ano: pesquisaAno, Massa: pesquisaMassa, TempoColocacao:pesquisaTempoColocacao,
       TempoRetirada: pesquisaTempoRetirada}">
       <td>{{a.Identificador}}</td>
-      <td>{{a.ArmazemID}}</td>
+      <td>{{a.ArmazemId}}</td>
       <td>{{a.Dia}}</td>
       <td>{{a.Mes}}</td>
       <td>{{a.Ano}}</td>
