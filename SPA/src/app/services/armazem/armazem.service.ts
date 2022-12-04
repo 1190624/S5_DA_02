@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,  HttpErrorResponse } from '@angular/common/http';
-import { Armazem } from 'src/app/model/armazem';
+import { Armazem } from 'src/app/dto/armazem';
 import {catchError, map, Observable, throwError} from 'rxjs';
 
 @Injectable({

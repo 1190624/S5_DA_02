@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Entrega } from '../model/entrega';
+import { Entrega } from '../dto/entrega';
 import { EntregaService } from '../services/entrega/entrega.service';
 
 @Component({

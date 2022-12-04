@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CamiaoService } from "src/app/services/camiao/camiao.service";
 import { ActivatedRoute, Router } from '@angular/router';
-import { Camiao } from '../model/camiao';
+import { Camiao } from '../dto/camiao';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReturnStatement } from '@angular/compiler';
 
