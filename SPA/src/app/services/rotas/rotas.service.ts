@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { IrotaDTO } from 'src/app/dto/rotaDTO/IrotaDTO';
+import { IrotaDTO } from 'src/app/dto/IrotaDTO';
 
 
 @Injectable({

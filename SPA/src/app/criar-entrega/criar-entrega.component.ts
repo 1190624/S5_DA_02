@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntregaService } from "src/app/services/entrega/entrega.service";
 import { ActivatedRoute, Router } from '@angular/router';
-import { Entrega } from '../model/entrega';
+import { Entrega } from '../dto/entrega';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReturnStatement } from '@angular/compiler';
 

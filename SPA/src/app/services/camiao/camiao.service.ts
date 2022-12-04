@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { Camiao } from '../../model/camiao';
+import { Camiao } from '../../dto/camiao';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Camiao } from '../model/camiao';
+import { Camiao } from '../dto/camiao';
 import { CamiaoService } from '../services/camiao/camiao.service';
 
 @Component({

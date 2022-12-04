@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IrotaDTO } from '../dto/rotaDTO/IrotaDTO';
+import { IrotaDTO } from '../dto/IrotaDTO';
 import { RotasService } from '../services/rotas/rotas.service';
 
 @Component({
