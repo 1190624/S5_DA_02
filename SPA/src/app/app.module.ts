@@ -15,6 +15,7 @@ import { ListarArmazemComponent } from './listar-armazem/listar-armazem.componen
 import { ListarEntregaComponent } from './listar-entrega/listar-entrega.component';
 import { SharedModule } from './shared';
 import { CriarRotaComponent } from './criar-rota/criar-rota.component';
+import { RedeViariaComponent } from './rede-viaria/rede-viaria.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CriarRotaComponent } from './criar-rota/criar-rota.component';
     ListarCamiaoComponent,
     ListarEntregaComponent,
     ListarArmazemComponent,
-    CriarRotaComponent
+    CriarRotaComponent,
+    RedeViariaComponent
   ],
   imports: [
     BrowserModule,

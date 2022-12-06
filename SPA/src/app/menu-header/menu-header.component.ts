@@ -12,8 +12,4 @@ export class MenuHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  criarArmazem(){
-    this.router.navigate(['/criarArmazem']);
-  }
 }
