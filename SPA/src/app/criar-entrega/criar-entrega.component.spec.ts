@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule,} from '@angular/common/http/testing';
+import { RouterTestingModule } from "@angular/router/testing";
 import { CriarEntregaComponent } from './criar-entrega.component';
 
 describe('CriarEntregaComponent', () => {
@@ -8,7 +9,11 @@ describe('CriarEntregaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CriarEntregaComponent ]
+      declarations: [ CriarEntregaComponent ],
+      imports:[
+        HttpClientTestingModule,
+        RouterTestingModule
+      ]
     })
     .compileComponents();
 

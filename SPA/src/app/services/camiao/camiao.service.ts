@@ -7,7 +7,7 @@ import { Camiao } from '../../dto/camiao';
   providedIn: 'root'
 })
 export class CamiaoService {
-  private url = 'https://s5da02-logistica-production.up.railway.app/api/camiao';
+  public url = 'https://s5da02-logistica-production.up.railway.app/api/camiao';
   constructor(private httpClient: HttpClient) { }
 
 
